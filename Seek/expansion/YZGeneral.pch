@@ -1,0 +1,85 @@
+//
+//  PrefixHeader.pch
+//  YZGeneral
+//
+//  Created by 戚译中 on 2017/10/17.
+//  Copyright © 2017年 777. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Masonry.h>
+
+#ifdef DEBUG  //调试阶段
+#define YZLog(...)  NSLog(__VA_ARGS__)
+#else //发布阶段
+#define YZLog(...)
+#endif
+
+//weak一个对象
+#define YZWeakObject(obj) autoreleasepool{} __weak typeof(obj) weak##obj = o;
+
+//屏幕宽度
+#define SCREEN_WIDTH     [UIScreen mainScreen].bounds.size.width
+
+//屏幕高度
+#define SCREEN_HEIGHT    [UIScreen mainScreen].bounds.size.height
+
+//RGB颜色
+#define RGB(r,g,b)       [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+
+//RGB带alpha颜色
+#define RGB_ALPHA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+//屏幕分辨率
+#define SCREEN_RESOLUTION (SCREEN_WIDTH * SCREEN_HEIGHT * ([UIScreen mainScreen].scale))
+
+//获取当前系统语言
+#define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+//获取通知中心
+#define NotificationCenter [NSNotificationCenter defaultCenter]
+
+//快速发通知
+#define Post_Notify(_notificationName, _obj, _userInfoDictionary) [[NSNotificationCenter defaultCenter] postNotificationName: _notificationName object: _obj userInfo: _userInfoDictionary];
+
+//添加观察者
+#define Add_Observer(_notificationName, _observer, _observerSelector, _obj) [[NSNotificationCenter defaultCenter] addObserver:_observer selector:@selector(_observerSelector) name:_notificationName object: _obj];
+
+//移除观察者
+#define Remove_Observer(_observer) [[NSNotificationCenter defaultCenter] removeObserver: _observer];
+
+//NSUserDefaults 实例化
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults]
+
+//声明单例
+#define shared(OBJECT_NAME) \
++ (instancetype)shared##OBJECT_NAME;
+
+//定义单例
+#define YZ_SINGLETON(_OBJECT_NAME, _SHARED_OBJECT_NAME) \
++ (void)initialize{ \
+    [self shared##_OBJECT_NAME]; \
+} \
+static _OBJECT_NAME * _SHARED_OBJECT_NAME; \
++ (instancetype)shared##_OBJECT_NAME{ \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        if (!SHARED_OBJECT_NAME) { \
+            _SHARED_OBJECT_NAME = [[_OBJECT_NAME alloc]init]; \
+        } \
+}); \
+    return _SHARED_OBJECT_NAME; \
+} \
++ (instancetype)alloc{ \
+    if (_SHARED_OBJECT_NAME) { \
+        NSException *exception = [NSException exceptionWithName:@"error" reason:@"分配了多余的内存" userInfo:nil]; \
+        [exception raise]; \
+    } \
+    return [super alloc]; \
+} \
+
+#endif /* PrefixHeader_pch */
