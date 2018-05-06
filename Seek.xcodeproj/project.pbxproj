@@ -16,6 +16,8 @@
 		A0132CFA209DA92B00CBA33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CF9209DA92B00CBA33F /* main.m */; };
 		A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661A209DB61100674BF6 /* MainViewController.m */; };
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
+		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
+		A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,10 @@
 		A0A8661A209DB61100674BF6 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		A0A8661D209DB69F00674BF6 /* MainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		A0A8661E209DB69F00674BF6 /* MainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		A0A86643209EE70600674BF6 /* YZNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZNavigationBar.h; sourceTree = "<group>"; };
+		A0A86644209EE70600674BF6 /* YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZNavigationBar.m; sourceTree = "<group>"; };
+		A0A86649209EED7D00674BF6 /* UIViewController+YZNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YZNavigationBar.h"; sourceTree = "<group>"; };
+		A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YZNavigationBar.m"; sourceTree = "<group>"; };
 		E078D1022F4E2473FE5D2819 /* libPods-Seek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,7 @@
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
+				A0A86642209EE5BB00674BF6 /* navigation */,
 				A0A86614209DAFEA00674BF6 /* YZGeneral.pch */,
 			);
 			path = expansion;
@@ -153,6 +160,17 @@
 				A0A8661E209DB69F00674BF6 /* MainView.m */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		A0A86642209EE5BB00674BF6 /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A0A86643209EE70600674BF6 /* YZNavigationBar.h */,
+				A0A86644209EE70600674BF6 /* YZNavigationBar.m */,
+				A0A86649209EED7D00674BF6 /* UIViewController+YZNavigationBar.h */,
+				A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */,
+			);
+			path = navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
+				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
+				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,

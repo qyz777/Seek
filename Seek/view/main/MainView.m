@@ -17,7 +17,8 @@
 }
 
 - (void)initSubViews {
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.frame = CGRectMake(0, navigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - navigationBarHeight);
+//    self.backgroundColor = RGB(141, 255, 255);
     
 }
 
