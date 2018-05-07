@@ -8,6 +8,33 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainView : UIView
+@protocol MainViewDelegate <NSObject>
+
+// click top arrow
+- (void)arrowButtonDidClicked;
+// clcik like button
+- (void)likeButtonDidClicked;
+
+@end
+
+
+@interface MainView : UIView<CAAnimationDelegate>
+
+@property(nonatomic, strong)UILabel *wordLabel;
+@property(nonatomic, strong)UILabel *enSentenceLabel;
+@property(nonatomic, strong)UILabel *cnSentenceLabel;
+@property(nonatomic, strong)UIButton *arrowButton;
+@property(nonatomic, strong)UIButton *likeButton;
+@property(nonatomic, strong)UIView *bottomView;
+@property(nonatomic, strong)UILabel *leftSymLabel;
+@property(nonatomic, strong)UILabel *rightSymLabel;
+@property(nonatomic, strong)UILabel *firstTranslateLabel;
+@property(nonatomic, strong)UILabel *secondTranslateLabel;
+
+
+@property(nonatomic, copy)NSDictionary *dataDict;
+
+@property(nonatomic, weak)id<MainViewDelegate> yz_delegate;
+
 
 @end

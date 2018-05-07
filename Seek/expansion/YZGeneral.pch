@@ -19,7 +19,11 @@
 #define YZLog(...)
 #endif
 
-# define navigationBarHeight 64
+//第一种背景颜色
+#define BACKGROUND_COLOR_STYLE_ONE RGB_ALPHA(43, 207, 195, 0.8)
+
+//导航栏高度
+#define navigationBarHeight 64
 
 //weak一个对象
 #define YZWeakObject(obj) autoreleasepool{} __weak typeof(obj) weak##obj = o;
