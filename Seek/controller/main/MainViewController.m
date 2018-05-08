@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "MainView.h"
 #import "UIViewController+YZNavigationBar.h"
+#import "YZSearchViewController.h"
 
 @interface MainViewController ()
 
@@ -37,7 +38,10 @@
 }
 
 - (void)clickLeftBtn:(id)sender {
-    
+    YZSearchViewController *vc = [[YZSearchViewController alloc]init];
+    [self presentViewController:vc animated:true completion:^{
+        
+    }];
 }
 
 - (void)clickRightBtn:(id)sender {

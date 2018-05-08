@@ -7,6 +7,7 @@
 //
 
 #import "YZNavigationBar.h"
+#import "NSString+Custom.h"
 
 @implementation YZNavigationBar
 
@@ -53,10 +54,11 @@
     leftButton.titleLabel.font = font;
     [leftButton setTitleColor:color forState:UIControlStateNormal];
     [self addSubview:leftButton];
+    CGSize size = [title sizeWithFont:font];
     [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(40, 40));
+        make.size.mas_equalTo(size);
         make.left.equalTo(self).offset(10);
-        make.bottom.equalTo(self.mas_bottom).offset(-4);
+        make.bottom.equalTo(self.mas_bottom).offset(-10);
     }];
     return leftButton;
 }
@@ -79,10 +81,11 @@
     rightButton.titleLabel.font = font;
     [rightButton setTitleColor:color forState:UIControlStateNormal];
     [self addSubview:rightButton];
+    CGSize size = [title sizeWithFont:font];
     [rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(40, 40));
-        make.left.equalTo(self).offset(10);
-        make.bottom.equalTo(self.mas_bottom).offset(-4);
+        make.size.mas_equalTo(size);
+        make.right.equalTo(self).offset(-10);
+        make.bottom.equalTo(self.mas_bottom).offset(-10);
     }];
     return rightButton;
 }

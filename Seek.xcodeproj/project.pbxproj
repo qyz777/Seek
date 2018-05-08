@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B63C124B2504193262D426E /* libPods-Seek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E078D1022F4E2473FE5D2819 /* libPods-Seek.a */; };
+		A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03B420A1D264008E60B9 /* YZSearchViewController.m */; };
+		A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */; };
+		A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BE20A1D926008E60B9 /* NSString+Custom.m */; };
 		A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEB209DA92A00CBA33F /* AppDelegate.m */; };
 		A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEE209DA92A00CBA33F /* ViewController.m */; };
 		A0132CF2209DA92A00CBA33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF0209DA92A00CBA33F /* Main.storyboard */; };
@@ -23,6 +26,12 @@
 /* Begin PBXFileReference section */
 		3A3F160612D0D128B6C4434F /* Pods-Seek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Seek/Pods-Seek.debug.xcconfig"; sourceTree = "<group>"; };
 		57D065529F08170D7002D2D1 /* Pods-Seek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Seek/Pods-Seek.release.xcconfig"; sourceTree = "<group>"; };
+		A00F03B320A1D264008E60B9 /* YZSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchViewController.h; sourceTree = "<group>"; };
+		A00F03B420A1D264008E60B9 /* YZSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchViewController.m; sourceTree = "<group>"; };
+		A00F03B920A1D4BC008E60B9 /* YZSearchTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchTableView.h; sourceTree = "<group>"; };
+		A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchTableView.m; sourceTree = "<group>"; };
+		A00F03BD20A1D926008E60B9 /* NSString+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Custom.h"; sourceTree = "<group>"; };
+		A00F03BE20A1D926008E60B9 /* NSString+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Custom.m"; sourceTree = "<group>"; };
 		A0132CE7209DA92A00CBA33F /* Seek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0132CEA209DA92A00CBA33F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0132CEB209DA92A00CBA33F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +83,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A00F03B120A1D244008E60B9 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03B320A1D264008E60B9 /* YZSearchViewController.h */,
+				A00F03B420A1D264008E60B9 /* YZSearchViewController.m */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		A00F03B220A1D250008E60B9 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03B920A1D4BC008E60B9 /* YZSearchTableView.h */,
+				A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		A00F03BC20A1D831008E60B9 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03BD20A1D926008E60B9 /* NSString+Custom.h */,
+				A00F03BE20A1D926008E60B9 /* NSString+Custom.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
 		A0132CDE209DA92A00CBA33F = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +151,7 @@
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
+				A00F03BC20A1D831008E60B9 /* NSString */,
 				A0A86642209EE5BB00674BF6 /* navigation */,
 				A0A86614209DAFEA00674BF6 /* YZGeneral.pch */,
 			);
@@ -131,6 +168,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A00F03B220A1D250008E60B9 /* search */,
 				A0A8661C209DB63200674BF6 /* main */,
 			);
 			path = view;
@@ -139,6 +177,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A00F03B120A1D244008E60B9 /* search */,
 				A0A86618209DB60500674BF6 /* main */,
 			);
 			path = controller;
@@ -267,7 +306,10 @@
 			files = (
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
+				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
+				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
+				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,

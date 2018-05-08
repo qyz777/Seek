@@ -24,7 +24,7 @@
     self.yz_navigationBar = [[YZNavigationBar alloc]init];
     [self.view addSubview:self.yz_navigationBar];
     [self.yz_navigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(navigationBarHeight);
+        make.height.mas_equalTo(NavigationBarHeight);
         make.left.right.top.offset(0);
     }];
 }
