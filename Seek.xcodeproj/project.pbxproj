@@ -14,6 +14,8 @@
 		A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03C220A28610008E60B9 /* SearchAnimation.m */; };
 		A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03C620A310F8008E60B9 /* YZSearchTableViewCell.m */; };
 		A00F03C920A310F8008E60B9 /* YZSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A00F03C720A310F8008E60B9 /* YZSearchTableViewCell.xib */; };
+		A00F03D120A32002008E60B9 /* YZSearchHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03D020A32002008E60B9 /* YZSearchHistoryManager.m */; };
+		A00F03D520A3202A008E60B9 /* YZWord.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03D420A3202A008E60B9 /* YZWord.m */; };
 		A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEB209DA92A00CBA33F /* AppDelegate.m */; };
 		A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEE209DA92A00CBA33F /* ViewController.m */; };
 		A0132CF2209DA92A00CBA33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF0209DA92A00CBA33F /* Main.storyboard */; };
@@ -40,6 +42,10 @@
 		A00F03C520A310F8008E60B9 /* YZSearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchTableViewCell.h; sourceTree = "<group>"; };
 		A00F03C620A310F8008E60B9 /* YZSearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchTableViewCell.m; sourceTree = "<group>"; };
 		A00F03C720A310F8008E60B9 /* YZSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YZSearchTableViewCell.xib; sourceTree = "<group>"; };
+		A00F03CF20A32002008E60B9 /* YZSearchHistoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchHistoryManager.h; sourceTree = "<group>"; };
+		A00F03D020A32002008E60B9 /* YZSearchHistoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchHistoryManager.m; sourceTree = "<group>"; };
+		A00F03D320A3202A008E60B9 /* YZWord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZWord.h; sourceTree = "<group>"; };
+		A00F03D420A3202A008E60B9 /* YZWord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZWord.m; sourceTree = "<group>"; };
 		A0132CE7209DA92A00CBA33F /* Seek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0132CEA209DA92A00CBA33F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0132CEB209DA92A00CBA33F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -138,6 +144,32 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		A00F03CA20A31FAA008E60B9 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03CB20A31FB5008E60B9 /* history */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		A00F03CB20A31FB5008E60B9 /* history */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03CF20A32002008E60B9 /* YZSearchHistoryManager.h */,
+				A00F03D020A32002008E60B9 /* YZSearchHistoryManager.m */,
+			);
+			path = history;
+			sourceTree = "<group>";
+		};
+		A00F03D220A32009008E60B9 /* word */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03D320A3202A008E60B9 /* YZWord.h */,
+				A00F03D420A3202A008E60B9 /* YZWord.m */,
+			);
+			path = word;
+			sourceTree = "<group>";
+		};
 		A0132CDE209DA92A00CBA33F = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +222,8 @@
 		A0A86615209DB5EA00674BF6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A00F03D220A32009008E60B9 /* word */,
+				A00F03CA20A31FAA008E60B9 /* search */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -340,12 +374,14 @@
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
+				A00F03D520A3202A008E60B9 /* YZWord.m in Sources */,
 				A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
+				A00F03D120A32002008E60B9 /* YZSearchHistoryManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
