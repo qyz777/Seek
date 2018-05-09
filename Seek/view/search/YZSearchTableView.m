@@ -12,7 +12,7 @@
 
 - (instancetype)init {
     self = [super init];
-    self.backgroundColor = RGB_ALPHA(0, 0, 0, 0.4);
+    self.backgroundColor = RGB_ALPHA(0, 0, 0, 0.1);
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
     [self initSubviews];
     return self;

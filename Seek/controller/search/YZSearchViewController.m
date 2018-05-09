@@ -9,9 +9,10 @@
 
 #import "YZSearchViewController.h"
 #import "YZSearchTableView.h"
+#import "SearchAnimation.h"
 #import "UIViewController+YZNavigationBar.h"
 
-@interface YZSearchViewController ()
+@interface YZSearchViewController ()<UIViewControllerTransitioningDelegate>
 
 @property(nonatomic, strong)YZSearchTableView *searchView;
 @property(nonatomic, strong)UITextField *searchField;
@@ -22,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.transitioningDelegate = self;
+    self.modalPresentationStyle = UIModalPresentationCustom;
     [self initView];
 }
 
@@ -30,7 +33,7 @@
     self.searchView = [[YZSearchTableView alloc]init];
     [self.view addSubview:self.searchView];
     [self navigationBar];
-    self.yz_navigationBar.navigationBarColor = RGB_ALPHA(0, 0, 0, 0.4);
+    self.yz_navigationBar.navigationBarColor = RGB_ALPHA(0, 0, 0, 0.1);
     UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"搜索"]];
     [leftBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithTitle:@"取消"
@@ -62,6 +65,15 @@
     [self dismissViewControllerAnimated:true completion:^{
         
     }];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[SearchAnimation alloc]init];
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return [[SearchAnimation alloc]init];
 }
 
 @end

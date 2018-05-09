@@ -11,6 +11,7 @@
 		A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03B420A1D264008E60B9 /* YZSearchViewController.m */; };
 		A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */; };
 		A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BE20A1D926008E60B9 /* NSString+Custom.m */; };
+		A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03C220A28610008E60B9 /* SearchAnimation.m */; };
 		A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEB209DA92A00CBA33F /* AppDelegate.m */; };
 		A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEE209DA92A00CBA33F /* ViewController.m */; };
 		A0132CF2209DA92A00CBA33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF0209DA92A00CBA33F /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 		A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchTableView.m; sourceTree = "<group>"; };
 		A00F03BD20A1D926008E60B9 /* NSString+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Custom.h"; sourceTree = "<group>"; };
 		A00F03BE20A1D926008E60B9 /* NSString+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Custom.m"; sourceTree = "<group>"; };
+		A00F03C120A28610008E60B9 /* SearchAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchAnimation.h; sourceTree = "<group>"; };
+		A00F03C220A28610008E60B9 /* SearchAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchAnimation.m; sourceTree = "<group>"; };
 		A0132CE7209DA92A00CBA33F /* Seek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0132CEA209DA92A00CBA33F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0132CEB209DA92A00CBA33F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,6 +113,15 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		A00F03C020A285EF008E60B9 /* searchAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03C120A28610008E60B9 /* SearchAnimation.h */,
+				A00F03C220A28610008E60B9 /* SearchAnimation.m */,
+			);
+			path = searchAnimation;
+			sourceTree = "<group>";
+		};
 		A0132CDE209DA92A00CBA33F = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +163,7 @@
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
+				A00F03C020A285EF008E60B9 /* searchAnimation */,
 				A00F03BC20A1D831008E60B9 /* NSString */,
 				A0A86642209EE5BB00674BF6 /* navigation */,
 				A0A86614209DAFEA00674BF6 /* YZGeneral.pch */,
@@ -306,6 +319,7 @@
 			files = (
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
+				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,

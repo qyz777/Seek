@@ -10,4 +10,6 @@
 
 @interface MainViewController : UIViewController
 
+@property(nonatomic, strong)UIButton *searchBtn;
+
 @end
