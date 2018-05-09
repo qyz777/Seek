@@ -12,6 +12,8 @@
 		A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */; };
 		A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BE20A1D926008E60B9 /* NSString+Custom.m */; };
 		A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03C220A28610008E60B9 /* SearchAnimation.m */; };
+		A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03C620A310F8008E60B9 /* YZSearchTableViewCell.m */; };
+		A00F03C920A310F8008E60B9 /* YZSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A00F03C720A310F8008E60B9 /* YZSearchTableViewCell.xib */; };
 		A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEB209DA92A00CBA33F /* AppDelegate.m */; };
 		A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CEE209DA92A00CBA33F /* ViewController.m */; };
 		A0132CF2209DA92A00CBA33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF0209DA92A00CBA33F /* Main.storyboard */; };
@@ -35,6 +37,9 @@
 		A00F03BE20A1D926008E60B9 /* NSString+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Custom.m"; sourceTree = "<group>"; };
 		A00F03C120A28610008E60B9 /* SearchAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchAnimation.h; sourceTree = "<group>"; };
 		A00F03C220A28610008E60B9 /* SearchAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchAnimation.m; sourceTree = "<group>"; };
+		A00F03C520A310F8008E60B9 /* YZSearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchTableViewCell.h; sourceTree = "<group>"; };
+		A00F03C620A310F8008E60B9 /* YZSearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchTableViewCell.m; sourceTree = "<group>"; };
+		A00F03C720A310F8008E60B9 /* YZSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YZSearchTableViewCell.xib; sourceTree = "<group>"; };
 		A0132CE7209DA92A00CBA33F /* Seek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0132CEA209DA92A00CBA33F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0132CEB209DA92A00CBA33F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 		A00F03B220A1D250008E60B9 /* search */ = {
 			isa = PBXGroup;
 			children = (
+				A00F03C420A310C9008E60B9 /* cell */,
 				A00F03B920A1D4BC008E60B9 /* YZSearchTableView.h */,
 				A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */,
 			);
@@ -120,6 +126,16 @@
 				A00F03C220A28610008E60B9 /* SearchAnimation.m */,
 			);
 			path = searchAnimation;
+			sourceTree = "<group>";
+		};
+		A00F03C420A310C9008E60B9 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				A00F03C520A310F8008E60B9 /* YZSearchTableViewCell.h */,
+				A00F03C620A310F8008E60B9 /* YZSearchTableViewCell.m */,
+				A00F03C720A310F8008E60B9 /* YZSearchTableViewCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		A0132CDE209DA92A00CBA33F = {
@@ -285,6 +301,7 @@
 			files = (
 				A0132CF7209DA92B00CBA33F /* LaunchScreen.storyboard in Resources */,
 				A0132CF4209DA92B00CBA33F /* Assets.xcassets in Resources */,
+				A00F03C920A310F8008E60B9 /* YZSearchTableViewCell.xib in Resources */,
 				A0132CF2209DA92A00CBA33F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +340,7 @@
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
+				A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,

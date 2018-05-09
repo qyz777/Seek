@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN NSNotificationName const SearchFieldDidChangeNotification;
+
 @interface YZSearchViewController : UIViewController
 
 @end

@@ -12,6 +12,8 @@
 #import "SearchAnimation.h"
 #import "UIViewController+YZNavigationBar.h"
 
+NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChangeNotification";
+
 @interface YZSearchViewController ()<UIViewControllerTransitioningDelegate>
 
 @property(nonatomic, strong)YZSearchTableView *searchView;
@@ -26,6 +28,11 @@
     self.transitioningDelegate = self;
     self.modalPresentationStyle = UIModalPresentationCustom;
     [self initView];
+    Add_Observer(SearchTableViewDidScrollNotification, self, searchTableViewDidScroll, nil);
+}
+
+- (void)dealloc {
+    Remove_Observer(self);
 }
 
 - (void)initView {
@@ -47,12 +54,13 @@
     self.searchField = [UITextField new];
     self.searchField.backgroundColor = [UIColor whiteColor];
     self.searchField.layer.cornerRadius = 12.0f;
+    self.searchField.placeholder = @"请输入需要搜索的单词";
     UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 0)];
     self.searchField.leftViewMode = UITextFieldViewModeAlways;
     self.searchField.leftView = leftView;
+    [self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.yz_navigationBar addSubview:self.searchField];
     [self.searchField mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.mas_equalTo(CGSizeMake(260, 30));
         make.left.equalTo(leftBtn.mas_right).offset(10);
         make.right.equalTo(rightBtn.mas_left).offset(-20);
         make.height.mas_equalTo(30);
@@ -68,6 +76,15 @@
     [self dismissViewControllerAnimated:true completion:^{
         
     }];
+}
+
+- (void)searchFieldDidChange:(UITextField *)textField {
+//    TODO 发起网络请求
+    
+}
+
+- (void)searchTableViewDidScroll {
+    [self.searchField resignFirstResponder];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
