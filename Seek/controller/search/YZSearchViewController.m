@@ -29,11 +29,14 @@
 }
 
 - (void)initView {
-    self.view.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
+    self.view.backgroundColor = [UIColor whiteColor];
+    UIView *backgroundView = [[UIView alloc]initWithFrame:self.view.bounds];
+    backgroundView.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
+    [self.view addSubview:backgroundView];
     self.searchView = [[YZSearchTableView alloc]init];
-    [self.view addSubview:self.searchView];
+    [backgroundView addSubview:self.searchView];
     [self navigationBar];
-    self.yz_navigationBar.navigationBarColor = RGB_ALPHA(0, 0, 0, 0.1);
+    self.yz_navigationBar.navigationBarColor = RGB_ALPHA(0, 0, 0, 0.3);
     UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"搜索"]];
     [leftBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithTitle:@"取消"

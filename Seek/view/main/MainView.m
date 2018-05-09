@@ -156,19 +156,7 @@
                 make.centerX.equalTo(self);
             }];
             self.enSentenceLabel.alpha = 0;
-            self.enSentenceLabel.textAlignment = NSTextAlignmentCenter;
-            [self.enSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(160);
-                make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
-                make.centerX.equalTo(self);
-            }];
             self.cnSentenceLabel.alpha = 0;
-            self.cnSentenceLabel.textAlignment = NSTextAlignmentCenter;
-            [self.cnSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(160);
-                make.top.equalTo(self.enSentenceLabel.mas_bottom).offset(10);
-                make.center.equalTo(self);
-            }];
             [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.left.equalTo(self).offset(0);
                 make.top.equalTo(self.mas_bottom).offset(0);
@@ -176,6 +164,18 @@
             }];
             [self layoutIfNeeded];
         }completion:^(BOOL finished) {
+            self.enSentenceLabel.textAlignment = NSTextAlignmentCenter;
+            [self.enSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(160);
+                make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
+                make.centerX.equalTo(self);
+            }];
+            self.cnSentenceLabel.textAlignment = NSTextAlignmentCenter;
+            [self.cnSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(160);
+                make.top.equalTo(self.enSentenceLabel.mas_bottom).offset(10);
+                make.center.equalTo(self);
+            }];
             [UIView animateWithDuration:0.2f animations:^{
                 self.enSentenceLabel.alpha = 1;
                 self.cnSentenceLabel.alpha = 1;

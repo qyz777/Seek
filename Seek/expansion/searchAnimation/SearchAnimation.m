@@ -74,7 +74,7 @@
 //
 //    MainViewController *mainVC = toVC.viewControllers.lastObject;
 //    UIView *containerView = [transitionContext containerView];
-//    containerView.backgroundColor = fromVC.view.backgroundColor;
+//    containerView.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
 //
 //    CGFloat radius = sqrtf(containerView.frame.size.height * containerView.frame.size.height + containerView.frame.size.width * containerView.frame.size.width) / 2;
 //    UIBezierPath * startPath = [UIBezierPath bezierPathWithArcCenter:containerView.center
@@ -100,21 +100,20 @@
 //    [animation setValue:transitionContext forKey:@"transitionContext"];
 //    [maskLayer addAnimation:animation forKey:@"path"];
     
-    
     UIViewController * fromVC= [transitionContext viewControllerForKey:( UITransitionContextFromViewControllerKey)];
     UIViewController * toVC= [transitionContext viewControllerForKey:( UITransitionContextToViewControllerKey)];
-    
+
     UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
     UIView *toView   = [transitionContext viewForKey:UITransitionContextToViewKey];
-    
+
     fromView.frame = [transitionContext initialFrameForViewController:fromVC];
     toView.frame   = [transitionContext finalFrameForViewController:toVC];
     fromView.alpha = 1.0f;
     toView.alpha   = 0.0f;
-    
+
     UIView * containerView = [transitionContext containerView];
     [containerView addSubview:toView];
-    
+
     NSTimeInterval transitionDuration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:transitionDuration animations:^{
         fromView.alpha = 0.0f;
@@ -131,11 +130,11 @@
         id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContext"];
         [transitionContext completeTransition:true];
     }else {
-//        id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContext"];
-//        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-//        if ([transitionContext transitionWasCancelled]) {
-//            [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;
-//        }
+        id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContext"];
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        if ([transitionContext transitionWasCancelled]) {
+            [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;
+        }
     }
 }
 
