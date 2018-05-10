@@ -10,6 +10,7 @@
 #import "MainView.h"
 #import "UIViewController+YZNavigationBar.h"
 #import "YZSearchViewController.h"
+#import "YZMoreViewController.h"
 
 @interface MainViewController ()
 
@@ -45,7 +46,11 @@
 }
 
 - (void)clickRightBtn:(id)sender {
-    
+    YZMoreViewController *vc = [[YZMoreViewController alloc]init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:vc animated:true completion:^{
+        
+    }];
 }
 
 @end
