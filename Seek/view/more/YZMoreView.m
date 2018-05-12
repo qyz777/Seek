@@ -38,7 +38,7 @@
     [self addSubview:self.likedTitle];
     [self.likedTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 3 + 10, 30));
-        make.top.equalTo(self.findTitle.mas_bottom).offset(12);
+        make.top.equalTo(self.findTitle.mas_bottom).offset(20);
         make.centerX.equalTo(self);
     }];
     
@@ -48,7 +48,7 @@
     [self addSubview:self.pkTitle];
     [self.pkTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 3 + 10, 30));
-        make.top.equalTo(self.likedTitle.mas_bottom).offset(12);
+        make.top.equalTo(self.likedTitle.mas_bottom).offset(20);
         make.centerX.equalTo(self);
     }];
     
@@ -58,13 +58,15 @@
     [self addSubview:self.settingTitle];
     [self.settingTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 3 + 10, 30));
-        make.top.equalTo(self.pkTitle.mas_bottom).offset(12);
+        make.top.equalTo(self.pkTitle.mas_bottom).offset(20);
         make.centerX.equalTo(self);
     }];
 }
 
 - (void)findTitleDidTouch {
-    
+    if ([self.yz_delegate respondsToSelector:@selector(findTitleDidTouch)]) {
+        [self.yz_delegate findTitleDidTouch];
+    }
 }
 
 @end

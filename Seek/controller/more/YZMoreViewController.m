@@ -9,8 +9,9 @@
 #import "YZMoreViewController.h"
 #import "UIViewController+YZNavigationBar.h"
 #import "YZMoreView.h"
+#import "YZFindViewController.h"
 
-@interface YZMoreViewController ()
+@interface YZMoreViewController ()<YZMoreViewDelegate>
 
 @property(nonatomic, strong)YZMoreView *moreView;
 
@@ -40,6 +41,7 @@
         make.centerY.equalTo(rightButton);
     }];
     self.moreView = [[YZMoreView alloc]init];
+    self.moreView.yz_delegate = self;
     [self.view addSubview:self.moreView];
 }
 
@@ -47,6 +49,13 @@
     [self dismissViewControllerAnimated:true completion:^{
         
     }];
+}
+
+#pragma make - YZMoreViewDelegate
+- (void)findTitleDidTouch {
+    YZFindViewController *vc = [[YZFindViewController alloc]init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:vc animated:true completion:nil];
 }
 
 @end

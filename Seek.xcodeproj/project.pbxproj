@@ -29,6 +29,13 @@
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
 		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
 		A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */; };
+		A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB887B20A67A6800CA810C /* YZFindViewController.m */; };
+		A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB887E20A67D1000CA810C /* YZFindView.m */; };
+		A0DB888320A67F6A00CA810C /* YZFindLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888220A67F6A00CA810C /* YZFindLayout.m */; };
+		A0DB888620A68E8400CA810C /* YZFindLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888520A68E8400CA810C /* YZFindLayoutAttributes.m */; };
+		A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888820A68FDB00CA810C /* YZFindCollectionViewCell.m */; };
+		A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */; };
+		A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB889020A6A1DE00CA810C /* YZDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +81,20 @@
 		A0A86644209EE70600674BF6 /* YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZNavigationBar.m; sourceTree = "<group>"; };
 		A0A86649209EED7D00674BF6 /* UIViewController+YZNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YZNavigationBar.h"; sourceTree = "<group>"; };
 		A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YZNavigationBar.m"; sourceTree = "<group>"; };
+		A0DB887A20A67A6800CA810C /* YZFindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindViewController.h; sourceTree = "<group>"; };
+		A0DB887B20A67A6800CA810C /* YZFindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZFindViewController.m; sourceTree = "<group>"; };
+		A0DB887D20A67D1000CA810C /* YZFindView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindView.h; sourceTree = "<group>"; };
+		A0DB887E20A67D1000CA810C /* YZFindView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZFindView.m; sourceTree = "<group>"; };
+		A0DB888120A67F6A00CA810C /* YZFindLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindLayout.h; sourceTree = "<group>"; };
+		A0DB888220A67F6A00CA810C /* YZFindLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZFindLayout.m; sourceTree = "<group>"; };
+		A0DB888420A68E8400CA810C /* YZFindLayoutAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindLayoutAttributes.h; sourceTree = "<group>"; };
+		A0DB888520A68E8400CA810C /* YZFindLayoutAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZFindLayoutAttributes.m; sourceTree = "<group>"; };
+		A0DB888720A68FDB00CA810C /* YZFindCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindCollectionViewCell.h; sourceTree = "<group>"; };
+		A0DB888820A68FDB00CA810C /* YZFindCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZFindCollectionViewCell.m; sourceTree = "<group>"; };
+		A0DB888C20A6A1A100CA810C /* YZDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZDetailViewController.h; sourceTree = "<group>"; };
+		A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailViewController.m; sourceTree = "<group>"; };
+		A0DB888F20A6A1DE00CA810C /* YZDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZDetailView.h; sourceTree = "<group>"; };
+		A0DB889020A6A1DE00CA810C /* YZDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailView.m; sourceTree = "<group>"; };
 		E078D1022F4E2473FE5D2819 /* libPods-Seek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,6 +281,8 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A0DB888B20A6A19200CA810C /* detail */,
+				A0DB887920A67A5300CA810C /* find */,
 				A00F03D720A32265008E60B9 /* more */,
 				A00F03B220A1D250008E60B9 /* search */,
 				A0A8661C209DB63200674BF6 /* main */,
@@ -270,6 +293,8 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A0DB888A20A6A18500CA810C /* detail */,
+				A0DB887820A67A4C00CA810C /* find */,
 				A00F03D620A3225D008E60B9 /* more */,
 				A00F03B120A1D244008E60B9 /* search */,
 				A0A86618209DB60500674BF6 /* main */,
@@ -304,6 +329,56 @@
 				A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */,
 			);
 			path = navigation;
+			sourceTree = "<group>";
+		};
+		A0DB887820A67A4C00CA810C /* find */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB887A20A67A6800CA810C /* YZFindViewController.h */,
+				A0DB887B20A67A6800CA810C /* YZFindViewController.m */,
+			);
+			path = find;
+			sourceTree = "<group>";
+		};
+		A0DB887920A67A5300CA810C /* find */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB888020A67F4100CA810C /* layout */,
+				A0DB887D20A67D1000CA810C /* YZFindView.h */,
+				A0DB887E20A67D1000CA810C /* YZFindView.m */,
+				A0DB888720A68FDB00CA810C /* YZFindCollectionViewCell.h */,
+				A0DB888820A68FDB00CA810C /* YZFindCollectionViewCell.m */,
+			);
+			path = find;
+			sourceTree = "<group>";
+		};
+		A0DB888020A67F4100CA810C /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB888120A67F6A00CA810C /* YZFindLayout.h */,
+				A0DB888220A67F6A00CA810C /* YZFindLayout.m */,
+				A0DB888420A68E8400CA810C /* YZFindLayoutAttributes.h */,
+				A0DB888520A68E8400CA810C /* YZFindLayoutAttributes.m */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		A0DB888A20A6A18500CA810C /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB888C20A6A1A100CA810C /* YZDetailViewController.h */,
+				A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		A0DB888B20A6A19200CA810C /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB888F20A6A1DE00CA810C /* YZDetailView.h */,
+				A0DB889020A6A1DE00CA810C /* YZDetailView.m */,
+			);
+			path = detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,23 +474,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */,
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
+				A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
+				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
 				A00F03D520A3202A008E60B9 /* YZWord.m in Sources */,
+				A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */,
 				A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */,
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
+				A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */,
+				A0DB888620A68E8400CA810C /* YZFindLayoutAttributes.m in Sources */,
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A00F03D120A32002008E60B9 /* YZSearchHistoryManager.m in Sources */,
+				A0DB888320A67F6A00CA810C /* YZFindLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
