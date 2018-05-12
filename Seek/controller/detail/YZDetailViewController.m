@@ -14,8 +14,6 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
 @interface YZDetailViewController ()
 
 @property(nonatomic, strong)YZDetailView *detailView;
-@property(nonatomic, assign)CGFloat angle;
-@property(nonatomic, assign)CGFloat excursion;
 
 @end
 
@@ -27,16 +25,15 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
 }
 
 - (void)initView {
-    self.angle = 0;
     self.view.backgroundColor = [UIColor clearColor];
     self.detailView = [[YZDetailView alloc]init];
     [self.view addSubview:self.detailView];
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panDetailView:)];
-    [self.detailView addGestureRecognizer:pan];
     [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, SCREEN_HEIGHT - 150));
         make.center.equalTo(self.view);
     }];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panDetailView:)];
+    [self.detailView addGestureRecognizer:pan];
 }
 
 - (void)setDetailViewBackgroundColor:(UIColor *)color {
@@ -53,6 +50,7 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
 //                往右划是喜欢
                 [UIView animateWithDuration:0.2f animations:^{
                     self.detailView.center = CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT / 2 + 50);
+                    self.detailView.imageView.alpha = 1;
                 }completion:^(BOOL finished) {
                     [self dismissViewControllerAnimated:true completion:^{
                         Post_Notify(WordDidLikedNotification, nil, nil);
@@ -62,22 +60,28 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
 //                往左划是不喜欢
                 [UIView animateWithDuration:0.2f animations:^{
                     self.detailView.center = CGPointMake(0, SCREEN_HEIGHT / 2 + 50);
+                    self.detailView.imageView.alpha = 1;
                 }completion:^(BOOL finished) {
                     [self dismissViewControllerAnimated:true completion:nil];
                 }];
             }
         }else {
             [UIView animateWithDuration:0.2f animations:^{
+                self.detailView.imageView.alpha = 0;
                 self.detailView.transform = CGAffineTransformIdentity;
             }];
         }
     }
     if (pan.state == UIGestureRecognizerStateChanged) {
+        if (offsetX > 0) {
+            self.detailView.imageView.image = [UIImage imageNamed:@"喜欢表情"];
+        }else {
+            self.detailView.imageView.image = [UIImage imageNamed:@"不喜欢表情"];
+        }
         CGAffineTransform t1 = CGAffineTransformMakeRotation(M_PI * offsetX * 0.0006);
         CGAffineTransform t2 = CGAffineTransformTranslate(t1, offsetX * 2, 0);
         self.detailView.transform = t2;
-        self.angle += M_PI * offsetX * 0.0006;
-        self.excursion = offsetX * 2;
+        self.detailView.imageView.alpha = fabs(offsetX * 0.01);
     }
 }
 
