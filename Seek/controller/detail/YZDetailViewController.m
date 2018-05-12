@@ -9,6 +9,8 @@
 #import "YZDetailViewController.h"
 #import "YZDetailView.h"
 
+NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
+
 @interface YZDetailViewController ()
 
 @property(nonatomic, strong)YZDetailView *detailView;
@@ -52,7 +54,9 @@
                 [UIView animateWithDuration:0.2f animations:^{
                     self.detailView.center = CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT / 2 + 50);
                 }completion:^(BOOL finished) {
-                    [self dismissViewControllerAnimated:true completion:nil];
+                    [self dismissViewControllerAnimated:true completion:^{
+                        Post_Notify(WordDidLikedNotification, nil, nil);
+                    }];
                 }];
             }else {
 //                往左划是不喜欢

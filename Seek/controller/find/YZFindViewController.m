@@ -47,6 +47,16 @@
     self.findView = [[YZFindView alloc]init];
     self.findView.yz_delegate = self;
     [self.view addSubview:self.findView];
+    
+    Add_Observer(WordDidLikedNotification, self, wordDidLiked, nil);
+}
+
+- (void)dealloc {
+    Remove_Observer(self);
+}
+
+- (void)wordDidLiked {
+    //    TODO:网络请求
 }
 
 - (void)rightBtnDidClicked:(id)sender {
