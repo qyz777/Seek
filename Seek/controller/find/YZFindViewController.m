@@ -15,6 +15,8 @@
 
 @property(nonatomic, strong)YZFindView *findView;
 
+@property(nonatomic, strong)UIView *refreshView;
+
 @end
 
 @implementation YZFindViewController
@@ -48,6 +50,16 @@
     self.findView.yz_delegate = self;
     [self.view addSubview:self.findView];
     
+    self.refreshView = [UIView new];
+    self.refreshView.layer.cornerRadius = 5;
+    self.refreshView.hidden = true;
+    self.refreshView.backgroundColor = RGB(arc4random() % 255, arc4random() % 255, arc4random() % 255);
+    [self.view addSubview:self.refreshView];
+    [self.refreshView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(10);
+        make.center.equalTo(self.view);
+    }];
+    
     Add_Observer(WordDidLikedNotification, self, wordDidLiked, nil);
 }
 
@@ -71,6 +83,19 @@
     [self presentViewController:vc animated:false completion:^{
         [vc setDetailViewBackgroundColor:color];
     }];
+}
+
+- (void)viewWillRefreshWithHeight:(CGFloat)height {
+    [self.view setNeedsUpdateConstraints];
+    self.refreshView.hidden = false;
+    [self.refreshView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(height);
+    }];
+    [self.view layoutIfNeeded];
+}
+
+- (void)viewDidEndRefresh {
+    self.refreshView.hidden = true;
 }
 
 @end

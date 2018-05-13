@@ -9,6 +9,7 @@
 #import "YZFindView.h"
 #import "YZFindLayout.h"
 #import "YZFindCollectionViewCell.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 static NSString *identifier = @"cell";
 
@@ -44,10 +45,40 @@ static NSString *identifier = @"cell";
 
 #pragma make - delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%ld",indexPath.row);
     YZFindCollectionViewCell *cell = (YZFindCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if ([self.yz_delegate respondsToSelector:@selector(cellDidSelectedWithDict:color:)]) {
         [self.yz_delegate cellDidSelectedWithDict:nil color:cell.backgroundColor];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat width = scrollView.frame.size.width;
+    CGFloat offset = scrollView.contentOffset.x;
+    CGFloat distanceFromLeft = scrollView.contentSize.width - offset;
+    if (distanceFromLeft <= width) {
+        [self.yz_delegate viewWillRefreshWithHeight:width - distanceFromLeft];
+    }
+    if (offset <= 0) {
+        [self.yz_delegate viewWillRefreshWithHeight:fabs(offset)];
+    }
+    if (offset > 0 && distanceFromLeft > width) {
+        [self.yz_delegate viewDidEndRefresh];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    CGFloat width = scrollView.frame.size.width;
+    CGFloat offset = scrollView.contentOffset.x;
+    CGFloat distanceFromLeft = scrollView.contentSize.width - offset;
+    if (distanceFromLeft <= width - 75) {
+//        到最左侧刷新
+        [self.yz_delegate viewDidEndRefresh];
+        AudioServicesPlaySystemSound(1519);
+    }
+    if (offset < -75) {
+//        到最右侧刷新
+        [self.yz_delegate viewDidEndRefresh];
+        AudioServicesPlaySystemSound(1519);
     }
 }
 
