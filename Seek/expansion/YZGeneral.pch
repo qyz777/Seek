@@ -27,7 +27,7 @@
 #define NavigationBarHeight 64
 
 //weak一个对象
-#define YZWeakObject(obj) autoreleasepool{} __weak typeof(obj) weak##obj = o;
+#define YZWeakObject(obj) __weak typeof(obj) weak##obj = obj;
 
 //屏幕宽度
 #define SCREEN_WIDTH     [UIScreen mainScreen].bounds.size.width

@@ -11,6 +11,7 @@
 #import "UIViewController+YZNavigationBar.h"
 #import "YZSearchViewController.h"
 #import "YZMoreViewController.h"
+#import "YZLoginViewController.h"
 
 @interface MainViewController ()
 
@@ -36,6 +37,13 @@
     
     self.mainView = [MainView new];
     [self.view addSubview:self.mainView];
+    
+//    判断用户是否登入
+//    User *user = [User sharedUser];
+//    if (user.token == nil) {
+//        YZLoginViewController *vc = [YZLoginViewController new];
+//        [self presentViewController:vc animated:true completion:nil];
+//    }
 }
 
 - (void)clickLeftBtn:(id)sender {

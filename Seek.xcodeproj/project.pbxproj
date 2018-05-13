@@ -25,6 +25,9 @@
 		A0132CF7209DA92B00CBA33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF5209DA92B00CBA33F /* LaunchScreen.storyboard */; };
 		A0132CFA209DA92B00CBA33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CF9209DA92B00CBA33F /* main.m */; };
 		A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A023F74820A47437003A1E9C /* YZMoreTitleView.m */; };
+		A08BD3FF20A819EB0046C0A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD3FE20A819EB0046C0A6 /* User.m */; };
+		A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */; };
+		A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40620A81E110046C0A6 /* YZLoginView.m */; };
 		A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661A209DB61100674BF6 /* MainViewController.m */; };
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
 		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
@@ -72,6 +75,12 @@
 		A0132CF9209DA92B00CBA33F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A023F74720A47437003A1E9C /* YZMoreTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMoreTitleView.h; sourceTree = "<group>"; };
 		A023F74820A47437003A1E9C /* YZMoreTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZMoreTitleView.m; sourceTree = "<group>"; };
+		A08BD3FD20A819EB0046C0A6 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		A08BD3FE20A819EB0046C0A6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A08BD40220A81DEF0046C0A6 /* YZLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLoginViewController.h; sourceTree = "<group>"; };
+		A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLoginViewController.m; sourceTree = "<group>"; };
+		A08BD40520A81E110046C0A6 /* YZLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLoginView.h; sourceTree = "<group>"; };
+		A08BD40620A81E110046C0A6 /* YZLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLoginView.m; sourceTree = "<group>"; };
 		A0A86614209DAFEA00674BF6 /* YZGeneral.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZGeneral.pch; sourceTree = "<group>"; };
 		A0A86619209DB61100674BF6 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A0A8661A209DB61100674BF6 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -258,6 +267,33 @@
 			path = Seek;
 			sourceTree = "<group>";
 		};
+		A08BD3FC20A819D90046C0A6 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				A08BD3FD20A819EB0046C0A6 /* User.h */,
+				A08BD3FE20A819EB0046C0A6 /* User.m */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		A08BD40020A81D930046C0A6 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				A08BD40220A81DEF0046C0A6 /* YZLoginViewController.h */,
+				A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		A08BD40120A81D980046C0A6 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				A08BD40520A81E110046C0A6 /* YZLoginView.h */,
+				A08BD40620A81E110046C0A6 /* YZLoginView.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +308,7 @@
 		A0A86615209DB5EA00674BF6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A08BD3FC20A819D90046C0A6 /* user */,
 				A00F03D220A32009008E60B9 /* word */,
 				A00F03CA20A31FAA008E60B9 /* search */,
 			);
@@ -281,6 +318,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A08BD40120A81D980046C0A6 /* login */,
 				A0DB888B20A6A19200CA810C /* detail */,
 				A0DB887920A67A5300CA810C /* find */,
 				A00F03D720A32265008E60B9 /* more */,
@@ -293,6 +331,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A08BD40020A81D930046C0A6 /* login */,
 				A0DB888A20A6A18500CA810C /* detail */,
 				A0DB887820A67A4C00CA810C /* find */,
 				A00F03D620A3225D008E60B9 /* more */,
@@ -474,9 +513,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A08BD3FF20A819EB0046C0A6 /* User.m in Sources */,
 				A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */,
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
 				A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */,
+				A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
 				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
@@ -484,6 +525,7 @@
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
 				A00F03D520A3202A008E60B9 /* YZWord.m in Sources */,
+				A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */,
 				A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */,
 				A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */,
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
