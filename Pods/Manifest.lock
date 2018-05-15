@@ -15,20 +15,28 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Masonry (1.1.0)
+  - mob_smssdk (3.1.0):
+    - MOBFoundation
+  - MOBFoundation (3.1.5)
 
 DEPENDENCIES:
   - AFNetworking
   - Masonry
+  - mob_smssdk
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Masonry
+    - mob_smssdk
+    - MOBFoundation
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  mob_smssdk: 50a3c764232919f78578d911a60afc142ee7a405
+  MOBFoundation: d961251ce6de54917f678dc711962d1385ae7ee1
 
-PODFILE CHECKSUM: 32f18341d8a870159744b357b649099e859cf344
+PODFILE CHECKSUM: ef20db7bcd140761fb5ec91ee1a4765f5aa84294
 
 COCOAPODS: 1.5.0

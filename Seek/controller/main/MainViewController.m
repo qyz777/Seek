@@ -44,9 +44,9 @@
 //        [self presentViewController:vc animated:true completion:nil];
 //    }else {
 //        [User loginWithPhone:[User sharedUser].phone Password:[User sharedUser].password success:^{
-//            
+//
 //        } failure:^(NSError *error) {
-//            
+//
 //        }];
 //    }
 }
