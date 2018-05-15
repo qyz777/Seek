@@ -39,11 +39,30 @@
     [self.view addSubview:self.mainView];
     
 //    判断用户是否登入
-//    User *user = [User sharedUser];
-//    if (user.token == nil) {
+//    if ([self isUserNeedLogin]) {
 //        YZLoginViewController *vc = [YZLoginViewController new];
 //        [self presentViewController:vc animated:true completion:nil];
+//    }else {
+//        [User loginWithPhone:[User sharedUser].phone Password:[User sharedUser].password success:^{
+//            
+//        } failure:^(NSError *error) {
+//            
+//        }];
 //    }
+}
+
+- (BOOL)isUserNeedLogin {
+    User *user = [User sharedUser];
+    if (!user.token) {
+        return true;
+    }
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval now = [date timeIntervalSince1970];
+    NSTimeInterval timestamp = [User timestamp];
+    if (now - timestamp >= 60 * 60 * 24 * 7) {
+        return true;
+    }
+    return false;
 }
 
 - (void)clickLeftBtn:(id)sender {

@@ -18,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+//    初始化User
+    [User sharedUser].token = [User token];
+    [User sharedUser].timestamp = [User timestamp];
+    
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[[MainViewController alloc]init] ];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
