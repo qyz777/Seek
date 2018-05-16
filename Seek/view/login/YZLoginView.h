@@ -13,6 +13,7 @@
 - (void)loginBtnDidClicked;
 - (void)registerBtnDidClicked;
 - (void)messageBtnDidClicked;
+- (void)messageFail;
 
 @end
 

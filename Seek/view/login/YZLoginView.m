@@ -151,32 +151,39 @@
 }
 
 - (void)messageBtnDidClicked:(id)sender {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
-    uint64_t interval = (uint64_t)(1 * NSEC_PER_SEC);
-    dispatch_source_set_timer(self.timer, start, interval, 0);
-    __block int sec = 0;
-    YZWeakObject(self);
-    dispatch_source_set_event_handler(weakself.timer, ^{
-        sec++;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (sec == 60) {
-                weakself.messageBtn.userInteractionEnabled = true;
-                [weakself.messageBtn setTitle:@"短信验证" forState:UIControlStateNormal];
-                dispatch_source_cancel(weakself.timer);
-            }else {
-                NSString *title = [NSString stringWithFormat:@"%d",sec];
-                title = [title stringByAppendingString:@"s"];
-                weakself.messageBtn.userInteractionEnabled = false;
-                [weakself.messageBtn setTitle:title forState:UIControlStateNormal];
-            }
+    [self.phoneNumber resignFirstResponder];
+    if (self.phoneNumber.text.length != 11) {
+        if ([self.yz_delegate respondsToSelector:@selector(messageFail)]) {
+            [self.yz_delegate messageFail];
+        }
+    }else {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+        dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+        uint64_t interval = (uint64_t)(1 * NSEC_PER_SEC);
+        dispatch_source_set_timer(self.timer, start, interval, 0);
+        __block int sec = 0;
+        YZWeakObject(self);
+        dispatch_source_set_event_handler(weakself.timer, ^{
+            sec++;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (sec == 60) {
+                    weakself.messageBtn.userInteractionEnabled = true;
+                    [weakself.messageBtn setTitle:@"短信验证" forState:UIControlStateNormal];
+                    dispatch_source_cancel(weakself.timer);
+                }else {
+                    NSString *title = [NSString stringWithFormat:@"%d",sec];
+                    title = [title stringByAppendingString:@"s"];
+                    weakself.messageBtn.userInteractionEnabled = false;
+                    [weakself.messageBtn setTitle:title forState:UIControlStateNormal];
+                }
+            });
         });
-    });
-    dispatch_resume(self.timer);
-    
-    if ([self.yz_delegate respondsToSelector:@selector(messageBtnDidClicked)]) {
-        [self.yz_delegate messageBtnDidClicked];
+        dispatch_resume(self.timer);
+        
+        if ([self.yz_delegate respondsToSelector:@selector(messageBtnDidClicked)]) {
+            [self.yz_delegate messageBtnDidClicked];
+        }
     }
 }
 
