@@ -14,6 +14,7 @@
     self = [super init];
     self.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
+    self.isRegister = false;
     [self initSubviews];
     return self;
 }
@@ -152,11 +153,28 @@
 
 - (void)messageBtnDidClicked:(id)sender {
     [self.phoneNumber resignFirstResponder];
+    self.isRegister = true;
     if (self.phoneNumber.text.length != 11) {
         if ([self.yz_delegate respondsToSelector:@selector(messageFail)]) {
             [self.yz_delegate messageFail];
         }
     }else {
+        [self setNeedsUpdateConstraints];
+        self.password.hidden = false;
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 100, 40));
+                make.centerX.equalTo(self);
+                make.top.equalTo(self.message.mas_bottom).offset(10);
+            }];
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_offset(CGSizeMake(180, 180));
+                make.top.equalTo(self.password.mas_bottom).offset(18);
+                make.centerX.equalTo(self);
+            }];
+        }];
+        [self layoutIfNeeded];
+        
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
         dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
@@ -194,13 +212,18 @@
         self.messageBtn.hidden = true;
         self.phoneNumber.hidden = true;
         self.message.hidden = true;
-        [self setNeedsUpdateConstraints];
         self.loginBtn.layer.cornerRadius = 60;
+        [self setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.3f animations:^{
             [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.size.mas_offset(CGSizeMake(120, 120));
                 make.top.equalTo(self.password.mas_bottom).offset(18);
                 make.centerX.equalTo(self);
+            }];
+            [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 40));
+                make.centerX.equalTo(self);
+                make.top.equalTo(self.userName.mas_bottom).offset(18);
             }];
         }completion:^(BOOL finished) {
             self.userName.hidden = false;
@@ -211,7 +234,6 @@
     }else {
         [self.loginBtn setTitle:@"注册" forState:UIControlStateNormal];
         self.stateLabel.text = @"右扫切换到登入";
-        [self setNeedsUpdateConstraints];
         self.userName.hidden = true;
         self.password.hidden = true;
         self.imageView.hidden = true;
@@ -219,12 +241,29 @@
         self.phoneNumber.hidden = false;
         self.message.hidden = false;
         self.loginBtn.layer.cornerRadius = 90;
-        [UIView animateWithDuration:0.3f animations:^{
-            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_offset(CGSizeMake(180, 180));
-                make.center.equalTo(self);
+        [self setNeedsUpdateConstraints];
+        if (self.isRegister) {
+            self.password.hidden = false;
+            [UIView animateWithDuration:0.3f animations:^{
+                [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 100, 40));
+                    make.centerX.equalTo(self);
+                    make.top.equalTo(self.message.mas_bottom).offset(10);
+                }];
+                [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.size.mas_offset(CGSizeMake(180, 180));
+                    make.top.equalTo(self.password.mas_bottom).offset(18);
+                    make.centerX.equalTo(self);
+                }];
             }];
-        }];
+        }else {
+            [UIView animateWithDuration:0.3f animations:^{
+                [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.size.mas_offset(CGSizeMake(180, 180));
+                    make.center.equalTo(self);
+                }];
+            }];
+        }
         [self layoutIfNeeded];
     }
 }

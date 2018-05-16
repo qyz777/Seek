@@ -40,10 +40,10 @@ static NSString *timestampKey = @"user_timestamp";
  @param success 成功block
  @param failure 失败block
  */
-+ (void)userRegisterWithPhone:(NSString*)phone
-                     Password:(NSString*)psd
-                      success:(void(^)(NSDictionary*))success
-                      failure:(void(^)(NSError*))failure;
++ (void)userRegisterWithPhone:(NSString *)phone
+                     Password:(NSString *)psd
+                      success:(void(^)(NSDictionary *data))success
+                      failure:(void(^)(NSError *error))failure;
 
 
 /**
@@ -57,6 +57,6 @@ static NSString *timestampKey = @"user_timestamp";
 + (void)loginWithPhone:(NSString*)phone
               Password:(NSString*)psd
                success:(void(^)(void))success
-               failure:(void(^)(NSError*))failure;
+               failure:(void(^)(NSError *error))failure;
 
 @end

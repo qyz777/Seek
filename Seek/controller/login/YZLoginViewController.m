@@ -42,14 +42,31 @@
 
 #pragma make - yzdelegate
 - (void)loginBtnDidClicked {
-    
+    NSString *phone = self.loginView.phoneNumber.text;
+    NSString *password = self.loginView.password.text;
+    [User loginWithPhone:phone Password:password success:^{
+        [self dismissViewControllerAnimated:true completion:nil];
+    } failure:^(NSError *error) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"用户名或密码错误" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:true completion:nil];
+    }];
 }
 
 - (void)registerBtnDidClicked {
     NSString *code = self.loginView.message.text;
-    [SMSSDK commitVerificationCode:code phoneNumber:self.loginView.phoneNumber.text zone:@"86" result:^(NSError *error) {
+    NSString *phone = self.loginView.phoneNumber.text;
+    NSString *password = self.loginView.password.text;
+    [SMSSDK commitVerificationCode:code phoneNumber:phone zone:@"86" result:^(NSError *error) {
         if (!error) {
-            
+            [User userRegisterWithPhone:phone Password:password success:^(NSDictionary *data) {
+                [self dismissViewControllerAnimated:true completion:nil];
+            } failure:^(NSError *error) {
+                
+            }];
         }else {
             YZLog(@"%@",error);
         }

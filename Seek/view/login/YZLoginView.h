@@ -31,6 +31,8 @@
 
 @property(nonatomic, strong)dispatch_source_t timer;
 
+@property(nonatomic, assign)BOOL isRegister;
+
 @property(nonatomic, weak)id<YZLoginViewDelegate> yz_delegate;
 
 @end

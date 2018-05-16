@@ -36,8 +36,8 @@ YZ_SINGLETON(User, user);
 
 + (void)userRegisterWithPhone:(NSString*)phone
                      Password:(NSString*)psd
-                      success:(void(^)(NSDictionary*))success
-                      failure:(void(^)(NSError*))failure{
+                      success:(void(^)(NSDictionary *data))success
+                      failure:(void(^)(NSError *error))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"https://example.com/user/register";
     NSString *postPsd = [psd stringByAppendingString:[NSString timestape]];
@@ -56,7 +56,7 @@ YZ_SINGLETON(User, user);
 + (void)loginWithPhone:(NSString*)phone
               Password:(NSString*)psd
                success:(void(^)(void))success
-               failure:(void(^)(NSError*))failure{
+               failure:(void(^)(NSError* error))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"https://example.com/user/login";
     NSString *postPsd = [psd stringByAppendingString:[NSString timestape]];
