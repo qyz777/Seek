@@ -126,7 +126,6 @@
     self.messageBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     [self.messageBtn setTitleColor:BACKGROUND_COLOR_STYLE_ONE forState:UIControlStateNormal];
     self.messageBtn.layer.cornerRadius = 12.0f;
-    [self.messageBtn addTarget:self action:@selector(loginBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.messageBtn addTarget:self action:@selector(messageBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.messageBtn];
     [self.messageBtn mas_makeConstraints:^(MASConstraintMaker *make) {

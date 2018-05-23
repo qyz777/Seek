@@ -81,6 +81,7 @@ YZ_SINGLETON(User, user);
             user.timestamp = [t doubleValue];
             [User userStash];
         }
+        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
@@ -111,6 +112,7 @@ YZ_SINGLETON(User, user);
             user.timestamp = [t doubleValue];
             [User userStash];
         }
+        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
@@ -137,6 +139,7 @@ YZ_SINGLETON(User, user);
             user.timestamp = [t doubleValue];
             [User userStash];
         }
+        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];

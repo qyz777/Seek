@@ -63,6 +63,7 @@
     [SMSSDK commitVerificationCode:code phoneNumber:phone zone:@"86" result:^(NSError *error) {
         if (!error) {
             [User userRegisterWithPhone:phone Password:password success:^{
+                [self.loginView.password resignFirstResponder];
                 [self dismissViewControllerAnimated:true completion:nil];
             } failure:^(NSError *error) {
                 NSLog(@"%@",error);
