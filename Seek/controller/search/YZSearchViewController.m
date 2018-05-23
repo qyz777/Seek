@@ -13,6 +13,7 @@
 #import "UIViewController+YZNavigationBar.h"
 #import "YZWord.h"
 #import "YZHistoryWord.h"
+#import "YZWordDetailViewController.h"
 
 NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChangeNotification";
 
@@ -88,12 +89,13 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 
 #pragma make - yz_delegate
 - (void)cellDidSelectWithDict:(NSDictionary *)dict {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [YZHistoryWord removeAllSearchHistory];
-        [YZHistoryWord searchHistoryCacheWithArray:self.searchView.historyDataArray.mutableCopy];
-    });
-    //    TODO:跳转到详情
-    
+    YZWordDetailViewController *vc = [[YZWordDetailViewController alloc]init];
+    [self presentViewController:vc animated:false completion:^{
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [YZHistoryWord removeAllSearchHistory];
+            [YZHistoryWord searchHistoryCacheWithArray:self.searchView.historyDataArray.mutableCopy];
+        });
+    }];
 }
 
 - (void)searchFieldDidChange:(UITextField *)textField {
