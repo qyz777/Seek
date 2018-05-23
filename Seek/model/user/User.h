@@ -17,6 +17,7 @@ static NSString *timestampKey = @"user_timestamp";
 @property(nonatomic, strong)NSString *phone;
 @property(nonatomic, strong)NSString *password;
 @property(nonatomic, assign)NSTimeInterval timestamp;
+@property(nonatomic, assign)NSInteger userId;
 
 + (instancetype)sharedUser;
 
@@ -42,7 +43,7 @@ static NSString *timestampKey = @"user_timestamp";
  */
 + (void)userRegisterWithPhone:(NSString *)phone
                      Password:(NSString *)psd
-                      success:(void(^)(NSDictionary *data))success
+                      success:(void(^)(void))success
                       failure:(void(^)(NSError *error))failure;
 
 

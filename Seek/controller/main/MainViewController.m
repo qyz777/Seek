@@ -39,16 +39,16 @@
     [self.view addSubview:self.mainView];
     
 //    判断用户是否登入
-//    if ([self isUserNeedLogin]) {
-//        YZLoginViewController *vc = [YZLoginViewController new];
-//        [self presentViewController:vc animated:true completion:nil];
-//    }else {
-//        [User loginWithPhone:[User sharedUser].phone Password:[User sharedUser].password success:^{
-//
-//        } failure:^(NSError *error) {
-//
-//        }];
-//    }
+    if ([self isUserNeedLogin]) {
+        YZLoginViewController *vc = [YZLoginViewController new];
+        [self presentViewController:vc animated:true completion:nil];
+    }else {
+        [User loginWithPhone:[User sharedUser].phone Password:[User sharedUser].password success:^{
+            
+        } failure:^(NSError *error) {
+
+        }];
+    }
 }
 
 - (BOOL)isUserNeedLogin {

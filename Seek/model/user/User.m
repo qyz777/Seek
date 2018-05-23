@@ -36,18 +36,30 @@ YZ_SINGLETON(User, user);
 
 + (void)userRegisterWithPhone:(NSString*)phone
                      Password:(NSString*)psd
-                      success:(void(^)(NSDictionary *data))success
+                      success:(void(^)(void))success
                       failure:(void(^)(NSError *error))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = @"https://example.com/user/register";
-    NSString *postPsd = [psd stringByAppendingString:[NSString timestape]];
-    postPsd = [postPsd MD5];
-    NSDictionary *parameters = @{@"phone":phone, @"password_hash": postPsd};
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/User/register";
+    psd = [psd MD5];
+    psd = [psd MD5];
+    NSDictionary *parameters = @{@"phone":phone, @"password": psd};
     [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *json = responseObject;
-        success(json);
+        int code = [json[@"code"] intValue];
+        if (code == 0) {
+            User *user = [User sharedUser];
+            user.phone = phone;
+            user.password = psd;
+            NSDictionary *data = json[@"data"];
+            user.userId = [data[@"id"] integerValue];
+            user.token = data[@"token"];
+            NSNumber *t = data[@"time"];
+            user.timestamp = [t doubleValue];
+            [User stashToken:data[@"token"]];
+            [User stashTimestamp:[t doubleValue]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
@@ -58,25 +70,27 @@ YZ_SINGLETON(User, user);
                success:(void(^)(void))success
                failure:(void(^)(NSError* error))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = @"https://example.com/user/login";
-    NSString *postPsd = [psd stringByAppendingString:[NSString timestape]];
-    postPsd = [postPsd MD5];
-    NSString *sign = [postPsd stringByAppendingString:phone];
-    sign = [sign stringByAppendingString:[NSString timestape]];
-    sign = [sign MD5];
-    NSDictionary *parameters = @{@"phone":phone, @"password_hash": postPsd, @"sign":sign};
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/User/login";
+    psd = [psd MD5];
+    psd = [psd MD5];
+    NSDictionary *parameters = @{@"phone":phone, @"password": psd};
     [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *json = responseObject;
-        User *user = [User sharedUser];
-        user.phone = phone;
-        user.password = postPsd;
-        user.token = json[@"token"];
-        NSNumber *t = json[@"timestamp"];
-        user.timestamp = [t doubleValue];
-        [User stashToken:json[@"token"]];
-        [User stashTimestamp:[t doubleValue]];
+        int code = [json[@"code"] intValue];
+        if (code == 0) {
+            User *user = [User sharedUser];
+            user.phone = phone;
+            user.password = psd;
+            NSDictionary *data = json[@"data"];
+            user.userId = [data[@"id"] integerValue];
+            user.token = data[@"token"];
+            NSNumber *t = data[@"time"];
+            user.timestamp = [t doubleValue];
+            [User stashToken:data[@"token"]];
+            [User stashTimestamp:[t doubleValue]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];

@@ -62,10 +62,10 @@
     NSString *password = self.loginView.password.text;
     [SMSSDK commitVerificationCode:code phoneNumber:phone zone:@"86" result:^(NSError *error) {
         if (!error) {
-            [User userRegisterWithPhone:phone Password:password success:^(NSDictionary *data) {
+            [User userRegisterWithPhone:phone Password:password success:^{
                 [self dismissViewControllerAnimated:true completion:nil];
             } failure:^(NSError *error) {
-                
+                NSLog(@"%@",error);
             }];
         }else {
             YZLog(@"%@",error);
