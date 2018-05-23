@@ -90,6 +90,7 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 #pragma make - yz_delegate
 - (void)cellDidSelectWithDict:(NSDictionary *)dict {
     YZWordDetailViewController *vc = [[YZWordDetailViewController alloc]init];
+    vc.word = dict[@"entry"];
     [self presentViewController:vc animated:false completion:^{
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             [YZHistoryWord removeAllSearchHistory];
