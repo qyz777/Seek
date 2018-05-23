@@ -39,10 +39,10 @@ YZ_SINGLETON(User, user);
                       success:(void(^)(void))success
                       failure:(void(^)(NSError *error))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/User/register";
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/User/register";
     psd = [psd MD5];
     psd = [psd MD5];
-    NSDictionary *parameters = @{@"phone":phone, @"password": psd};
+    NSDictionary *parameters = @{@"username":phone, @"password": psd};
     [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -70,10 +70,10 @@ YZ_SINGLETON(User, user);
                success:(void(^)(void))success
                failure:(void(^)(NSError* error))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/User/login";
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/User/login";
     psd = [psd MD5];
     psd = [psd MD5];
-    NSDictionary *parameters = @{@"phone":phone, @"password": psd};
+    NSDictionary *parameters = @{@"username":phone, @"password": psd};
     [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
