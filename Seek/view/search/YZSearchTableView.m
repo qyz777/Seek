@@ -28,7 +28,7 @@ NSNotificationName const SearchTableViewDidScrollNotification = @"SearchTableVie
     
     self.clearHistoryBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.clearHistoryBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH, 40);
-//    self.clearHistoryBtn.hidden = true;
+    self.clearHistoryBtn.hidden = true;
     [self.clearHistoryBtn setTitle:@"清除所有历史记录" forState:UIControlStateNormal];
     [self.clearHistoryBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.clearHistoryBtn addTarget:self action:@selector(clearBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -36,22 +36,31 @@ NSNotificationName const SearchTableViewDidScrollNotification = @"SearchTableVie
 }
 
 - (void)clearBtnDidClicked:(id)sender {
-    
+    if ([self.yz_delegate respondsToSelector:@selector(clearSearchHistoryBtnDidTouchUpInside)]) {
+        [self.yz_delegate clearSearchHistoryBtnDidTouchUpInside];
+    }
 }
 
 #pragma make - tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    if (_dataArray.count > 0) {
+        return _dataArray.count;
+    }else {
+        if (_historyDataArray.count > 0) {
+            return _historyDataArray.count;
+        }
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YZSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YZSearchTableViewCell" forIndexPath:indexPath];
     if (self.dataArray.count > 0) {
-        cell.cellStyle = YZSearchTableViewCellStyleDefault;
-//        cell.dataDict = _dataArray[indexPath.row];
+        cell.dataDict = _dataArray[indexPath.row];
+        self.clearHistoryBtn.hidden = true;
     }else {
-        cell.cellStyle = YZSearchTableViewCellStyleHistory;
-//        cell.dataDict = _dataArray[indexPath.row];
+        cell.dataDict = _historyDataArray[indexPath.row];
+        self.clearHistoryBtn.hidden = false;
     }
     return cell;
 }
@@ -59,6 +68,28 @@ NSNotificationName const SearchTableViewDidScrollNotification = @"SearchTableVie
 #pragma make - tableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    搜索历史
+    NSDictionary *shortDict = nil;
+    if (_dataArray.count > 0) {
+        shortDict = _dataArray[indexPath.row];
+        BOOL isRepeat = false;
+        for (NSDictionary *d in self.historyDataArray) {
+            if (d[@"entry"] == shortDict[@"entry"]) {
+                isRepeat = true;
+            }
+        }
+        if (!isRepeat) {
+            [self.historyDataArray insertObject:shortDict atIndex:0];
+        }
+        if (self.historyDataArray.count > 10) {
+            [self.historyDataArray removeObject:self.historyDataArray.lastObject];
+        }
+    }else {
+        shortDict = _historyDataArray[indexPath.row];
+    }
+    if ([self.yz_delegate respondsToSelector:@selector(cellDidSelectWithDict:)]) {
+        [self.yz_delegate cellDidSelectWithDict:shortDict];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

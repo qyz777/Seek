@@ -10,4 +10,18 @@
 
 @interface YZWord : NSObject
 
+@property(nonatomic, strong)NSString *word;
+@property(nonatomic, strong)NSString *sentence;
+@property(nonatomic, strong)NSString *ukPhone;
+@property(nonatomic, strong)NSString *usPhone;
+@property(nonatomic, strong)NSURL *ukPhoneUrl;
+@property(nonatomic, strong)NSURL *usPhoneUrl;
+@property(nonatomic, strong)NSArray *translate;
+
+
+// 搜索页搜索单词使用
++ (void)searchWordWithString:(NSString *)str
+                     success:(void(^)(NSArray<NSDictionary *> *dataArray))success
+                     failure:(void(^)(NSError *error))failure;
+
 @end

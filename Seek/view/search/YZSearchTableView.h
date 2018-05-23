@@ -24,7 +24,7 @@ UIKIT_EXTERN NSNotificationName const SearchTableViewDidScrollNotification;
 @property(nonatomic, strong)UIButton *clearHistoryBtn;
 
 @property(nonatomic, copy)NSArray<NSDictionary *> *dataArray;
-@property(nonatomic, copy)NSArray<NSDictionary *> *historyDataArray;
+@property(nonatomic, strong)NSMutableArray<NSDictionary *> *historyDataArray;
 
 @property(weak,nonatomic)id<YZSearchTableViewDelegate> yz_delegate;
 

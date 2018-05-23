@@ -10,16 +10,9 @@
 
 @interface YZSearchTableViewCell : UITableViewCell
 
-typedef NS_ENUM(NSInteger,YZSearchTableViewCellStyle){
-    YZSearchTableViewCellStyleDefault,
-    YZSearchTableViewCellStyleHistory
-};
-
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cnLabel;
 
 @property(nonatomic, copy)NSDictionary *dataDict;
-
-@property(nonatomic, assign)YZSearchTableViewCellStyle cellStyle;
 
 @end

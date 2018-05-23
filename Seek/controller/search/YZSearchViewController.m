@@ -11,10 +11,12 @@
 #import "YZSearchTableView.h"
 #import "SearchAnimation.h"
 #import "UIViewController+YZNavigationBar.h"
+#import "YZWord.h"
+#import "YZHistoryWord.h"
 
 NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChangeNotification";
 
-@interface YZSearchViewController ()<UIViewControllerTransitioningDelegate>
+@interface YZSearchViewController ()<UIViewControllerTransitioningDelegate,UITextFieldDelegate,YZSearchTableViewDelegate>
 
 @property(nonatomic, strong)YZSearchTableView *searchView;
 @property(nonatomic, strong)UITextField *searchField;
@@ -41,6 +43,11 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     backgroundView.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
     [self.view addSubview:backgroundView];
     self.searchView = [[YZSearchTableView alloc]init];
+    self.searchView.yz_delegate = self;
+    self.searchView.historyDataArray = [YZHistoryWord arrayFromSearchHistory];
+    if (!self.searchView.historyDataArray) {
+        self.searchView.historyDataArray = @[].mutableCopy;
+    }
     [backgroundView addSubview:self.searchView];
     [self navigationBar];
     self.yz_navigationBar.navigationBarColor = RGB_ALPHA(0, 0, 0, 0.3);
@@ -52,6 +59,7 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     [rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     self.searchField = [UITextField new];
+    self.searchField.delegate = self;
     self.searchField.backgroundColor = [UIColor whiteColor];
     self.searchField.layer.cornerRadius = 12.0f;
     self.searchField.placeholder = @"请输入需要搜索的单词";
@@ -78,9 +86,23 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     }];
 }
 
-- (void)searchFieldDidChange:(UITextField *)textField {
-//    TODO 发起网络请求
+#pragma make - yz_delegate
+- (void)cellDidSelectWithDict:(NSDictionary *)dict {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZHistoryWord removeAllSearchHistory];
+        [YZHistoryWord searchHistoryCacheWithArray:self.searchView.historyDataArray.mutableCopy];
+    });
+    //    TODO:跳转到详情
     
+}
+
+- (void)searchFieldDidChange:(UITextField *)textField {
+    [YZWord searchWordWithString:textField.text success:^(NSArray<NSDictionary *> *dataArray) {
+        self.searchView.dataArray = dataArray;
+        [self.searchView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)searchTableViewDidScroll {
@@ -94,6 +116,21 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
     return [[SearchAnimation alloc]init];
+}
+
+#pragma make - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.searchField resignFirstResponder];
+    return true;
+}
+
+- (void)clearSearchHistoryBtnDidTouchUpInside {
+    self.searchView.clearHistoryBtn.hidden = true;
+    [self.searchView.historyDataArray removeAllObjects];
+    [self.searchView reloadData];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZHistoryWord removeAllSearchHistory];
+    });
 }
 
 @end

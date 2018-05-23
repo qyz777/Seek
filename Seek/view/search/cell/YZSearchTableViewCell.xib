@@ -20,17 +20,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="50.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es8-QH-hDp">
-                        <rect key="frame" x="16" y="15" width="80" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es8-QH-hDp">
+                        <rect key="frame" x="16" y="15" width="120" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="9Mb-Ea-xsO"/>
+                            <constraint firstAttribute="width" constant="120" id="9Mb-Ea-xsO"/>
                             <constraint firstAttribute="height" constant="21" id="K6l-cA-4ys"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0j-Iq-wae">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0j-Iq-wae">
                         <rect key="frame" x="123" y="15" width="190" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="H6b-dp-UM3"/>

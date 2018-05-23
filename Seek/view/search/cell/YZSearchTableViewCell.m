@@ -17,14 +17,14 @@
 
 - (void)initView {
     self.backgroundColor = [UIColor clearColor];
-    self.wordLabel.text = @"seek";
     self.wordLabel.textColor = [UIColor whiteColor];
-    self.cnLabel.text = @"vt. 寻求;寻找;探索;搜索";
     self.cnLabel.textColor = [UIColor whiteColor];
 }
 
 - (void)setDataDict:(NSDictionary *)dataDict {
     _dataDict = dataDict;
+    self.wordLabel.text = _dataDict[@"entry"];
+    self.cnLabel.text = _dataDict[@"explain"];
 }
 
 @end
