@@ -43,7 +43,10 @@
         YZLoginViewController *vc = [YZLoginViewController new];
         [self presentViewController:vc animated:true completion:nil];
     }else {
-        [User loginWithPhone:[User sharedUser].phone Password:[User sharedUser].password success:^{
+        NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval now = [date timeIntervalSince1970];
+        [User sharedUser].timestamp = now;
+        [User updateLoginWithToken:[User sharedUser].token time:now success:^{
 
         } failure:^(NSError *error) {
 
