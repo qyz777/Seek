@@ -44,7 +44,7 @@
         [self presentViewController:vc animated:true completion:nil];
     }else {
         [User loginWithPhone:[User sharedUser].phone Password:[User sharedUser].password success:^{
-            
+
         } failure:^(NSError *error) {
 
         }];
@@ -58,7 +58,7 @@
     }
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval now = [date timeIntervalSince1970];
-    NSTimeInterval timestamp = [User timestamp];
+    NSTimeInterval timestamp = user.timestamp;
     if (now - timestamp >= 60 * 60 * 24 * 7) {
         return true;
     }

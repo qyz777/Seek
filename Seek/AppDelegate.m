@@ -20,8 +20,7 @@
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
 //    初始化User
-    [User sharedUser].token = [User token];
-    [User sharedUser].timestamp = [User timestamp];
+    [User userStashPop];
     
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[[MainViewController alloc]init] ];
     self.window.rootViewController = nav;

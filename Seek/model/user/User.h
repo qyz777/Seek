@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString *tokenKey = @"user_token";
-static NSString *timestampKey = @"user_timestamp";
-
-@interface User : NSObject
+@interface User : NSObject<NSCoding>
 
 @property(nonatomic, strong)NSString *token;
 @property(nonatomic, strong)NSString *phone;
@@ -21,17 +18,11 @@ static NSString *timestampKey = @"user_timestamp";
 
 + (instancetype)sharedUser;
 
-// 储存到token
-+ (void)stashToken:(NSString *)token;
+// 储存用户信息
++ (void)userStash;
 
-// 获取token
-+ (NSString *)token;
-
-// 储存时间戳
-+ (void)stashTimestamp:(NSTimeInterval)time;
-
-// 获取时间戳
-+ (NSTimeInterval)timestamp;
+// 获得用户信息
++ (void)userStashPop;
 
 /**
  用户注册
@@ -59,5 +50,19 @@ static NSString *timestampKey = @"user_timestamp";
               Password:(NSString*)psd
                success:(void(^)(void))success
                failure:(void(^)(NSError *error))failure;
+
+
+/**
+ 更新用户登入
+
+ @param token token
+ @param time 时间戳
+ @param success 成功block
+ @param failure 失败block
+ */
++ (void)updateLoginWithToken:(NSString *)token
+                        time:(NSTimeInterval)time
+                     success:(void(^)(void))success
+                     failure:(void(^)(NSError *error))failure;
 
 @end
