@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YZWord : NSObject
+@interface YZWord : NSObject<NSCopying>
 
 @property(nonatomic, strong)NSString *word;
 @property(nonatomic, strong)NSString *sentence;
