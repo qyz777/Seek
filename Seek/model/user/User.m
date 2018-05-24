@@ -96,7 +96,7 @@ YZ_SINGLETON(User, user);
     psd = [psd MD5];
     psd = [psd MD5];
     NSDictionary *parameters = @{@"username":phone, @"password": psd};
-    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *json = responseObject;
@@ -111,8 +111,8 @@ YZ_SINGLETON(User, user);
             NSNumber *t = data[@"time"];
             user.timestamp = [t doubleValue];
             [User userStash];
+            success();
         }
-        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
@@ -125,7 +125,7 @@ YZ_SINGLETON(User, user);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/User/updateStatus";
     NSDictionary *parameters = @{@"token":token, @"time": @(time)};
-    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *json = responseObject;
@@ -138,8 +138,8 @@ YZ_SINGLETON(User, user);
             NSNumber *t = data[@"time"];
             user.timestamp = [t doubleValue];
             [User userStash];
+            success();
         }
-        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];

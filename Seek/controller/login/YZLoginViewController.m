@@ -42,7 +42,7 @@
 
 #pragma make - yzdelegate
 - (void)loginBtnDidClicked {
-    NSString *phone = self.loginView.phoneNumber.text;
+    NSString *phone = self.loginView.userName.text;
     NSString *password = self.loginView.password.text;
     [User loginWithPhone:phone Password:password success:^{
         [self dismissViewControllerAnimated:true completion:nil];
