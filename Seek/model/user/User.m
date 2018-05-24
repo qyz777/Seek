@@ -132,11 +132,7 @@ YZ_SINGLETON(User, user);
         int code = [json[@"code"] intValue];
         if (code == 0) {
             User *user = [User sharedUser];
-            NSDictionary *data = json[@"data"];
-            user.userId = [data[@"id"] integerValue];
-            user.token = data[@"token"];
-            NSNumber *t = data[@"time"];
-            user.timestamp = [t doubleValue];
+            user.timestamp = time;
             [User userStash];
             success();
         }
