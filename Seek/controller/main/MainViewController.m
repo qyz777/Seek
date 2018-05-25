@@ -17,6 +17,8 @@
 @interface MainViewController ()<MainViewDelegate>
 
 @property(nonatomic, strong)MainView *mainView;
+@property(nonatomic, copy)NSArray<YZWord *> *fiveWordArray;
+@property(nonatomic, assign)NSInteger wordIndex;
 
 @end
 
@@ -40,6 +42,8 @@
     self.mainView.yz_delegate = self;
     [self.view addSubview:self.mainView];
     
+    self.wordIndex = 0;
+    
 //    判断用户是否登入
     if ([self isUserNeedLogin]) {
         YZLoginViewController *vc = [YZLoginViewController new];
@@ -55,6 +59,7 @@
         }];
     }
     [self requestData];
+    [self requestFiveWordData];
 }
 
 - (BOOL)isUserNeedLogin {
@@ -74,6 +79,14 @@
 - (void)requestData {
     [YZWord indexOneWordSuccess:^(YZWord *wordData) {
         self.mainView.wordData = wordData;
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)requestFiveWordData {
+    [YZWord indexFiveWordSuccess:^(NSArray<YZWord *> *dataArray) {
+        self.fiveWordArray = dataArray;
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -103,6 +116,18 @@
             NSLog(@"%@",error);
         }];
     });
+}
+
+- (void)wordDidSwipeRight {
+    if (self.fiveWordArray.count > 0) {
+        self.mainView.wordData = self.fiveWordArray[_wordIndex];
+        if (self.wordIndex != 4) {
+            self.wordIndex++;
+        }else {
+            [self requestFiveWordData];
+            self.wordIndex = 0;
+        }
+    }
 }
 
 @end

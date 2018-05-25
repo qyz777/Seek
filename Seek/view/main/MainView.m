@@ -76,7 +76,7 @@
     }];
     
     self.bottomView = [UIView new];
-    self.bottomView.backgroundColor = [UIColor colorWithWhite:0.95f alpha:0.7f];
+    self.bottomView.backgroundColor = [UIColor colorWithWhite:0.95f alpha:0.4f];
     [self addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.left.equalTo(self).offset(0);
@@ -137,6 +137,9 @@
     self.swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeScreen:)];
     self.swipe.direction = UISwipeGestureRecognizerDirectionUp;
     [self addGestureRecognizer:self.swipe];
+    
+    UISwipeGestureRecognizer *wordSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeWordLabel:)];
+    [self addGestureRecognizer:wordSwipe];
 }
 
 - (void)likeButtonDidClicked:(id)sender {
@@ -149,6 +152,12 @@
     }
     if ([self.yz_delegate respondsToSelector:@selector(likeButtonDidClickedWithWord:)]) {
         [self.yz_delegate likeButtonDidClickedWithWord:self.wordLabel.text];
+    }
+}
+
+- (void)swipeWordLabel:(UISwipeGestureRecognizer *)swipe {
+    if ([self.yz_delegate respondsToSelector:@selector(wordDidSwipeRight)]) {
+        [self.yz_delegate wordDidSwipeRight];
     }
 }
 

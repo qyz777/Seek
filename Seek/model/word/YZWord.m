@@ -190,6 +190,51 @@
     }];
 }
 
++ (void)indexFiveWordSuccess:(void(^)(NSArray<YZWord *> *dataArray))success
+                     failure:(void(^)(NSError *error))failure {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Word/getWords";
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *json = responseObject;
+        if (json) {
+            int code = [json[@"code"]intValue];
+            if (code == 0) {
+                NSMutableArray *returnArray = @[].mutableCopy;
+                NSArray *datas = json[@"data"];
+                for (NSDictionary *data in datas) {
+                    YZWord *dataWord = [YZWord new];
+                    dataWord.word = data[@"word"];
+                    if ([data[@"sen"] class] != [NSNull class]) {
+                        dataWord.sentence = [self filterHTML:data[@"sen"]];
+                    }
+                    if ([data[@"sen_tran"] class] != [NSNull class]) {
+                        dataWord.senTranslate = data[@"sen_tran"];
+                    }
+                    NSDictionary *speech = data[@"speech"];
+                    NSDictionary *uk = speech[@"uk"];
+                    NSDictionary *us = speech[@"us"];
+                    dataWord.ukPhone = uk[@"phone"];
+                    dataWord.ukPhoneUrl = uk[@"speech"];
+                    dataWord.usPhone = us[@"phone"];
+                    dataWord.usPhoneUrl = us[@"speech"];
+                    dataWord.translate = data[@"trans"];
+                    if ([json[@"like"]intValue] == 0) {
+                        dataWord.isLiked = false;
+                    }else {
+                        dataWord.isLiked = true;
+                    }
+                    [returnArray addObject:dataWord];
+                }
+                success(returnArray.copy);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
+
 #pragma make - 去除HTML标签
 + (NSString *)filterHTML:(NSString *)html {
     NSScanner * scanner = [NSScanner scannerWithString:html];

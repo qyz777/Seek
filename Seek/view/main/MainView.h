@@ -16,6 +16,8 @@
 // clcik like button
 - (void)likeButtonDidClickedWithWord:(NSString *)word;
 
+- (void)wordDidSwipeRight;
+
 @end
 
 

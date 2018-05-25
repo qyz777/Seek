@@ -49,4 +49,8 @@
 + (void)indexOneWordSuccess:(void(^)(YZWord *wordData))success
                     failure:(void(^)(NSError *error))failure;
 
+// 首页五个单词
++ (void)indexFiveWordSuccess:(void(^)(NSArray<YZWord *> *dataArray))success
+                     failure:(void(^)(NSError *error))failure;
+
 @end
