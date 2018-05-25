@@ -40,4 +40,13 @@
 + (void)findWordSuccess:(void(^)(NSArray<NSString *> *data))success
                 failure:(void(^)(NSError *error))failure;
 
+// 拿到一个用户的喜欢单词列别
++ (void)likedWordWithUserId:(NSInteger)userId
+                    Success:(void(^)(NSArray<NSDictionary *> *data))success
+                 failure:(void(^)(NSError *error))failure;
+
+// 首页第一个单词
++ (void)indexOneWordSuccess:(void(^)(YZWord *wordData))success
+                    failure:(void(^)(NSError *error))failure;
+
 @end

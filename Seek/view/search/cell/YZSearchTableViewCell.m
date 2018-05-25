@@ -27,4 +27,10 @@
     self.cnLabel.text = _dataDict[@"explain"];
 }
 
+- (void)setLikeDataDict:(NSDictionary *)likeDataDict {
+    _likeDataDict = likeDataDict;
+    self.wordLabel.text = _dataDict[@"word"];
+    self.cnLabel.text = _dataDict[@"trans"];
+}
+
 @end

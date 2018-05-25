@@ -15,4 +15,6 @@
 
 @property(nonatomic, copy)NSDictionary *dataDict;
 
+@property(nonatomic, copy)NSDictionary *likeDataDict;
+
 @end
