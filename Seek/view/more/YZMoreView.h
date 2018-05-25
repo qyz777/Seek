@@ -12,6 +12,9 @@
 @protocol YZMoreViewDelegate <NSObject>
 
 - (void)findTitleDidTouch;
+- (void)likedTitleDidTouch;
+- (void)pkTitleDidTouch;
+- (void)settingTitleDidTouch;
 
 
 @end

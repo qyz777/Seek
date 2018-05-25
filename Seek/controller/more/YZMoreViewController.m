@@ -46,7 +46,7 @@
 }
 
 - (void)rightButtonDidClicked:(id)sender {
-    [self dismissViewControllerAnimated:true completion:^{
+    [self dismissViewControllerAnimated:false completion:^{
         
     }];
 }
@@ -56,6 +56,18 @@
     YZFindViewController *vc = [[YZFindViewController alloc]init];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:vc animated:true completion:nil];
+}
+
+- (void)likedTitleDidTouch {
+    
+}
+
+- (void)pkTitleDidTouch {
+    
+}
+
+- (void)settingTitleDidTouch {
+    
 }
 
 @end
