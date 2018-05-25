@@ -20,6 +20,9 @@
 @property(nonatomic, strong)UILabel *secondTranLabel;
 @property(nonatomic, strong)UILabel *thirdTranLabel;
 
+@property(nonatomic, strong)UIView *cardView;
+@property(nonatomic, strong)UIImageView *headerImageView;
+
 @property(nonatomic, copy)YZWord *wordData;
 
 @end

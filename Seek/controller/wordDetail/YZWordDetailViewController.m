@@ -10,6 +10,7 @@
 #import "UIViewController+YZNavigationBar.h"
 #import "YZWord.h"
 #import "YZWordDetailView.h"
+#import "YZDetailImage.h"
 
 @interface YZWordDetailViewController ()
 
@@ -59,11 +60,37 @@
 }
 
 - (void)requestData {
-    [YZWord searchDetailsWithWord:_word success:^(YZWord *yzWord) {
-        self.detailView.wordData = yzWord;
-    } failure:^(NSError *error) {
-        
-    }];
+    __block YZWord *shortWord = [YZWord new];
+    __block UIImage *shortImage = [UIImage new];
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZWord searchDetailsWithWord:self.word success:^(YZWord *yzWord) {
+            shortWord = yzWord;
+            dispatch_group_leave(group);
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+            dispatch_group_leave(group);
+        }];
+    });
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZDetailImage wordDetailImageSuccess:^(NSURL *imageUrl) {
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                shortImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl] scale:0.05f];
+                dispatch_group_leave(group);
+            });
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+            dispatch_group_leave(group);
+        }];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        self.detailView.wordData = shortWord;
+        self.detailView.headerImageView.image = shortImage;
+    });
 }
 
 #pragma make - setter

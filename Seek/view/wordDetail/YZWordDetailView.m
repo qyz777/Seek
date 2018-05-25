@@ -18,70 +18,100 @@
 }
 
 - (void)initSubviews {
+    self.headerImageView = [UIImageView new];
+    self.headerImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.headerImageView.layer.shadowOffset = CGSizeMake(1, 1);
+    self.headerImageView.layer.shadowOpacity = 0.7;
+    [self addSubview:self.headerImageView];
+    [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 240));
+        make.centerX.equalTo(self);
+        make.top.equalTo(self);
+    }];
+    
+    self.cardView = [UIView new];
+    self.cardView.backgroundColor = RGB(248, 248, 255);
+    self.cardView.layer.cornerRadius = 8;
+    self.cardView.layer.shadowOffset = CGSizeMake(1, 1);
+    self.cardView.layer.shadowOpacity = 0.7;
+    self.cardView.layer.shadowColor = [UIColor blackColor].CGColor;
+    [self addSubview:self.cardView];
+    [self.cardView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 280));
+        make.top.equalTo(self.headerImageView.mas_bottom).offset(-60);
+        make.centerX.equalTo(self);
+    }];
+    
     self.wordLabel = [UILabel new];
-    self.wordLabel.font = [UIFont boldSystemFontOfSize:35.0f];
-    [self addSubview:self.wordLabel];
+    self.wordLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.wordLabel.textAlignment = NSTextAlignmentCenter;
+    [self.cardView addSubview:self.wordLabel];
     [self.wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, 40));
-        make.top.equalTo(self).offset(20);
-        make.left.equalTo(self).offset(15);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 70, 25));
+        make.top.equalTo(self.cardView).offset(5);
+        make.centerX.equalTo(self.cardView);
     }];
     
     self.ukPhoneLabel = [UILabel new];
-    [self addSubview:self.ukPhoneLabel];
+    [self.cardView addSubview:self.ukPhoneLabel];
     [self.ukPhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(60, 21));
-        make.left.equalTo(self).offset(15);
-        make.top.equalTo(self.wordLabel.mas_bottom).offset(25);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2 - 30, 21));
+        make.left.equalTo(self.cardView).offset(10);
+        make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
     }];
-    
+
     self.usPhoneLabel = [UILabel new];
-    [self addSubview:self.usPhoneLabel];
+    self.usPhoneLabel.textAlignment = NSTextAlignmentRight;
+    [self.cardView addSubview:self.usPhoneLabel];
     [self.usPhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(60, 21));
-        make.right.equalTo(self).offset(-15);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2 - 30, 21));
+        make.right.equalTo(self.cardView).offset(-10);
         make.centerY.equalTo(self.ukPhoneLabel);
     }];
-    
+
     self.senLabel = [UILabel new];
     self.senLabel.numberOfLines = 0;
-    [self addSubview:self.senLabel];
+    [self.cardView addSubview:self.senLabel];
     [self.senLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCREEN_WIDTH - 30);
-        make.right.equalTo(self).offset(-15);
-        make.top.equalTo(self.usPhoneLabel.mas_bottom).offset(25);
+        make.width.mas_equalTo(SCREEN_WIDTH - 80);
+        make.centerX.equalTo(self.cardView);
+        make.top.equalTo(self.usPhoneLabel.mas_bottom).offset(20);
     }];
-    
+
     self.senTranLabel = [UILabel new];
-    [self addSubview:self.senTranLabel];
+    self.senTranLabel.numberOfLines = 0;
+    [self.cardView addSubview:self.senTranLabel];
     [self.senTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 30, 21));
-        make.right.equalTo(self).offset(-15);
-        make.top.equalTo(self.senLabel.mas_bottom).offset(25);
+        make.width.mas_equalTo(SCREEN_WIDTH - 80);
+        make.centerX.equalTo(self.cardView);
+        make.top.equalTo(self.senLabel.mas_bottom).offset(20);
     }];
-    
+
     self.firstTranLabel = [UILabel new];
-    [self addSubview:self.firstTranLabel];
+    self.firstTranLabel.numberOfLines = 0;
+    [self.cardView addSubview:self.firstTranLabel];
     [self.firstTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 30, 21));
-        make.left.equalTo(self).offset(15);
-        make.top.equalTo(self.senTranLabel.mas_bottom).offset(25);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 21));
+        make.left.equalTo(self.cardView).offset(10);
+        make.top.equalTo(self.senTranLabel.mas_bottom).offset(20);
     }];
-    
+
     self.secondTranLabel = [UILabel new];
-    [self addSubview:self.secondTranLabel];
+    self.secondTranLabel.numberOfLines = 0;
+    [self.cardView addSubview:self.secondTranLabel];
     [self.secondTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 30, 21));
-        make.left.equalTo(self).offset(15);
-        make.top.equalTo(self.firstTranLabel.mas_bottom).offset(25);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 21));
+        make.left.equalTo(self.cardView).offset(10);
+        make.top.equalTo(self.firstTranLabel.mas_bottom).offset(20);
     }];
-    
+
     self.thirdTranLabel = [UILabel new];
-    [self addSubview:self.thirdTranLabel];
+    self.thirdTranLabel.numberOfLines = 0;
+    [self.cardView addSubview:self.thirdTranLabel];
     [self.thirdTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 30, 21));
-        make.left.equalTo(self).offset(15);
-        make.top.equalTo(self.secondTranLabel.mas_bottom).offset(25);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 21));
+        make.left.equalTo(self.cardView).offset(10);
+        make.top.equalTo(self.secondTranLabel.mas_bottom).offset(20);
     }];
 }
 
