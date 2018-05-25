@@ -33,7 +33,7 @@ static NSString *identifier = @"cell";
 
 #pragma make - dataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _dataArray.count;
+    return 20;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,7 +62,7 @@ static NSString *identifier = @"cell";
         [self.yz_delegate viewWillRefreshWithHeight:fabs(offset)];
     }
     if (offset > 0 && distanceFromLeft > width) {
-        [self.yz_delegate viewDidEndRefresh];
+        
     }
 }
 

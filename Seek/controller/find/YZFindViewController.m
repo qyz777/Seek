@@ -61,7 +61,7 @@
         make.center.equalTo(self.view);
     }];
     
-    Add_Observer(WordDidLikedNotification, self, wordDidLiked, nil);
+    Add_Observer(WordDidLikedNotification, self, wordDidLiked:, nil);
     
     [self requestData];
 }
@@ -70,8 +70,14 @@
     Remove_Observer(self);
 }
 
-- (void)wordDidLiked {
-    //    TODO:liked
+- (void)wordDidLiked:(NSNotification *)notification {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZWord likeWithWord:notification.userInfo[@"word"] success:^(BOOL isLike) {
+            
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    });
 }
 
 - (void)rightBtnDidClicked:(id)sender {

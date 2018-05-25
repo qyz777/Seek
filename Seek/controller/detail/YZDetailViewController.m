@@ -8,6 +8,7 @@
 
 #import "YZDetailViewController.h"
 #import "YZDetailView.h"
+#import "YZWord.h"
 
 NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
 
@@ -41,6 +42,14 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
     self.detailView.layer.cornerRadius = 12.0f;
 }
 
+- (void)requestData {
+    [YZWord searchDetailsWithWord:_word success:^(YZWord *yzWord) {
+        self.detailView.word = yzWord;
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 - (void)panDetailView:(UIPanGestureRecognizer *)pan {
     CGFloat offsetX = [pan translationInView:self.detailView].x;
     if (pan.state == UIGestureRecognizerStateEnded) {
@@ -52,8 +61,10 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
                     self.detailView.center = CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT / 2 + 50);
                     self.detailView.imageView.alpha = 1;
                 }completion:^(BOOL finished) {
+                    YZWeakObject(self);
                     [self dismissViewControllerAnimated:true completion:^{
-                        Post_Notify(WordDidLikedNotification, nil, nil);
+                        NSDictionary *d = @{@"word": weakself.word};
+                        Post_Notify(WordDidLikedNotification, nil, d);
                     }];
                 }];
             }else {
@@ -92,5 +103,10 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
     }
 }
 
+#pragma make - setter
+- (void)setWord:(NSString *)word {
+    _word = word;
+    [self requestData];
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YZWord.h"
 
 @interface YZDetailView : UIView
 
@@ -22,6 +23,6 @@
 @property(nonatomic, strong)UIImageView *imageView;
 
 
-@property(nonatomic, copy)NSDictionary *dataDict;
+@property(nonatomic, copy)YZWord *word;
 
 @end

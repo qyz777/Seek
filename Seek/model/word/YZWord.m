@@ -62,8 +62,12 @@
                 YZWord *dataWord = [YZWord new];
                 NSDictionary *data = json[@"data"];
                 dataWord.word = data[@"word"];
-                dataWord.sentence = [self filterHTML:data[@"sen"]];
-                dataWord.senTranslate = data[@"sen_tran"];
+                if ([data[@"sen"] class] != [NSNull class]) {
+                    dataWord.sentence = [self filterHTML:data[@"sen"]];
+                }
+                if (data[@"sen_tran"] != [NSNull class]) {
+                    dataWord.senTranslate = data[@"sen_tran"];
+                }
                 NSDictionary *speech = data[@"speech"];
                 NSDictionary *uk = speech[@"uk"];
                 NSDictionary *us = speech[@"us"];

@@ -21,7 +21,6 @@
     self.wordLabel.textColor = [UIColor whiteColor];
     self.wordLabel.textAlignment = NSTextAlignmentCenter;
     self.wordLabel.font = [UIFont boldSystemFontOfSize:40.0f];
-    self.wordLabel.text = @"seek";
     [self addSubview:self.wordLabel];
     [self.wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
@@ -31,7 +30,6 @@
     }];
     
     self.leftSymLabel = [UILabel new];
-    self.leftSymLabel.text = @"美:/sik/";
     self.leftSymLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.leftSymLabel];
     [self.leftSymLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -41,7 +39,6 @@
     }];
     
     self.rightSymLabel = [UILabel new];
-    self.rightSymLabel.text = @"英:/si;k/";
     self.rightSymLabel.textAlignment = NSTextAlignmentRight;
     self.rightSymLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.rightSymLabel];
@@ -63,7 +60,6 @@
     }];
     
     self.firstTranslateLabel = [UILabel new];
-    self.firstTranslateLabel.text = @"vt. 寻求;寻找;探索;搜索";
     self.firstTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.firstTranslateLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.firstTranslateLabel];
@@ -74,7 +70,6 @@
     }];
     
     self.secondTranslateLabel = [UILabel new];
-    self.secondTranslateLabel.text = @"vi.寻找;探索;搜索";
     self.secondTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.secondTranslateLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.secondTranslateLabel];
@@ -97,7 +92,6 @@
     }];
     
     self.enLabel = [UILabel new];
-    self.enLabel.text = @"He is forth and seek his  fortune";
     self.enLabel.numberOfLines = 0;
     self.enLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.enLabel.textColor = [UIColor whiteColor];
@@ -117,6 +111,25 @@
         make.centerX.equalTo(self);
         make.bottom.equalTo(self).offset(-20);
     }];
+}
+
+- (void)setWord:(YZWord *)word {
+    _word = word;
+    self.wordLabel.text = word.word;
+    NSString *ukStr = [@"" stringByAppendingFormat:@"英:/%@/",word.ukPhone];
+    self.leftSymLabel.text = ukStr;
+    NSString *usStr = [@"" stringByAppendingFormat:@"美:/%@/",word.usPhone];
+    self.rightSymLabel.text = usStr;
+    self.enLabel.text = word.sentence;
+    int i = 0;
+    for (NSString *str in word.translate) {
+        if (i == 0) {
+            self.firstTranslateLabel.text = str;
+        }else {
+            self.secondTranslateLabel.text = str;
+        }
+        i++;
+    }
 }
 
 @end

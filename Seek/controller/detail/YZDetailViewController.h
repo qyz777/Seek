@@ -12,7 +12,7 @@ UIKIT_EXTERN NSNotificationName const WordDidLikedNotification;
 
 @interface YZDetailViewController : UIViewController
 
-@property(nonatomic, copy)NSDictionary *dataDict;
+@property(nonatomic, copy)NSString *word;
 
 - (void)setDetailViewBackgroundColor:(UIColor *)color;
 
