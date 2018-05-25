@@ -139,6 +139,10 @@
 }
 
 - (void)loginBtnDidClicked:(id)sender {
+    [self.userName resignFirstResponder];
+    [self.password resignFirstResponder];
+    [self.message resignFirstResponder];
+    [self.phoneNumber resignFirstResponder];
     if ([self.loginBtn.titleLabel.text isEqualToString:@"登入"]) {
         if ([self.yz_delegate respondsToSelector:@selector(loginBtnDidClicked)]) {
             [self.yz_delegate loginBtnDidClicked];
@@ -206,6 +210,7 @@
 
 - (void)swipeButton:(UISwipeGestureRecognizer *)swipe {
     if (self.userName.isHidden) {
+        swipe.direction = UISwipeGestureRecognizerDirectionRight;
         [self.loginBtn setTitle:@"登入" forState:UIControlStateNormal];
         self.stateLabel.text = @"右扫切换到注册";
         self.messageBtn.hidden = true;
@@ -231,8 +236,9 @@
         }];
         [self layoutIfNeeded];
     }else {
+        swipe.direction = UISwipeGestureRecognizerDirectionLeft;
         [self.loginBtn setTitle:@"注册" forState:UIControlStateNormal];
-        self.stateLabel.text = @"右扫切换到登入";
+        self.stateLabel.text = @"左扫切换到登入";
         self.userName.hidden = true;
         self.password.hidden = true;
         self.imageView.hidden = true;
