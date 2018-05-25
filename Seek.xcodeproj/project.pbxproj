@@ -32,6 +32,9 @@
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
 		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
 		A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */; };
+		A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DA121320B7CD1F00469D33 /* YZLikedViewController.m */; };
+		A0DA121720B7CD5100469D33 /* YZLikedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DA121620B7CD5100469D33 /* YZLikedView.m */; };
+		A0DA121B20B8468300469D33 /* YZDetailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DA121A20B8468300469D33 /* YZDetailImage.m */; };
 		A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB887B20A67A6800CA810C /* YZFindViewController.m */; };
 		A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB887E20A67D1000CA810C /* YZFindView.m */; };
 		A0DB888320A67F6A00CA810C /* YZFindLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888220A67F6A00CA810C /* YZFindLayout.m */; };
@@ -39,6 +42,9 @@
 		A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888820A68FDB00CA810C /* YZFindCollectionViewCell.m */; };
 		A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */; };
 		A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB889020A6A1DE00CA810C /* YZDetailView.m */; };
+		A0F8908020B546B20070B0C7 /* YZHistoryWord.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8907F20B546B20070B0C7 /* YZHistoryWord.m */; };
+		A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8908420B552370070B0C7 /* YZWordDetailViewController.m */; };
+		A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8908720B552A80070B0C7 /* YZWordDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +96,12 @@
 		A0A86644209EE70600674BF6 /* YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZNavigationBar.m; sourceTree = "<group>"; };
 		A0A86649209EED7D00674BF6 /* UIViewController+YZNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YZNavigationBar.h"; sourceTree = "<group>"; };
 		A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YZNavigationBar.m"; sourceTree = "<group>"; };
+		A0DA121220B7CD1F00469D33 /* YZLikedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLikedViewController.h; sourceTree = "<group>"; };
+		A0DA121320B7CD1F00469D33 /* YZLikedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLikedViewController.m; sourceTree = "<group>"; };
+		A0DA121520B7CD5100469D33 /* YZLikedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLikedView.h; sourceTree = "<group>"; };
+		A0DA121620B7CD5100469D33 /* YZLikedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLikedView.m; sourceTree = "<group>"; };
+		A0DA121920B8468300469D33 /* YZDetailImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZDetailImage.h; sourceTree = "<group>"; };
+		A0DA121A20B8468300469D33 /* YZDetailImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailImage.m; sourceTree = "<group>"; };
 		A0DB887A20A67A6800CA810C /* YZFindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindViewController.h; sourceTree = "<group>"; };
 		A0DB887B20A67A6800CA810C /* YZFindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZFindViewController.m; sourceTree = "<group>"; };
 		A0DB887D20A67D1000CA810C /* YZFindView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZFindView.h; sourceTree = "<group>"; };
@@ -104,6 +116,12 @@
 		A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailViewController.m; sourceTree = "<group>"; };
 		A0DB888F20A6A1DE00CA810C /* YZDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZDetailView.h; sourceTree = "<group>"; };
 		A0DB889020A6A1DE00CA810C /* YZDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailView.m; sourceTree = "<group>"; };
+		A0F8907E20B546B20070B0C7 /* YZHistoryWord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZHistoryWord.h; sourceTree = "<group>"; };
+		A0F8907F20B546B20070B0C7 /* YZHistoryWord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZHistoryWord.m; sourceTree = "<group>"; };
+		A0F8908320B552370070B0C7 /* YZWordDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZWordDetailViewController.h; sourceTree = "<group>"; };
+		A0F8908420B552370070B0C7 /* YZWordDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZWordDetailViewController.m; sourceTree = "<group>"; };
+		A0F8908620B552A80070B0C7 /* YZWordDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZWordDetailView.h; sourceTree = "<group>"; };
+		A0F8908720B552A80070B0C7 /* YZWordDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZWordDetailView.m; sourceTree = "<group>"; };
 		E078D1022F4E2473FE5D2819 /* libPods-Seek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,6 +204,7 @@
 		A00F03CA20A31FAA008E60B9 /* search */ = {
 			isa = PBXGroup;
 			children = (
+				A0DA121820B8465A00469D33 /* wordImage */,
 				A00F03CB20A31FB5008E60B9 /* history */,
 			);
 			path = search;
@@ -308,6 +327,7 @@
 		A0A86615209DB5EA00674BF6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A0F8907D20B546990070B0C7 /* history */,
 				A08BD3FC20A819D90046C0A6 /* user */,
 				A00F03D220A32009008E60B9 /* word */,
 				A00F03CA20A31FAA008E60B9 /* search */,
@@ -318,6 +338,8 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A0DA121120B7CD0000469D33 /* liked */,
+				A0F8908220B5521C0070B0C7 /* wordDetail */,
 				A08BD40120A81D980046C0A6 /* login */,
 				A0DB888B20A6A19200CA810C /* detail */,
 				A0DB887920A67A5300CA810C /* find */,
@@ -331,6 +353,8 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A0DA121020B7CCF500469D33 /* liked */,
+				A0F8908120B552100070B0C7 /* wordDetail */,
 				A08BD40020A81D930046C0A6 /* login */,
 				A0DB888A20A6A18500CA810C /* detail */,
 				A0DB887820A67A4C00CA810C /* find */,
@@ -368,6 +392,33 @@
 				A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */,
 			);
 			path = navigation;
+			sourceTree = "<group>";
+		};
+		A0DA121020B7CCF500469D33 /* liked */ = {
+			isa = PBXGroup;
+			children = (
+				A0DA121220B7CD1F00469D33 /* YZLikedViewController.h */,
+				A0DA121320B7CD1F00469D33 /* YZLikedViewController.m */,
+			);
+			path = liked;
+			sourceTree = "<group>";
+		};
+		A0DA121120B7CD0000469D33 /* liked */ = {
+			isa = PBXGroup;
+			children = (
+				A0DA121520B7CD5100469D33 /* YZLikedView.h */,
+				A0DA121620B7CD5100469D33 /* YZLikedView.m */,
+			);
+			path = liked;
+			sourceTree = "<group>";
+		};
+		A0DA121820B8465A00469D33 /* wordImage */ = {
+			isa = PBXGroup;
+			children = (
+				A0DA121920B8468300469D33 /* YZDetailImage.h */,
+				A0DA121A20B8468300469D33 /* YZDetailImage.m */,
+			);
+			path = wordImage;
 			sourceTree = "<group>";
 		};
 		A0DB887820A67A4C00CA810C /* find */ = {
@@ -418,6 +469,33 @@
 				A0DB889020A6A1DE00CA810C /* YZDetailView.m */,
 			);
 			path = detail;
+			sourceTree = "<group>";
+		};
+		A0F8907D20B546990070B0C7 /* history */ = {
+			isa = PBXGroup;
+			children = (
+				A0F8907E20B546B20070B0C7 /* YZHistoryWord.h */,
+				A0F8907F20B546B20070B0C7 /* YZHistoryWord.m */,
+			);
+			path = history;
+			sourceTree = "<group>";
+		};
+		A0F8908120B552100070B0C7 /* wordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A0F8908320B552370070B0C7 /* YZWordDetailViewController.h */,
+				A0F8908420B552370070B0C7 /* YZWordDetailViewController.m */,
+			);
+			path = wordDetail;
+			sourceTree = "<group>";
+		};
+		A0F8908220B5521C0070B0C7 /* wordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A0F8908620B552A80070B0C7 /* YZWordDetailView.h */,
+				A0F8908720B552A80070B0C7 /* YZWordDetailView.m */,
+			);
+			path = wordDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,9 +594,11 @@
 				A08BD3FF20A819EB0046C0A6 /* User.m in Sources */,
 				A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */,
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
+				A0DA121B20B8468300469D33 /* YZDetailImage.m in Sources */,
 				A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */,
 				A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
+				A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
 				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
@@ -538,8 +618,12 @@
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
+				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
+				A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */,
 				A00F03D120A32002008E60B9 /* YZSearchHistoryManager.m in Sources */,
 				A0DB888320A67F6A00CA810C /* YZFindLayout.m in Sources */,
+				A0F8908020B546B20070B0C7 /* YZHistoryWord.m in Sources */,
+				A0DA121720B7CD5100469D33 /* YZLikedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
