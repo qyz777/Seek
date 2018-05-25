@@ -10,6 +10,7 @@
 #import "UIViewController+YZNavigationBar.h"
 #import "YZMoreView.h"
 #import "YZFindViewController.h"
+#import "YZLikedViewController.h"
 
 @interface YZMoreViewController ()<YZMoreViewDelegate>
 
@@ -59,7 +60,8 @@
 }
 
 - (void)likedTitleDidTouch {
-    
+    YZLikedViewController *vc = [[YZLikedViewController alloc]init];
+    [self presentViewController:vc animated:true completion:nil];
 }
 
 - (void)pkTitleDidTouch {

@@ -36,4 +36,8 @@
              success:(void(^)(BOOL isLike))success
              failure:(void(^)(NSError *error))failure;
 
+// 随机获得20个单词
++ (void)findWordSuccess:(void(^)(NSArray<NSString *> *data))success
+                failure:(void(^)(NSError *error))failure;
+
 @end

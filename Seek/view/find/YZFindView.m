@@ -33,7 +33,7 @@ static NSString *identifier = @"cell";
 
 #pragma make - dataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return _dataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,8 +46,8 @@ static NSString *identifier = @"cell";
 #pragma make - delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     YZFindCollectionViewCell *cell = (YZFindCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if ([self.yz_delegate respondsToSelector:@selector(cellDidSelectedWithDict:color:)]) {
-        [self.yz_delegate cellDidSelectedWithDict:nil color:cell.backgroundColor];
+    if ([self.yz_delegate respondsToSelector:@selector(cellDidSelectedWithWord:color:)]) {
+        [self.yz_delegate cellDidSelectedWithWord:_dataArray[indexPath.row] color:cell.backgroundColor];
     }
 }
 

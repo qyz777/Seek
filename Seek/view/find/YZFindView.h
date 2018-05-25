@@ -10,7 +10,7 @@
 
 @protocol YZFindViewDelegate <NSObject>
 
-- (void)cellDidSelectedWithDict:(NSDictionary *)dict color:(UIColor *)vcolor;
+- (void)cellDidSelectedWithWord:(NSString *)word color:(UIColor *)vcolor;
 
 @required
 - (void)viewWillRefreshWithHeight:(CGFloat)height;
@@ -24,6 +24,8 @@ UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, weak)id<YZFindViewDelegate> yz_delegate;
+
+@property(nonatomic, copy)NSArray *dataArray;
 
 
 @end

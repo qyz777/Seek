@@ -10,6 +10,7 @@
 #import "YZFindView.h"
 #import "UIViewController+YZNavigationBar.h"
 #import "YZDetailViewController.h"
+#import "YZWord.h"
 
 @interface YZFindViewController ()<YZFindViewDelegate>
 
@@ -61,6 +62,8 @@
     }];
     
     Add_Observer(WordDidLikedNotification, self, wordDidLiked, nil);
+    
+    [self requestData];
 }
 
 - (void)dealloc {
@@ -68,16 +71,26 @@
 }
 
 - (void)wordDidLiked {
-    //    TODO:网络请求
+    //    TODO:liked
 }
 
 - (void)rightBtnDidClicked:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)requestData {
+    [YZWord findWordSuccess:^(NSArray<NSString *> *data) {
+        self.findView.dataArray = data;
+        [self.findView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 #pragma make - YZfindViewDelegate
-- (void)cellDidSelectedWithDict:(NSDictionary *)dict color:(UIColor *)color {
+- (void)cellDidSelectedWithWord:(NSString *)word color:(UIColor *)color {
     YZDetailViewController *vc = [YZDetailViewController new];
+    vc.word = word;
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:vc animated:false completion:^{
@@ -96,6 +109,8 @@
 
 - (void)viewDidEndRefresh {
     self.refreshView.hidden = true;
+//    刷新
+    [self requestData];
 }
 
 @end
