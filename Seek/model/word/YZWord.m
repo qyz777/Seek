@@ -65,7 +65,7 @@
                 if ([data[@"sen"] class] != [NSNull class]) {
                     dataWord.sentence = [self filterHTML:data[@"sen"]];
                 }
-                if (data[@"sen_tran"] != [NSNull class]) {
+                if ([data[@"sen_tran"] class] != [NSNull class]) {
                     dataWord.senTranslate = data[@"sen_tran"];
                 }
                 NSDictionary *speech = data[@"speech"];
