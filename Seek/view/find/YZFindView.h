@@ -15,6 +15,7 @@
 @required
 - (void)viewWillRefreshWithHeight:(CGFloat)height;
 - (void)viewDidEndRefresh;
+- (void)viewNotShowRefresh;
 
 @end
 

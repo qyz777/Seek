@@ -61,6 +61,16 @@
         make.center.equalTo(self.view);
     }];
     
+    UILabel *remindLabel = [UILabel new];
+    remindLabel.text = @"请左右滑动";
+    remindLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:remindLabel];
+    [remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 21));
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-100);
+    }];
+    
     Add_Observer(WordDidLikedNotification, self, wordDidLiked:, nil);
     
     [self requestData];
@@ -117,6 +127,10 @@
     self.refreshView.hidden = true;
 //    刷新
     [self requestData];
+}
+
+- (void)viewNotShowRefresh {
+    self.refreshView.hidden = true;
 }
 
 @end

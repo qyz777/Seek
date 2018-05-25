@@ -62,7 +62,7 @@ static NSString *identifier = @"cell";
         [self.yz_delegate viewWillRefreshWithHeight:fabs(offset)];
     }
     if (offset > 0 && distanceFromLeft > width) {
-        
+        [self.yz_delegate viewNotShowRefresh];
     }
 }
 
