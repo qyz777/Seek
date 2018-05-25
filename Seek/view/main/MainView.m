@@ -13,6 +13,7 @@
 
 @property(nonatomic, assign)BOOL isShow;
 @property(nonatomic)CGSize wordLabelSize;
+@property(nonatomic, strong)UISwipeGestureRecognizer *swipe;
 
 @end
 
@@ -29,7 +30,6 @@
 
 - (void)initSubViews {
     self.wordLabel = [UILabel new];
-    self.wordLabel.text = @"Seek";
     self.wordLabelSize =[self.wordLabel.text sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:55.0f]}];
     self.wordLabel.textColor = [UIColor whiteColor];
     self.wordLabel.font = [UIFont boldSystemFontOfSize:55.0f];
@@ -43,26 +43,24 @@
     
     self.enSentenceLabel = [UILabel new];
     self.enSentenceLabel.numberOfLines = 0;
-    self.enSentenceLabel.text = @"He is forth and seek his  fortune";
     self.enSentenceLabel.textColor = [UIColor whiteColor];
     self.enSentenceLabel.font = [UIFont boldSystemFontOfSize:20.0f];
     self.enSentenceLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.enSentenceLabel];
     [self.enSentenceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(160);
+        make.width.mas_equalTo(SCREEN_WIDTH - 40);
         make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
         make.centerX.equalTo(self);
     }];
     
     self.cnSentenceLabel = [UILabel new];
     self.cnSentenceLabel.numberOfLines = 0;
-    self.cnSentenceLabel.text = @"他动身去寻找他的未来";
     self.cnSentenceLabel.textColor = [UIColor whiteColor];
     self.cnSentenceLabel.font = [UIFont boldSystemFontOfSize:20.0f];
     self.cnSentenceLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.cnSentenceLabel];
     [self.cnSentenceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(160);
+        make.width.mas_equalTo(SCREEN_WIDTH - 40);
         make.top.equalTo(self.enSentenceLabel.mas_bottom).offset(10);
         make.center.equalTo(self);
     }];
@@ -87,7 +85,6 @@
     }];
     
     self.leftSymLabel = [UILabel new];
-    self.leftSymLabel.text = @"美:/sik/";
     self.leftSymLabel.textColor = [UIColor whiteColor];
     [self.bottomView addSubview:self.leftSymLabel];
     [self.leftSymLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,7 +94,6 @@
     }];
     
     self.rightSymLabel = [UILabel new];
-    self.rightSymLabel.text = @"英:/si;k/";
     self.rightSymLabel.textAlignment = NSTextAlignmentRight;
     self.rightSymLabel.textColor = [UIColor whiteColor];
     [self.bottomView addSubview:self.rightSymLabel];
@@ -108,7 +104,6 @@
     }];
     
     self.firstTranslateLabel = [UILabel new];
-    self.firstTranslateLabel.text = @"vt. 寻求;寻找;探索;搜索";
     self.firstTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.firstTranslateLabel.textColor = [UIColor whiteColor];
     [self.bottomView addSubview:self.firstTranslateLabel];
@@ -119,7 +114,6 @@
     }];
     
     self.secondTranslateLabel = [UILabel new];
-    self.secondTranslateLabel.text = @"vi.寻找;探索;搜索";
     self.secondTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.secondTranslateLabel.textColor = [UIColor whiteColor];
     [self.bottomView addSubview:self.secondTranslateLabel];
@@ -130,18 +124,42 @@
     }];
     
     self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.likeButton setBackgroundImage:[UIImage imageNamed:@"喜欢"] forState:UIControlStateNormal];
+    [self.likeButton setBackgroundImage:[UIImage imageNamed:@"like_index"] forState:UIControlStateNormal];
+    self.likeButton.tag = 1;
+    [self.likeButton addTarget:self action:@selector(likeButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomView addSubview:self.likeButton];
     [self.likeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(100, 100));
         make.centerX.equalTo(self);
         make.bottom.mas_equalTo(self.bottomView).offset(-40);
     }];
+    
+    self.swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeScreen:)];
+    self.swipe.direction = UISwipeGestureRecognizerDirectionUp;
+    [self addGestureRecognizer:self.swipe];
+}
+
+- (void)likeButtonDidClicked:(id)sender {
+    if (self.likeButton.tag == 1) {
+        [self.likeButton setBackgroundImage:[UIImage imageNamed:@"liked_index"] forState:UIControlStateNormal];
+        self.likeButton.tag = -1;
+    }else {
+        [self.likeButton setBackgroundImage:[UIImage imageNamed:@"like_index"] forState:UIControlStateNormal];
+        self.likeButton.tag = 1;
+    }
+    if ([self.yz_delegate respondsToSelector:@selector(likeButtonDidClickedWithWord:)]) {
+        [self.yz_delegate likeButtonDidClickedWithWord:self.wordLabel.text];
+    }
+}
+
+- (void)swipeScreen:(UISwipeGestureRecognizer *)swipe {
+    [self clickArrowButton:nil];
 }
 
 - (void)clickArrowButton:(id)sender {
     if (self.isShow) {
         self.isShow = false;
+        self.swipe.direction = UISwipeGestureRecognizerDirectionUp;
         [self setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.5f animations:^{
             self.arrowButton.transform = CGAffineTransformRotate(self.arrowButton.transform, M_PI);
@@ -166,13 +184,13 @@
         }completion:^(BOOL finished) {
             self.enSentenceLabel.textAlignment = NSTextAlignmentCenter;
             [self.enSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(160);
+                make.width.mas_equalTo(SCREEN_WIDTH - 40);
                 make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
                 make.centerX.equalTo(self);
             }];
             self.cnSentenceLabel.textAlignment = NSTextAlignmentCenter;
             [self.cnSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(160);
+                make.width.mas_equalTo(SCREEN_WIDTH - 40);
                 make.top.equalTo(self.enSentenceLabel.mas_bottom).offset(10);
                 make.center.equalTo(self);
             }];
@@ -183,6 +201,7 @@
         }];
     }else {
         self.isShow = true;
+        self.swipe.direction = UISwipeGestureRecognizerDirectionDown;
         [self setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.5f animations:^{
             self.arrowButton.transform = CGAffineTransformRotate(self.arrowButton.transform, M_PI);
@@ -228,8 +247,30 @@
 }
 
 #pragma make - setter
-- (void)setDataDict:(NSDictionary *)dataDict {
-    _dataDict = dataDict;
+- (void)setWordData:(YZWord *)wordData {
+    _wordData = wordData;
+    self.wordLabel.text = _wordData.word;
+    self.wordLabelSize =[self.wordLabel.text sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:55.0f]}];
+    [self.wordLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(self.wordLabelSize.width + 10, self.wordLabelSize.height));
+        make.top.equalTo(self).offset(135);
+        make.centerX.equalTo(self);
+    }];
+    NSString *ukStr = [@"" stringByAppendingFormat:@"英:/%@/",wordData.ukPhone];
+    self.leftSymLabel.text = ukStr;
+    NSString *usStr = [@"" stringByAppendingFormat:@"美:/%@/",wordData.usPhone];
+    self.rightSymLabel.text = usStr;
+    self.enSentenceLabel.text = wordData.sentence;
+    self.cnSentenceLabel.text = wordData.senTranslate;
+    int i = 0;
+    for (NSString *str in wordData.translate) {
+        if (i == 0) {
+            self.firstTranslateLabel.text = str;
+        }else {
+            self.secondTranslateLabel.text = str;
+        }
+        i++;
+    }
 }
 
 @end

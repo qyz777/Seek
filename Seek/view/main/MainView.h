@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YZWord.h"
 
 @protocol MainViewDelegate <NSObject>
 
 // click top arrow
 - (void)arrowButtonDidClicked;
 // clcik like button
-- (void)likeButtonDidClicked;
+- (void)likeButtonDidClickedWithWord:(NSString *)word;
 
 @end
 
@@ -32,7 +33,7 @@
 @property(nonatomic, strong)UILabel *secondTranslateLabel;
 
 
-@property(nonatomic, copy)NSDictionary *dataDict;
+@property(nonatomic, copy)YZWord *wordData;
 
 @property(nonatomic, weak)id<MainViewDelegate> yz_delegate;
 

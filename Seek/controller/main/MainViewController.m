@@ -12,8 +12,9 @@
 #import "YZSearchViewController.h"
 #import "YZMoreViewController.h"
 #import "YZLoginViewController.h"
+#import "YZWord.h"
 
-@interface MainViewController ()
+@interface MainViewController ()<MainViewDelegate>
 
 @property(nonatomic, strong)MainView *mainView;
 
@@ -36,6 +37,7 @@
     [rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     self.mainView = [MainView new];
+    self.mainView.yz_delegate = self;
     [self.view addSubview:self.mainView];
     
 //    判断用户是否登入
@@ -52,6 +54,7 @@
 
         }];
     }
+    [self requestData];
 }
 
 - (BOOL)isUserNeedLogin {
@@ -68,6 +71,14 @@
     return false;
 }
 
+- (void)requestData {
+    [YZWord indexOneWordSuccess:^(YZWord *wordData) {
+        self.mainView.wordData = wordData;
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 - (void)clickLeftBtn:(id)sender {
     YZSearchViewController *vc = [[YZSearchViewController alloc]init];
     [self presentViewController:vc animated:true completion:^{
@@ -77,10 +88,21 @@
 
 - (void)clickRightBtn:(id)sender {
     YZMoreViewController *vc = [[YZMoreViewController alloc]init];
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:vc animated:true completion:^{
+//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:vc animated:false completion:^{
         
     }];
+}
+
+#pragma make - mainViewDelegate
+- (void)likeButtonDidClickedWithWord:(NSString *)word {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZWord likeWithWord:word success:^(BOOL isLike) {
+            
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    });
 }
 
 @end
