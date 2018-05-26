@@ -60,6 +60,7 @@
 }
 
 - (void)requestData {
+    [SVProgressHUD show];
     __block YZWord *shortWord = [YZWord new];
     __block UIImage *shortImage = [UIImage new];
     
@@ -90,6 +91,7 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         self.detailView.wordData = shortWord;
         self.detailView.headerImageView.image = shortImage;
+        [SVProgressHUD dismiss];
     });
 }
 
