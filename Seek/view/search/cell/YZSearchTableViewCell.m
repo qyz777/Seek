@@ -29,8 +29,10 @@
 
 - (void)setLikeDataDict:(NSDictionary *)likeDataDict {
     _likeDataDict = likeDataDict;
-    self.wordLabel.text = _dataDict[@"word"];
-    self.cnLabel.text = _dataDict[@"trans"];
+    self.wordLabel.text = _likeDataDict[@"word"];
+    self.cnLabel.text = _likeDataDict[@"trans"];
+    self.wordLabel.textColor = [UIColor blackColor];
+    self.cnLabel.textColor = [UIColor blackColor];
 }
 
 @end
