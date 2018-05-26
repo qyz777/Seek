@@ -156,6 +156,9 @@
 }
 
 - (void)swipeWordLabel:(UISwipeGestureRecognizer *)swipe {
+    if (self.isShow) {
+        return;
+    }
     if ([self.yz_delegate respondsToSelector:@selector(wordDidSwipeRight)]) {
         [self.yz_delegate wordDidSwipeRight];
     }
