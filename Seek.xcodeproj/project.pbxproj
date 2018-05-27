@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B63C124B2504193262D426E /* libPods-Seek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E078D1022F4E2473FE5D2819 /* libPods-Seek.a */; };
 		A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03B420A1D264008E60B9 /* YZSearchViewController.m */; };
 		A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */; };
 		A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BE20A1D926008E60B9 /* NSString+Custom.m */; };
@@ -48,6 +47,8 @@
 		F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF0C20B9512400D6A136 /* ZKSettingView.m */; };
 		F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */; };
 		F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */; };
+		F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */; };
+		F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5096120BAD9750094F4BA /* ZKGameIndexView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,12 @@
 		F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKSettingViewController.m; sourceTree = "<group>"; };
 		F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZKCategory.h"; sourceTree = "<group>"; };
 		F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZKCategory.m"; sourceTree = "<group>"; };
+		F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameIndexViewController.h; sourceTree = "<group>"; };
+		F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameIndexViewController.m; sourceTree = "<group>"; };
+		F5C5096020BAD9750094F4BA /* ZKGameIndexView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameIndexView.h; sourceTree = "<group>"; };
+		F5C5096120BAD9750094F4BA /* ZKGameIndexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameIndexView.m; sourceTree = "<group>"; };
+		F5C5096320BAE7D60094F4BA /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5C5096520BAE80A0094F4BA /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +146,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B63C124B2504193262D426E /* libPods-Seek.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +164,8 @@
 		4F15E97892FD93970D24A306 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5C5096520BAE80A0094F4BA /* libAFNetworking.a */,
+				F5C5096320BAE7D60094F4BA /* libAFNetworking.a */,
 				E078D1022F4E2473FE5D2819 /* libPods-Seek.a */,
 			);
 			name = Frameworks;
@@ -348,6 +356,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F5C5095820BAD6940094F4BA /* game */,
 				F517BF0A20B9510E00D6A136 /* setting */,
 				A0DA121120B7CD0000469D33 /* liked */,
 				A0F8908220B5521C0070B0C7 /* wordDetail */,
@@ -364,6 +373,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F5C5095B20BAD6BC0094F4BA /* game */,
 				F517BF0E20B9513000D6A136 /* setting */,
 				A0DA121020B7CCF500469D33 /* liked */,
 				A0F8908120B552100070B0C7 /* wordDetail */,
@@ -537,6 +547,40 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		F5C5095820BAD6940094F4BA /* game */ = {
+			isa = PBXGroup;
+			children = (
+				F5C5095F20BAD9610094F4BA /* index */,
+				F5C5095A20BAD6A30094F4BA /* single */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		F5C5095A20BAD6A30094F4BA /* single */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = single;
+			sourceTree = "<group>";
+		};
+		F5C5095B20BAD6BC0094F4BA /* game */ = {
+			isa = PBXGroup;
+			children = (
+				F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */,
+				F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		F5C5095F20BAD9610094F4BA /* index */ = {
+			isa = PBXGroup;
+			children = (
+				F5C5096020BAD9750094F4BA /* ZKGameIndexView.h */,
+				F5C5096120BAD9750094F4BA /* ZKGameIndexView.m */,
+			);
+			path = index;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -669,12 +713,14 @@
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
+				F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */,
 				F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */,
 				A0DB888620A68E8400CA810C /* YZFindLayoutAttributes.m in Sources */,
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
+				F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
@@ -826,12 +872,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 437JAL24TE;
+				DEVELOPMENT_TEAM = JHFJ9EDM32;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Seek/expansion/YZGeneral.pch";
 				INFOPLIST_FILE = Seek/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -843,12 +893,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 437JAL24TE;
+				DEVELOPMENT_TEAM = JHFJ9EDM32;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Seek/expansion/YZGeneral.pch";
 				INFOPLIST_FILE = Seek/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
