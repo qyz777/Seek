@@ -10,4 +10,7 @@
 
 @interface ZKGameIndexView : UIView
 
+//关闭按钮
+@property(nonatomic,weak)UIButton *closeBtn;
+
 @end

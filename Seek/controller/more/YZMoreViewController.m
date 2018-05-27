@@ -12,6 +12,7 @@
 #import "YZFindViewController.h"
 #import "YZLikedViewController.h"
 #import "ZKSettingViewController.h"
+#import "ZKGameIndexViewController.h"
 
 @interface YZMoreViewController ()<YZMoreViewDelegate>
 
@@ -66,7 +67,8 @@
 }
 
 - (void)pkTitleDidTouch {
-    
+    ZKGameIndexViewController *gameIndexVC = [[ZKGameIndexViewController alloc] init];
+    [self presentViewController:gameIndexVC animated:YES completion:nil];
 }
 
 - (void)settingTitleDidTouch {

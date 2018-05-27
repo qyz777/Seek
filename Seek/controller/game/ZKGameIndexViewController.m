@@ -19,7 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     ZKGameIndexView *indexView = [[ZKGameIndexView alloc] init];
-    self.view = indexView;    
+    self.view = indexView;
+    
+    [indexView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)closeAction {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
