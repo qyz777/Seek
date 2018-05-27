@@ -25,7 +25,7 @@ DEPENDENCIES:
   - mob_smssdk
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Masonry
     - mob_smssdk
@@ -39,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ef20db7bcd140761fb5ec91ee1a4765f5aa84294
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

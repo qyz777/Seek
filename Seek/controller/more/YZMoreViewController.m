@@ -11,6 +11,7 @@
 #import "YZMoreView.h"
 #import "YZFindViewController.h"
 #import "YZLikedViewController.h"
+#import "ZKSettingViewController.h"
 
 @interface YZMoreViewController ()<YZMoreViewDelegate>
 
@@ -69,7 +70,8 @@
 }
 
 - (void)settingTitleDidTouch {
-    
+    ZKSettingViewController *settingVC = [[ZKSettingViewController alloc] init];
+    [self presentViewController:settingVC animated:YES completion:nil];
 }
 
 @end

@@ -23,7 +23,7 @@
     self.findTitle = [[YZMoreTitleView alloc]init];
     UITapGestureRecognizer *findTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(findTitleDidTouch)];
     [self.findTitle addGestureRecognizer:findTap];
-//    self.findTitle.imageView.image = [UIImage imageNamed:@"寻找单词"];
+    self.findTitle.imageView.image = [UIImage imageNamed:@"寻找"];
     self.findTitle.label.text = @"寻找";
     [self addSubview:self.findTitle];
     [self.findTitle mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -33,7 +33,7 @@
     }];
     
     self.likedTitle = [[YZMoreTitleView alloc]init];
-//    self.likedTitle.imageView.image = [UIImage imageNamed:@"喜欢"];
+    self.likedTitle.imageView.image = [UIImage imageNamed:@"喜欢2"];
     UITapGestureRecognizer *likedTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(likedTitleDidTouch)];
     [self.likedTitle addGestureRecognizer:likedTap];
     self.likedTitle.label.text = @"喜欢";
@@ -45,7 +45,7 @@
     }];
 
     self.pkTitle = [[YZMoreTitleView alloc]init];
-//    self.pkTitle.imageView.image = [UIImage imageNamed:@"面对面PK"];
+    self.pkTitle.imageView.image = [UIImage imageNamed:@"PK"];
     UITapGestureRecognizer *pkTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pkTitleDidTouch)];
     [self.pkTitle addGestureRecognizer:pkTap];
     self.pkTitle.label.text = @"PK";
@@ -57,7 +57,7 @@
     }];
 
     self.settingTitle = [[YZMoreTitleView alloc]init];
-//    self.settingTitle.imageView.image = [UIImage imageNamed:@"设置"];
+    self.settingTitle.imageView.image = [UIImage imageNamed:@"设置2"];
     UITapGestureRecognizer *settingTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(settingTitleDidTouch)];
     [self.settingTitle addGestureRecognizer:settingTap];
     self.settingTitle.label.text = @"设置";

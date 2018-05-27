@@ -45,6 +45,9 @@
 		A0F8908020B546B20070B0C7 /* YZHistoryWord.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8907F20B546B20070B0C7 /* YZHistoryWord.m */; };
 		A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8908420B552370070B0C7 /* YZWordDetailViewController.m */; };
 		A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8908720B552A80070B0C7 /* YZWordDetailView.m */; };
+		F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF0C20B9512400D6A136 /* ZKSettingView.m */; };
+		F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */; };
+		F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +126,12 @@
 		A0F8908620B552A80070B0C7 /* YZWordDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZWordDetailView.h; sourceTree = "<group>"; };
 		A0F8908720B552A80070B0C7 /* YZWordDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZWordDetailView.m; sourceTree = "<group>"; };
 		E078D1022F4E2473FE5D2819 /* libPods-Seek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F517BF0B20B9512400D6A136 /* ZKSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKSettingView.h; sourceTree = "<group>"; };
+		F517BF0C20B9512400D6A136 /* ZKSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKSettingView.m; sourceTree = "<group>"; };
+		F517BF0F20B9513E00D6A136 /* ZKSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKSettingViewController.h; sourceTree = "<group>"; };
+		F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKSettingViewController.m; sourceTree = "<group>"; };
+		F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZKCategory.h"; sourceTree = "<group>"; };
+		F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZKCategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +325,7 @@
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
+				F5C5095420B9B49E0094F4BA /* Category */,
 				A00F03C020A285EF008E60B9 /* searchAnimation */,
 				A00F03BC20A1D831008E60B9 /* NSString */,
 				A0A86642209EE5BB00674BF6 /* navigation */,
@@ -338,6 +348,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F517BF0A20B9510E00D6A136 /* setting */,
 				A0DA121120B7CD0000469D33 /* liked */,
 				A0F8908220B5521C0070B0C7 /* wordDetail */,
 				A08BD40120A81D980046C0A6 /* login */,
@@ -353,6 +364,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F517BF0E20B9513000D6A136 /* setting */,
 				A0DA121020B7CCF500469D33 /* liked */,
 				A0F8908120B552100070B0C7 /* wordDetail */,
 				A08BD40020A81D930046C0A6 /* login */,
@@ -498,6 +510,33 @@
 			path = wordDetail;
 			sourceTree = "<group>";
 		};
+		F517BF0A20B9510E00D6A136 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				F517BF0B20B9512400D6A136 /* ZKSettingView.h */,
+				F517BF0C20B9512400D6A136 /* ZKSettingView.m */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		F517BF0E20B9513000D6A136 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				F517BF0F20B9513E00D6A136 /* ZKSettingViewController.h */,
+				F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		F5C5095420B9B49E0094F4BA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */,
+				F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,6 +650,7 @@
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
+				F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */,
 				A0DB888620A68E8400CA810C /* YZFindLayoutAttributes.m in Sources */,
@@ -619,6 +659,8 @@
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
+				F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */,
+				F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */,
 				A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */,
 				A00F03D120A32002008E60B9 /* YZSearchHistoryManager.m in Sources */,
 				A0DB888320A67F6A00CA810C /* YZFindLayout.m in Sources */,
