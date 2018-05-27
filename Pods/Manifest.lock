@@ -18,11 +18,13 @@ PODS:
   - mob_smssdk (3.1.0):
     - MOBFoundation
   - MOBFoundation (3.1.5)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking
   - Masonry
   - mob_smssdk
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -30,13 +32,15 @@ SPEC REPOS:
     - Masonry
     - mob_smssdk
     - MOBFoundation
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   mob_smssdk: 50a3c764232919f78578d911a60afc142ee7a405
   MOBFoundation: d961251ce6de54917f678dc711962d1385ae7ee1
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: ef20db7bcd140761fb5ec91ee1a4765f5aa84294
+PODFILE CHECKSUM: 4f6f1bc4f81fe5a78a05de94c7f9bd9420a4b22a
 
 COCOAPODS: 1.5.3

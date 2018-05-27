@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <Masonry.h>
+#import <SVProgressHUD.h>
 #import "User.h"
 #import "UIView+ZKCategory.h"
 

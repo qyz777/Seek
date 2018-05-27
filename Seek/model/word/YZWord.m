@@ -94,7 +94,7 @@
              failure:(void(^)(NSError *error))failure {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Word/likeWord";
-    NSDictionary *parameters = @{@"user_id": @([User sharedUser].userId),@"token": [User sharedUser].token,@"word": word};
+    NSDictionary *parameters = @{@"id": @([User sharedUser].userId),@"token": [User sharedUser].token,@"word": word};
     [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

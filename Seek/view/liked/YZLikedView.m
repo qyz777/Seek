@@ -15,12 +15,13 @@
     self = [super init];
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
     self.dataSource = self;
-    self.dataSource = self;
+    self.delegate = self;
     [self initSubviews];
     return self;
 }
 
 - (void)initSubviews {
+    self.backgroundColor = [UIColor whiteColor];
     [self registerNib:[UINib nibWithNibName:@"YZSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"YZSearchTableViewCell"];
     self.tableFooterView = [UIView new];
 }
