@@ -8,6 +8,7 @@
 
 #import "ZKGameIndexViewController.h"
 #import "ZKGameIndexView.h"
+#import "ZKGameSingleViewController.h"
 
 @interface ZKGameIndexViewController ()
 
@@ -22,6 +23,26 @@
     self.view = indexView;
     
     [indexView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
+    [indexView setTagActionHandle:^(NSInteger tag) {
+        switch (tag) {
+            case 1001:{
+                    ZKGameSingleViewController *singleVC = [[ZKGameSingleViewController alloc] init];
+                    [self presentViewController:singleVC animated:YES completion:nil];
+                }
+                break;
+            case 1002:
+            case 1003:
+                [SVProgressHUD showInfoWithStatus:@"此功能暂未开放"];
+                [SVProgressHUD dismissWithDelay:1.5f];
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
+- (void)loadingTap {
+    
 }
 
 - (void)closeAction {

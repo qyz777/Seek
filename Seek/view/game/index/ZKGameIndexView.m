@@ -48,24 +48,23 @@ static const CGFloat kInterval = 20;
     self.closeBtn = closeBtn;
     
     
-    UIView *view1 = [self getCardWithIcon:@"game-1" background:@"bg-1" shadowColor:[UIColor colorWithRed:253 / 255.0 green:145 / 255.0 blue:189 / 255.0 alpha:1.0] title:@"单人挑战" star:1 andTag:@"突破个人收藏夹"];
-    view1.y = titleView.bottom + kInterval * 2;
-    view1.tag = 1001;
+    UIView *view1 = [self getCardWithIcon:@"game-1" background:@"bg-1" shadowColor:[UIColor colorWithRed:253 / 255.0 green:145 / 255.0 blue:189 / 255.0 alpha:1.0] title:@"单人挑战" star:1 andViewTag:@"突破个人收藏夹" y:titleView.bottom + kInterval * 2  tag:1001];
     [self addSubview:view1];
     
-    UIView *view2 = [self getCardWithIcon:@"game-2" background:@"bg-2" shadowColor:[UIColor colorWithRed:44 / 255.0 green:227 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"联机挑战" star:1 andTag:@"双人对抗赛"];
-    view2.y = view1.bottom + kInterval;
-    view2.tag = 1002;
+    UIView *view2 = [self getCardWithIcon:@"game-2" background:@"bg-2" shadowColor:[UIColor colorWithRed:44 / 255.0 green:227 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"联机挑战" star:1 andViewTag:@"双人对抗赛" y:view1.bottom + kInterval  tag:1002];
     [self addSubview:view2];
-    
-    UIView *view3 = [self getCardWithIcon:@"game-3" background:@"bg-3" shadowColor:[UIColor colorWithRed:139 / 255.0 green:183 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"提词随机查" star:1 andTag:@"课本单词轻松检验"];
-    view3.y = view2.bottom + kInterval;
-    view3.tag = 1003;
+
+    UIView *view3 = [self getCardWithIcon:@"game-3" background:@"bg-3" shadowColor:[UIColor colorWithRed:139 / 255.0 green:183 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"提词随机查" star:1 andViewTag:@"课本单词轻松检查" y:view2.bottom + kInterval  tag:1003];
     [self addSubview:view3];
+    
 }
 
+- (void)tapAction:(UITapGestureRecognizer *)sender {
+    UIView *view = (UIView *)sender.view;
+    self.tagActionHandle(view.tag);
+}
 
-- (UIView *)getCardWithIcon:(NSString *)iconName background:(NSString *)bgName shadowColor:(UIColor *)color title:(NSString *)title star:(NSInteger)starCoun andTag:(NSString *)tag {
+- (UIView *)getCardWithIcon:(NSString *)iconName background:(NSString *)bgName shadowColor:(UIColor *)color title:(NSString *)title star:(NSInteger)starCoun andViewTag:(NSString *)viewTag y:(CGFloat)y tag:(NSInteger)tag {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(kInterval, 0, SCREEN_WIDTH - 2 * kInterval, 100)];
     view.layer.cornerRadius = 10;
     view.layer.masksToBounds = YES;
@@ -73,6 +72,7 @@ static const CGFloat kInterval = 20;
     view.layer.shadowColor = color.CGColor;
     view.layer.shadowOpacity = 0.5;
     view.layer.shadowOffset = CGSizeMake(0, 20);
+    
     
     //背景
     UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:view.frame];
@@ -113,7 +113,7 @@ static const CGFloat kInterval = 20;
     UILabel *tagLabel = [[UILabel alloc] init];
     tagLabel.x += kInterval * 0.5;
     tagLabel.y = 5;
-    tagLabel.text = tag;
+    tagLabel.text = viewTag;
     tagLabel.font = [UIFont boldSystemFontOfSize:12];
     [tagLabel sizeToFit];
     tagLabel.textColor = color;
@@ -125,23 +125,12 @@ static const CGFloat kInterval = 20;
     tagsView.layer.masksToBounds = YES;
     
     
+    view.tag = tag;
+    view.y = y;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //手势
+    UITapGestureRecognizer *tagGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapAction:)];
+    [view addGestureRecognizer:tagGesture];
     
     return view;
 }
