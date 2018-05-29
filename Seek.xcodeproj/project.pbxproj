@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB2FE379DC07BE7306B1A0D /* libPods-Seek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E078D1022F4E2473FE5D2819 /* libPods-Seek.a */; };
 		A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03B420A1D264008E60B9 /* YZSearchViewController.m */; };
 		A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */; };
 		A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BE20A1D926008E60B9 /* NSString+Custom.m */; };
@@ -24,6 +25,9 @@
 		A0132CF7209DA92B00CBA33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF5209DA92B00CBA33F /* LaunchScreen.storyboard */; };
 		A0132CFA209DA92B00CBA33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CF9209DA92B00CBA33F /* main.m */; };
 		A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A023F74820A47437003A1E9C /* YZMoreTitleView.m */; };
+		A070798620BCD14900F3B045 /* ZKGameSingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A070798520BCD14900F3B045 /* ZKGameSingleViewController.m */; };
+		A070798920BCD16E00F3B045 /* ZKGameSingleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A070798820BCD16E00F3B045 /* ZKGameSingleView.m */; };
+		A070798D20BCD18F00F3B045 /* ZKSingleGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A070798C20BCD18F00F3B045 /* ZKSingleGameModel.m */; };
 		A08BD3FF20A819EB0046C0A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD3FE20A819EB0046C0A6 /* User.m */; };
 		A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */; };
 		A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40620A81E110046C0A6 /* YZLoginView.m */; };
@@ -85,6 +89,12 @@
 		A0132CF9209DA92B00CBA33F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A023F74720A47437003A1E9C /* YZMoreTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMoreTitleView.h; sourceTree = "<group>"; };
 		A023F74820A47437003A1E9C /* YZMoreTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZMoreTitleView.m; sourceTree = "<group>"; };
+		A070798420BCD14900F3B045 /* ZKGameSingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKGameSingleViewController.h; path = Seek/controller/game/ZKGameSingleViewController.h; sourceTree = SOURCE_ROOT; };
+		A070798520BCD14900F3B045 /* ZKGameSingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKGameSingleViewController.m; path = Seek/controller/game/ZKGameSingleViewController.m; sourceTree = SOURCE_ROOT; };
+		A070798720BCD16E00F3B045 /* ZKGameSingleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKGameSingleView.h; sourceTree = "<group>"; };
+		A070798820BCD16E00F3B045 /* ZKGameSingleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKGameSingleView.m; sourceTree = "<group>"; };
+		A070798B20BCD18F00F3B045 /* ZKSingleGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSingleGameModel.h; sourceTree = "<group>"; };
+		A070798C20BCD18F00F3B045 /* ZKSingleGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSingleGameModel.m; sourceTree = "<group>"; };
 		A08BD3FD20A819EB0046C0A6 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A08BD3FE20A819EB0046C0A6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A08BD40220A81DEF0046C0A6 /* YZLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLoginViewController.h; sourceTree = "<group>"; };
@@ -146,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB2FE379DC07BE7306B1A0D /* libPods-Seek.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +314,33 @@
 			path = Seek;
 			sourceTree = "<group>";
 		};
+		A070798220BCD11500F3B045 /* index */ = {
+			isa = PBXGroup;
+			children = (
+				F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */,
+				F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */,
+			);
+			path = index;
+			sourceTree = "<group>";
+		};
+		A070798320BCD12000F3B045 /* single */ = {
+			isa = PBXGroup;
+			children = (
+				A070798420BCD14900F3B045 /* ZKGameSingleViewController.h */,
+				A070798520BCD14900F3B045 /* ZKGameSingleViewController.m */,
+			);
+			path = single;
+			sourceTree = "<group>";
+		};
+		A070798A20BCD18F00F3B045 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				A070798B20BCD18F00F3B045 /* ZKSingleGameModel.h */,
+				A070798C20BCD18F00F3B045 /* ZKSingleGameModel.m */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
 		A08BD3FC20A819D90046C0A6 /* user */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +383,7 @@
 		A0A86615209DB5EA00674BF6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A070798A20BCD18F00F3B045 /* game */,
 				A0F8907D20B546990070B0C7 /* history */,
 				A08BD3FC20A819D90046C0A6 /* user */,
 				A00F03D220A32009008E60B9 /* word */,
@@ -559,6 +598,8 @@
 		F5C5095A20BAD6A30094F4BA /* single */ = {
 			isa = PBXGroup;
 			children = (
+				A070798720BCD16E00F3B045 /* ZKGameSingleView.h */,
+				A070798820BCD16E00F3B045 /* ZKGameSingleView.m */,
 			);
 			path = single;
 			sourceTree = "<group>";
@@ -566,8 +607,8 @@
 		F5C5095B20BAD6BC0094F4BA /* game */ = {
 			isa = PBXGroup;
 			children = (
-				F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */,
-				F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */,
+				A070798320BCD12000F3B045 /* single */,
+				A070798220BCD11500F3B045 /* index */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -702,13 +743,16 @@
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
 				A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
+				A070798620BCD14900F3B045 /* ZKGameSingleViewController.m in Sources */,
 				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
 				A00F03D520A3202A008E60B9 /* YZWord.m in Sources */,
+				A070798D20BCD18F00F3B045 /* ZKSingleGameModel.m in Sources */,
 				A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */,
 				A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */,
+				A070798920BCD16E00F3B045 /* ZKGameSingleView.m in Sources */,
 				A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */,
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
@@ -872,7 +916,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JHFJ9EDM32;
+				DEVELOPMENT_TEAM = 437JAL24TE;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Seek/expansion/YZGeneral.pch";
 				INFOPLIST_FILE = Seek/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -886,7 +930,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek1;
+				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -898,7 +942,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JHFJ9EDM32;
+				DEVELOPMENT_TEAM = 437JAL24TE;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Seek/expansion/YZGeneral.pch";
 				INFOPLIST_FILE = Seek/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -912,7 +956,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek1;
+				PRODUCT_BUNDLE_IDENTIFIER = QYiZhong.Seek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
