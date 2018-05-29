@@ -27,7 +27,7 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Masonry
     - mob_smssdk
@@ -43,4 +43,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4f6f1bc4f81fe5a78a05de94c7f9bd9420a4b22a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0
