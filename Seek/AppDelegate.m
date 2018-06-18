@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "YZTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -23,10 +23,7 @@
     [User userStashPop];
     
     // ZK 临时修改测试
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[[MainViewController alloc]init] ];
-    self.window.rootViewController = nav;
-    
-//    self.window.rootViewController = [[ZKSettingViewController alloc] init];
+    self.window.rootViewController = [[YZTabBarController alloc]init];
     [self.window makeKeyAndVisible];
     return YES;
 }
