@@ -168,6 +168,8 @@
     if (self.isShow) {
         self.isShow = false;
         self.swipe.direction = UISwipeGestureRecognizerDirectionUp;
+        self.enSentenceLabel.alpha = 0;
+        self.cnSentenceLabel.alpha = 0;
         [self setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.5f animations:^{
             self.arrowButton.transform = CGAffineTransformRotate(self.arrowButton.transform, M_PI);
@@ -181,8 +183,6 @@
                 make.top.equalTo(self).offset(135);
                 make.centerX.equalTo(self);
             }];
-            self.enSentenceLabel.alpha = 0;
-            self.cnSentenceLabel.alpha = 0;
             [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.left.equalTo(self).offset(0);
                 make.top.equalTo(self.mas_bottom).offset(0);

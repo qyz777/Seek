@@ -120,10 +120,14 @@
 }
 
 - (void)arrowButtonDidClicked {
-    if (self.tabBarController.tabBar.isHidden) {
-        [self.tabBarController.tabBar setHidden:false];
+    if (self.tabBarController.tabBar.alpha == 0) {
+        [UIView animateWithDuration:0.2f animations:^{
+            self.tabBarController.tabBar.alpha = 1;
+        }];
     }else {
-        [self.tabBarController.tabBar setHidden:true];
+        [UIView animateWithDuration:0.2f animations:^{
+            self.tabBarController.tabBar.alpha = 0;
+        }];
     }
 }
 
