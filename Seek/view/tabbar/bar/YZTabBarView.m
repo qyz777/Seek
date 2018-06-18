@@ -31,7 +31,7 @@
     
     [self addSubview:self.gameButton];
     [self.gameButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.homeButton.mas_left).offset(-100);
+        make.left.equalTo(self).offset(30);
         make.centerY.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
@@ -39,7 +39,7 @@
     
     [self addSubview:self.meButton];
     [self.meButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.homeButton.mas_right).offset(100);
+        make.right.equalTo(self).offset(-30);
         make.centerY.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
@@ -60,12 +60,12 @@
                 make.size.mas_equalTo(CGSizeMake(30, 30));
             }];
             [self.gameButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(self.homeButton.mas_left).offset(-100);
+                make.left.equalTo(self).offset(30);
                 make.size.mas_equalTo(CGSizeMake(40, 40));
                 make.bottom.equalTo(self).offset(-20);
             }];
             [self.meButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.homeButton.mas_right).offset(100);
+                make.right.equalTo(self).offset(-30);
                 make.centerY.equalTo(self);
                 make.size.mas_equalTo(CGSizeMake(30, 30));
             }];
@@ -79,12 +79,12 @@
                 make.bottom.equalTo(self).offset(-20);
             }];
             [self.gameButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(self.homeButton.mas_left).offset(-100);
+                make.left.equalTo(self).offset(30);
                 make.centerY.equalTo(self);
                 make.size.mas_equalTo(CGSizeMake(30, 30));
             }];
             [self.meButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.homeButton.mas_right).offset(100);
+                make.right.equalTo(self).offset(-30);
                 make.centerY.equalTo(self);
                 make.size.mas_equalTo(CGSizeMake(30, 30));
             }];
@@ -97,12 +97,12 @@
                 make.size.mas_equalTo(CGSizeMake(30, 30));
             }];
             [self.gameButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(self.homeButton.mas_left).offset(-100);
+                make.left.equalTo(self).offset(30);
                 make.centerY.equalTo(self);
                 make.size.mas_equalTo(CGSizeMake(30, 30));
             }];
             [self.meButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.homeButton.mas_right).offset(100);
+                make.right.equalTo(self).offset(-30);
                 make.size.mas_equalTo(CGSizeMake(40, 40));
                 make.bottom.equalTo(self).offset(-20);
             }];
