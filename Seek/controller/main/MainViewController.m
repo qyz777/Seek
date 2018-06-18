@@ -32,10 +32,10 @@
 - (void)initView {
     self.view.backgroundColor = [UIColor whiteColor];
     [self navigationBar];
-    self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_ONE;
-    self.searchBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"搜索"]];
+    self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
+    self.searchBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"main_search_btn"]];
     [self.searchBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"更多"]];
+    UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"main_more_btn"]];
     [rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     self.mainView = [MainView new];
@@ -101,23 +101,12 @@
 
 - (void)clickRightBtn:(id)sender {
     YZMoreViewController *vc = [[YZMoreViewController alloc]init];
-//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:vc animated:false completion:^{
         
     }];
 }
 
 #pragma make - mainViewDelegate
-- (void)likeButtonDidClickedWithWord:(NSString *)word {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [YZWord likeWithWord:word success:^(BOOL isLike) {
-            
-        } failure:^(NSError *error) {
-            NSLog(@"%@",error);
-        }];
-    });
-}
-
 - (void)wordDidSwipeRight {
     if (self.fiveWordArray.count > 0) {
         self.mainView.wordData = self.fiveWordArray[_wordIndex];
@@ -127,6 +116,14 @@
             [self requestFiveWordData];
             self.wordIndex = 0;
         }
+    }
+}
+
+- (void)arrowButtonDidClicked {
+    if (self.tabBarController.tabBar.isHidden) {
+        [self.tabBarController.tabBar setHidden:false];
+    }else {
+        [self.tabBarController.tabBar setHidden:true];
     }
 }
 

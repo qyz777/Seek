@@ -22,11 +22,17 @@
 #define YZLog(...)
 #endif
 
-//第一种背景颜色
+//第一版背景颜色
 #define BACKGROUND_COLOR_STYLE_ONE RGB_ALPHA(43, 207, 195, 0.8)
+
+// 第二版背景颜色
+#define BACKGROUND_COLOR_STYLE_TWO RGB_ALPHA(0, 0, 0, 0.85)
 
 //导航栏高度
 #define NavigationBarHeight 64
+
+// tabBar高度
+#define TabBarHeight 49
 
 //weak一个对象
 #define YZWeakObject(obj) __weak typeof(obj) weak##obj = obj;

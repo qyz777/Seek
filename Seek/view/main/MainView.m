@@ -22,7 +22,7 @@
 - (instancetype)init {
     self = [super init];
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
-    self.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
+    self.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     self.isShow = false;
     [self initSubViews];
     return self;
@@ -67,11 +67,11 @@
     
     self.arrowButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.arrowButton addTarget:self action:@selector(clickArrowButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.arrowButton setImage:[UIImage imageNamed:@"箭头 上"] forState:UIControlStateNormal];
+    [self.arrowButton setImage:[UIImage imageNamed:@"main_arrow_top"] forState:UIControlStateNormal];
     [self addSubview:self.arrowButton];
     [self.arrowButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(40, 40));
-        make.bottom.equalTo(self).offset(-40);
+        make.bottom.equalTo(self).offset(-60);
         make.centerX.equalTo(self);
     }];
     
@@ -104,34 +104,43 @@
     }];
     
     self.firstTranslateLabel = [UILabel new];
+    self.firstTranslateLabel.numberOfLines = 0;
     self.firstTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.firstTranslateLabel.textColor = [UIColor whiteColor];
     [self.bottomView addSubview:self.firstTranslateLabel];
     [self.firstTranslateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, 30));
+        make.width.mas_equalTo(SCREEN_WIDTH - 40);
         make.centerX.equalTo(self.bottomView);
-        make.top.equalTo(self.bottomView).offset(60);
+        make.top.equalTo(self.bottomView).offset(90);
     }];
     
     self.secondTranslateLabel = [UILabel new];
+    self.secondTranslateLabel.numberOfLines = 0;
     self.secondTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
     self.secondTranslateLabel.textColor = [UIColor whiteColor];
     [self.bottomView addSubview:self.secondTranslateLabel];
     [self.secondTranslateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, 30));
+        make.width.mas_equalTo(SCREEN_WIDTH - 40);
         make.centerX.equalTo(self.bottomView);
-        make.top.equalTo(self.firstTranslateLabel.mas_bottom).offset(10);
+        make.top.equalTo(self.firstTranslateLabel.mas_bottom).offset(15);
     }];
     
-    self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.likeButton setBackgroundImage:[UIImage imageNamed:@"like_index"] forState:UIControlStateNormal];
-    self.likeButton.tag = 1;
-    [self.likeButton addTarget:self action:@selector(likeButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bottomView addSubview:self.likeButton];
-    [self.likeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(100, 100));
-        make.centerX.equalTo(self);
-        make.bottom.mas_equalTo(self.bottomView).offset(-40);
+    [self.bottomView addSubview:self.seeBtn];
+    [self.seeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.bottomView);
+        make.bottom.equalTo(self.bottomView).offset(-100);
+    }];
+    
+    [self.bottomView addSubview:self.collectBtn];
+    [self.collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.seeBtn);
+        make.right.equalTo(self.seeBtn.mas_left).offset(-80);
+    }];
+    
+    [self.bottomView addSubview:self.shareBtn];
+    [self.shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.seeBtn);
+        make.left.equalTo(self.seeBtn.mas_right).offset(80);
     }];
     
     self.swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeScreen:)];
@@ -140,19 +149,6 @@
     
     UISwipeGestureRecognizer *wordSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeWordLabel:)];
     [self addGestureRecognizer:wordSwipe];
-}
-
-- (void)likeButtonDidClicked:(id)sender {
-    if (self.likeButton.tag == 1) {
-        [self.likeButton setBackgroundImage:[UIImage imageNamed:@"liked_index"] forState:UIControlStateNormal];
-        self.likeButton.tag = -1;
-    }else {
-        [self.likeButton setBackgroundImage:[UIImage imageNamed:@"like_index"] forState:UIControlStateNormal];
-        self.likeButton.tag = 1;
-    }
-    if ([self.yz_delegate respondsToSelector:@selector(likeButtonDidClickedWithWord:)]) {
-        [self.yz_delegate likeButtonDidClickedWithWord:self.wordLabel.text];
-    }
 }
 
 - (void)swipeWordLabel:(UISwipeGestureRecognizer *)swipe {
@@ -176,7 +172,7 @@
         [UIView animateWithDuration:0.5f animations:^{
             self.arrowButton.transform = CGAffineTransformRotate(self.arrowButton.transform, M_PI);
             [self.arrowButton mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self).offset(-40);
+                make.bottom.equalTo(self).offset(-60);
             }];
             CGAffineTransform wordTransform = CGAffineTransformMakeScale(1, 1);
             self.wordLabel.transform = CGAffineTransformScale(wordTransform, 1, 1);
@@ -214,32 +210,19 @@
     }else {
         self.isShow = true;
         self.swipe.direction = UISwipeGestureRecognizerDirectionDown;
+        self.enSentenceLabel.alpha = 0;
+        self.cnSentenceLabel.alpha = 0;
         [self setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.5f animations:^{
             self.arrowButton.transform = CGAffineTransformRotate(self.arrowButton.transform, M_PI);
             [self.arrowButton mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self).offset(-400);
+                make.bottom.equalTo(self).offset(-360);
             }];
             CGAffineTransform wordTransform = CGAffineTransformMakeScale(0.6, 0.6);
             self.wordLabel.transform = CGAffineTransformScale(wordTransform, 1, 1);
             [self.wordLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.size.mas_equalTo(CGSizeMake(self.wordLabelSize.width + 10, self.wordLabelSize.height));
                 make.top.equalTo(self).offset(10);
-                make.left.equalTo(self).offset(6);
-            }];
-            self.enSentenceLabel.alpha = 0;
-            self.enSentenceLabel.textAlignment = NSTextAlignmentLeft;
-            [self.enSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, 30));
-                make.left.equalTo(self).offset(20);
-                make.top.equalTo(self.wordLabel.mas_bottom).offset(6);
-            }];
-            self.cnSentenceLabel.alpha = 0;
-            self.cnSentenceLabel.textAlignment = NSTextAlignmentLeft;
-            [self.cnSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 40, 30));
-                make.left.equalTo(self).offset(20);
-                make.top.equalTo(self.enSentenceLabel.mas_bottom).offset(10);
             }];
             [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.left.bottom.equalTo(self).offset(0);
@@ -247,6 +230,18 @@
             }];
             [self layoutIfNeeded];
         }completion:^(BOOL finished) {
+            self.enSentenceLabel.textAlignment = NSTextAlignmentLeft;
+            [self.enSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(SCREEN_WIDTH - 40);
+                make.left.equalTo(self).offset(20);
+                make.top.equalTo(self.wordLabel.mas_bottom).offset(6);
+            }];
+            self.cnSentenceLabel.textAlignment = NSTextAlignmentLeft;
+            [self.cnSentenceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(SCREEN_WIDTH - 40);
+                make.left.equalTo(self).offset(20);
+                make.top.equalTo(self.enSentenceLabel.mas_bottom).offset(10);
+            }];
             [UIView animateWithDuration:0.2f animations:^{
                 self.enSentenceLabel.alpha = 1;
                 self.cnSentenceLabel.alpha = 1;
@@ -283,6 +278,31 @@
         }
         i++;
     }
+}
+
+#pragma make - getter
+- (UIButton *)collectBtn {
+    if (!_collectBtn) {
+        _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_collectBtn setImage:[UIImage imageNamed:@"main_collect_btn"] forState:UIControlStateNormal];
+    }
+    return _collectBtn;
+}
+
+- (UIButton *)seeBtn {
+    if (!_seeBtn) {
+        _seeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_seeBtn setImage:[UIImage imageNamed:@"main_see_btn"] forState:UIControlStateNormal];
+    }
+    return _seeBtn;
+}
+
+- (UIButton *)shareBtn {
+    if (!_shareBtn) {
+        _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareBtn setImage:[UIImage imageNamed:@"main_share_btn"] forState:UIControlStateNormal];
+    }
+    return _shareBtn;
 }
 
 @end

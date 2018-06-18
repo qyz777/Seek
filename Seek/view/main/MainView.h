@@ -13,8 +13,6 @@
 
 // click top arrow
 - (void)arrowButtonDidClicked;
-// clcik like button
-- (void)likeButtonDidClickedWithWord:(NSString *)word;
 
 - (void)wordDidSwipeRight;
 
@@ -27,12 +25,15 @@
 @property(nonatomic, strong)UILabel *enSentenceLabel;
 @property(nonatomic, strong)UILabel *cnSentenceLabel;
 @property(nonatomic, strong)UIButton *arrowButton;
-@property(nonatomic, strong)UIButton *likeButton;
 @property(nonatomic, strong)UIView *bottomView;
 @property(nonatomic, strong)UILabel *leftSymLabel;
 @property(nonatomic, strong)UILabel *rightSymLabel;
 @property(nonatomic, strong)UILabel *firstTranslateLabel;
 @property(nonatomic, strong)UILabel *secondTranslateLabel;
+
+@property (nonatomic, strong) UIButton *collectBtn;
+@property (nonatomic, strong) UIButton *seeBtn;
+@property (nonatomic, strong) UIButton *shareBtn;
 
 
 @property(nonatomic, copy)YZWord *wordData;
