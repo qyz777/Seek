@@ -75,8 +75,6 @@
         make.centerX.equalTo(self);
     }];
     
-    self.bottomView = [UIView new];
-    self.bottomView.backgroundColor = [UIColor colorWithWhite:0.95f alpha:0.4f];
     [self addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.left.equalTo(self).offset(0);
@@ -142,6 +140,8 @@
         make.centerY.equalTo(self.seeBtn);
         make.left.equalTo(self.seeBtn.mas_right).offset(80);
     }];
+    
+    [self changeBottomViewCornerRadius];
     
     self.swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeScreen:)];
     self.swipe.direction = UISwipeGestureRecognizerDirectionUp;
@@ -253,6 +253,15 @@
     }
 }
 
+- (void)changeBottomViewCornerRadius {
+    [self layoutIfNeeded];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bottomView.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(18, 18)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bottomView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.bottomView.layer.mask = maskLayer;
+}
+
 #pragma make - setter
 - (void)setWordData:(YZWord *)wordData {
     _wordData = wordData;
@@ -281,6 +290,14 @@
 }
 
 #pragma make - getter
+- (UIView *)bottomView {
+    if (!_bottomView) {
+        _bottomView = [UIView new];
+        _bottomView.backgroundColor = [UIColor colorWithWhite:0.95f alpha:0.4f];
+    }
+    return _bottomView;
+}
+
 - (UIButton *)collectBtn {
     if (!_collectBtn) {
         _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
