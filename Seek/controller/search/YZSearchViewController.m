@@ -41,7 +41,7 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 - (void)initView {
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *backgroundView = [[UIView alloc]initWithFrame:self.view.bounds];
-    backgroundView.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
+    backgroundView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backgroundView];
     self.searchView = [[YZSearchTableView alloc]init];
     self.searchView.yz_delegate = self;
@@ -51,8 +51,8 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     }
     [backgroundView addSubview:self.searchView];
     [self navigationBar];
-    self.yz_navigationBar.navigationBarColor = RGB_ALPHA(0, 0, 0, 0.3);
-    UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"搜索"]];
+    self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
+    UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"main_search_btn"]];
     [leftBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
     UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithTitle:@"取消"
                                                                    font:[UIFont boldSystemFontOfSize:20.0f]

@@ -15,8 +15,9 @@ NSNotificationName const SearchTableViewDidScrollNotification = @"SearchTableVie
 
 - (instancetype)init {
     self = [super init];
-    self.backgroundColor = RGB_ALPHA(0, 0, 0, 0.3);
+    self.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
+    [self setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 15)];
     self.delegate = self;
     self.dataSource = self;
     [self initSubviews];
