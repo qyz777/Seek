@@ -19,7 +19,7 @@
     objc_setAssociatedObject(self, @selector(yz_navigationBar), yz_navigationBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)navigationBar; {
+- (void)navigationBar {
     self.navigationController.navigationBar.hidden = true;
     self.yz_navigationBar = [[YZNavigationBar alloc]init];
     [self.view addSubview:self.yz_navigationBar];
