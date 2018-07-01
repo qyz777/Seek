@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import "ZKGameIndexViewController.h"
 #import "ZKSettingViewController.h"
+#import "MeViewController.h"
 
 @interface YZTabBarController ()<YZTabBarViewDelegate>
 
@@ -23,9 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-    [self addChildViewController:[ZKGameIndexViewController new]];
-    [self addChildViewController:[MainViewController new]];
-    [self addChildViewController:[ZKSettingViewController new]];
+    [self addViewController:[ZKGameIndexViewController new]];
+    [self addViewController:[MainViewController new]];
+    [self addViewController:[MeViewController new]];
     self.selectedIndex = 1;
 }
 
@@ -33,6 +34,11 @@
     self.yz_tabBar = [[YZTabBar alloc]init];
     self.yz_tabBar.tabBarView.yz_delegate = self;
     [self setValue:self.yz_tabBar forKey:@"tabBar"];
+}
+
+- (void)addViewController:(UIViewController *)viewController {
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:viewController];
+    [self addChildViewController:nav];
 }
 
 #pragma make - YZTabBarViewDelegate
