@@ -72,7 +72,7 @@
     [self addSubview:leftButton];
     CGSize size = [title sizeWithFont:font];
     [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(size);
+        make.size.mas_equalTo(CGSizeMake(size.width + 8, size.height + 8));
         make.left.equalTo(self).offset(10);
         make.bottom.equalTo(self.mas_bottom).offset(-10);
     }];
@@ -99,7 +99,7 @@
     [self addSubview:rightButton];
     CGSize size = [title sizeWithFont:font];
     [rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(size);
+        make.size.mas_equalTo(CGSizeMake(size.width + 8, size.height + 8));
         make.right.equalTo(self).offset(-10);
         make.bottom.equalTo(self.mas_bottom).offset(-10);
     }];
