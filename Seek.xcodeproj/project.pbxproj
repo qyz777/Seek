@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7BB2FE379DC07BE7306B1A0D /* libPods-Seek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E078D1022F4E2473FE5D2819 /* libPods-Seek.a */; };
+		A00BBEB720E8A55300E2D934 /* YZMeAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A00BBEB620E8A55300E2D934 /* YZMeAvatarCell.m */; };
+		A00BBEBA20E8B80C00E2D934 /* MeEditInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00BBEB920E8B80C00E2D934 /* MeEditInfoViewController.m */; };
+		A00BBEBE20E8BDD100E2D934 /* BasicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00BBEBD20E8BDD100E2D934 /* BasicsViewController.m */; };
+		A00BBEC120E8C13500E2D934 /* UIViewController+YZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00BBEC020E8C13500E2D934 /* UIViewController+YZTabBarController.m */; };
 		A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03B420A1D264008E60B9 /* YZSearchViewController.m */; };
 		A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BA20A1D4BC008E60B9 /* YZSearchTableView.m */; };
 		A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00F03BE20A1D926008E60B9 /* NSString+Custom.m */; };
@@ -25,6 +29,9 @@
 		A0132CF7209DA92B00CBA33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF5209DA92B00CBA33F /* LaunchScreen.storyboard */; };
 		A0132CFA209DA92B00CBA33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CF9209DA92B00CBA33F /* main.m */; };
 		A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A023F74820A47437003A1E9C /* YZMoreTitleView.m */; };
+		A06F46E820D9347D00D3A1DA /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06F46E720D9347D00D3A1DA /* MeViewController.m */; };
+		A06F46EF20D9366300D3A1DA /* MeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A06F46EE20D9366300D3A1DA /* MeView.m */; };
+		A06F46F920D93A9300D3A1DA /* YZMeNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A06F46F820D93A9300D3A1DA /* YZMeNormalCell.m */; };
 		A070798620BCD14900F3B045 /* ZKGameSingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A070798520BCD14900F3B045 /* ZKGameSingleViewController.m */; };
 		A070798920BCD16E00F3B045 /* ZKGameSingleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A070798820BCD16E00F3B045 /* ZKGameSingleView.m */; };
 		A070798D20BCD18F00F3B045 /* ZKSingleGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A070798C20BCD18F00F3B045 /* ZKSingleGameModel.m */; };
@@ -61,6 +68,14 @@
 /* Begin PBXFileReference section */
 		3A3F160612D0D128B6C4434F /* Pods-Seek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Seek/Pods-Seek.debug.xcconfig"; sourceTree = "<group>"; };
 		57D065529F08170D7002D2D1 /* Pods-Seek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Seek/Pods-Seek.release.xcconfig"; sourceTree = "<group>"; };
+		A00BBEB520E8A55300E2D934 /* YZMeAvatarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMeAvatarCell.h; sourceTree = "<group>"; };
+		A00BBEB620E8A55300E2D934 /* YZMeAvatarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZMeAvatarCell.m; sourceTree = "<group>"; };
+		A00BBEB820E8B80C00E2D934 /* MeEditInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeEditInfoViewController.h; sourceTree = "<group>"; };
+		A00BBEB920E8B80C00E2D934 /* MeEditInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeEditInfoViewController.m; sourceTree = "<group>"; };
+		A00BBEBC20E8BDD100E2D934 /* BasicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicsViewController.h; sourceTree = "<group>"; };
+		A00BBEBD20E8BDD100E2D934 /* BasicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicsViewController.m; sourceTree = "<group>"; };
+		A00BBEBF20E8C13500E2D934 /* UIViewController+YZTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YZTabBarController.h"; sourceTree = "<group>"; };
+		A00BBEC020E8C13500E2D934 /* UIViewController+YZTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YZTabBarController.m"; sourceTree = "<group>"; };
 		A00F03B320A1D264008E60B9 /* YZSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchViewController.h; sourceTree = "<group>"; };
 		A00F03B420A1D264008E60B9 /* YZSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSearchViewController.m; sourceTree = "<group>"; };
 		A00F03B920A1D4BC008E60B9 /* YZSearchTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSearchTableView.h; sourceTree = "<group>"; };
@@ -92,6 +107,12 @@
 		A0132CF9209DA92B00CBA33F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A023F74720A47437003A1E9C /* YZMoreTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMoreTitleView.h; sourceTree = "<group>"; };
 		A023F74820A47437003A1E9C /* YZMoreTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZMoreTitleView.m; sourceTree = "<group>"; };
+		A06F46E620D9347D00D3A1DA /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		A06F46E720D9347D00D3A1DA /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		A06F46ED20D9366300D3A1DA /* MeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeView.h; sourceTree = "<group>"; };
+		A06F46EE20D9366300D3A1DA /* MeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeView.m; sourceTree = "<group>"; };
+		A06F46F720D93A9300D3A1DA /* YZMeNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMeNormalCell.h; sourceTree = "<group>"; };
+		A06F46F820D93A9300D3A1DA /* YZMeNormalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZMeNormalCell.m; sourceTree = "<group>"; };
 		A070798420BCD14900F3B045 /* ZKGameSingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKGameSingleViewController.h; path = Seek/controller/game/ZKGameSingleViewController.h; sourceTree = SOURCE_ROOT; };
 		A070798520BCD14900F3B045 /* ZKGameSingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKGameSingleViewController.m; path = Seek/controller/game/ZKGameSingleViewController.m; sourceTree = SOURCE_ROOT; };
 		A070798720BCD16E00F3B045 /* ZKGameSingleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKGameSingleView.h; sourceTree = "<group>"; };
@@ -189,6 +210,15 @@
 				E078D1022F4E2473FE5D2819 /* libPods-Seek.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A00BBEBB20E8BD9500E2D934 /* basics */ = {
+			isa = PBXGroup;
+			children = (
+				A00BBEBC20E8BDD100E2D934 /* BasicsViewController.h */,
+				A00BBEBD20E8BDD100E2D934 /* BasicsViewController.m */,
+			);
+			path = basics;
 			sourceTree = "<group>";
 		};
 		A00F03B120A1D244008E60B9 /* search */ = {
@@ -323,6 +353,38 @@
 			path = Seek;
 			sourceTree = "<group>";
 		};
+		A06F46E520D9346200D3A1DA /* me */ = {
+			isa = PBXGroup;
+			children = (
+				A06F46E620D9347D00D3A1DA /* MeViewController.h */,
+				A06F46E720D9347D00D3A1DA /* MeViewController.m */,
+				A00BBEB820E8B80C00E2D934 /* MeEditInfoViewController.h */,
+				A00BBEB920E8B80C00E2D934 /* MeEditInfoViewController.m */,
+			);
+			path = me;
+			sourceTree = "<group>";
+		};
+		A06F46E920D9355000D3A1DA /* me */ = {
+			isa = PBXGroup;
+			children = (
+				A06F46F020D9396700D3A1DA /* cell */,
+				A06F46ED20D9366300D3A1DA /* MeView.h */,
+				A06F46EE20D9366300D3A1DA /* MeView.m */,
+			);
+			path = me;
+			sourceTree = "<group>";
+		};
+		A06F46F020D9396700D3A1DA /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				A06F46F720D93A9300D3A1DA /* YZMeNormalCell.h */,
+				A06F46F820D93A9300D3A1DA /* YZMeNormalCell.m */,
+				A00BBEB520E8A55300E2D934 /* YZMeAvatarCell.h */,
+				A00BBEB620E8A55300E2D934 /* YZMeAvatarCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		A070798220BCD11500F3B045 /* index */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +442,7 @@
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3905C20D746490067B309 /* tabbar */,
 				F5C5095420B9B49E0094F4BA /* Category */,
 				A00F03C020A285EF008E60B9 /* searchAnimation */,
 				A00F03BC20A1D831008E60B9 /* NSString */,
@@ -404,7 +467,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3905D20D746510067B309 /* tabbar */,
+				A06F46E920D9355000D3A1DA /* me */,
 				F5C5095820BAD6940094F4BA /* game */,
 				F517BF0A20B9510E00D6A136 /* setting */,
 				A0DA121120B7CD0000469D33 /* liked */,
@@ -422,7 +485,8 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3905C20D746490067B309 /* tabbar */,
+				A00BBEBB20E8BD9500E2D934 /* basics */,
+				A06F46E520D9346200D3A1DA /* me */,
 				F5C5095B20BAD6BC0094F4BA /* game */,
 				F517BF0E20B9513000D6A136 /* setting */,
 				A0DA121020B7CCF500469D33 /* liked */,
@@ -546,8 +610,11 @@
 		A0E3905C20D746490067B309 /* tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3905D20D746510067B309 /* tabbar */,
 				A0E3906820D74E850067B309 /* YZTabBarController.h */,
 				A0E3906920D74E850067B309 /* YZTabBarController.m */,
+				A00BBEBF20E8C13500E2D934 /* UIViewController+YZTabBarController.h */,
+				A00BBEC020E8C13500E2D934 /* UIViewController+YZTabBarController.m */,
 			);
 			path = tabbar;
 			sourceTree = "<group>";
@@ -776,12 +843,17 @@
 				A08BD3FF20A819EB0046C0A6 /* User.m in Sources */,
 				A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */,
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
+				A06F46F920D93A9300D3A1DA /* YZMeNormalCell.m in Sources */,
 				A0DA121B20B8468300469D33 /* YZDetailImage.m in Sources */,
 				A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */,
 				A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */,
+				A00BBEBE20E8BDD100E2D934 /* BasicsViewController.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
+				A00BBEBA20E8B80C00E2D934 /* MeEditInfoViewController.m in Sources */,
 				A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
+				A00BBEB720E8A55300E2D934 /* YZMeAvatarCell.m in Sources */,
+				A06F46E820D9347D00D3A1DA /* MeViewController.m in Sources */,
 				A070798620BCD14900F3B045 /* ZKGameSingleViewController.m in Sources */,
 				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
@@ -798,6 +870,7 @@
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */,
+				A06F46EF20D9366300D3A1DA /* MeView.m in Sources */,
 				F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */,
@@ -817,6 +890,7 @@
 				A0F8908020B546B20070B0C7 /* YZHistoryWord.m in Sources */,
 				A0E3906A20D74E850067B309 /* YZTabBarController.m in Sources */,
 				A0DA121720B7CD5100469D33 /* YZLikedView.m in Sources */,
+				A00BBEC120E8C13500E2D934 /* UIViewController+YZTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
