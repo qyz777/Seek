@@ -13,8 +13,11 @@
 // navigationBar background-color
 @property(nonatomic, strong)UIColor *navigationBarColor;
 
-// default is none
+// default is left
 - (UILabel *)addTitleLabelWithTitle:(NSString *)title font:(UIFont *)font color:(UIColor *)color;
+
+// default is center
+- (UILabel *)addCenterTitleLabelWithTitle:(NSString *)title font:(UIFont *)font color:(UIColor *)color;
 
 // add navigationBar left button
 - (UIButton *)addLeftButtonWithImage:(UIImage *)image;

@@ -36,6 +36,21 @@
     return titleLabel;
 }
 
+- (UILabel *)addCenterTitleLabelWithTitle:(NSString *)title font:(UIFont *)font color:(UIColor *)color {
+    UILabel *titleLabel = [[UILabel alloc]init];
+    titleLabel.text = title;
+    titleLabel.font = font;
+    titleLabel.textColor = color;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(120, 30));
+        make.center.equalTo(self);
+    }];
+    
+    return titleLabel;
+}
+
 - (UIButton *)addLeftButtonWithImage:(UIImage *)image {
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setImage:image forState:UIControlStateNormal];
