@@ -45,7 +45,8 @@
     [self addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(120, 30));
-        make.center.equalTo(self);
+        make.centerX.equalTo(self);
+        make.top.equalTo(self).offset(25);
     }];
     
     return titleLabel;
