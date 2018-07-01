@@ -40,7 +40,8 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UINavigationController *fromVC = (UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    MainViewController *mainVC = fromVC.viewControllers[1];
+    UINavigationController *nav = fromVC.viewControllers[1];
+    MainViewController *mainVC = nav.viewControllers[0];
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
     
