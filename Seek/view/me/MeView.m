@@ -32,6 +32,12 @@
     [self registerClass:[YZMeNormalCell class] forCellReuseIdentifier:NSStringFromClass([YZMeNormalCell class])];
 }
 
+- (void)logOut:(id)sender {
+    if ([self.yz_delegate respondsToSelector:@selector(logOutBtnDidClicked)]) {
+        [self.yz_delegate logOutBtnDidClicked];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 4;
@@ -65,6 +71,31 @@
     }else {
         return [YZMeNormalCell cellHeight];
     }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footerView = [UIView new];
+    footerView.backgroundColor = [UIColor clearColor];
+    UIButton *logOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [logOutBtn addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
+    [logOutBtn setTitle:@"退出" forState:UIControlStateNormal];
+    logOutBtn.titleLabel.textColor = [UIColor whiteColor];
+    logOutBtn.layer.cornerRadius = 15.0f;
+    logOutBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    logOutBtn.layer.borderWidth = 0.5f;
+    [footerView addSubview:logOutBtn];
+    [logOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(footerView);
+        make.bottom.equalTo(footerView).offset(-10);
+        make.left.equalTo(footerView).offset(30);
+        make.right.equalTo(footerView).offset(-30);
+        make.height.mas_equalTo(35);
+    }];
+    return footerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 80;
 }
 
 @end

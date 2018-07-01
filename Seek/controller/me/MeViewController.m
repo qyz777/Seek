@@ -9,6 +9,7 @@
 #import "MeViewController.h"
 #import "MeView.h"
 #import "MeEditInfoViewController.h"
+#import "YZLoginViewController.h"
 
 @interface MeViewController ()<MeViewDelegate>
 
@@ -43,6 +44,12 @@
     MeEditInfoViewController *vc = [MeEditInfoViewController new];
     vc.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:vc animated:true];
+}
+
+- (void)logOutBtnDidClicked {
+    [User logOut];
+    YZLoginViewController *vc = [YZLoginViewController new];
+    [self presentViewController:vc animated:true completion:nil];
 }
 
 @end

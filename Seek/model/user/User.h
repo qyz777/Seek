@@ -24,6 +24,9 @@
 // 获得用户信息
 + (void)userStashPop;
 
+// 退出
++ (void)logOut;
+
 /**
  用户注册
  

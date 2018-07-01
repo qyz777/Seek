@@ -56,6 +56,14 @@ YZ_SINGLETON(User, user);
     }
 }
 
++ (void)logOut {
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/user.data"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        [fileManager removeItemAtPath:filePath error:nil];
+    }
+}
+
 + (void)userRegisterWithPhone:(NSString*)phone
                      Password:(NSString*)psd
                       success:(void(^)(void))success

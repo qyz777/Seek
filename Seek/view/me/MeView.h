@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, YZMeCellStyle) {
 @protocol MeViewDelegate <NSObject>
 
 - (void)avatarCellDidSelect;
+- (void)logOutBtnDidClicked;
 
 @end
 
