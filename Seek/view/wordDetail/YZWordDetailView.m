@@ -47,15 +47,16 @@
     self.wordLabel.textAlignment = NSTextAlignmentCenter;
     [self.cardView addSubview:self.wordLabel];
     [self.wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 70, 25));
+        make.height.mas_equalTo(25);
+        make.left.equalTo(self.cardView).offset(10);
+        make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.cardView).offset(5);
-        make.centerX.equalTo(self.cardView);
     }];
     
     self.ukPhoneLabel = [UILabel new];
     [self.cardView addSubview:self.ukPhoneLabel];
     [self.ukPhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2 - 30, 21));
+        make.height.mas_equalTo(21);
         make.left.equalTo(self.cardView).offset(10);
         make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
     }];
@@ -64,7 +65,7 @@
     self.usPhoneLabel.textAlignment = NSTextAlignmentRight;
     [self.cardView addSubview:self.usPhoneLabel];
     [self.usPhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2 - 30, 21));
+        make.height.mas_equalTo(21);
         make.right.equalTo(self.cardView).offset(-10);
         make.centerY.equalTo(self.ukPhoneLabel);
     }];
@@ -73,8 +74,8 @@
     self.senLabel.numberOfLines = 0;
     [self.cardView addSubview:self.senLabel];
     [self.senLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCREEN_WIDTH - 80);
-        make.centerX.equalTo(self.cardView);
+        make.left.equalTo(self.cardView).offset(10);
+        make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.usPhoneLabel.mas_bottom).offset(20);
     }];
 
@@ -82,8 +83,8 @@
     self.senTranLabel.numberOfLines = 0;
     [self.cardView addSubview:self.senTranLabel];
     [self.senTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SCREEN_WIDTH - 80);
-        make.centerX.equalTo(self.cardView);
+        make.left.equalTo(self.cardView).offset(10);
+        make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.senLabel.mas_bottom).offset(20);
     }];
 
@@ -91,8 +92,8 @@
     self.firstTranLabel.numberOfLines = 0;
     [self.cardView addSubview:self.firstTranLabel];
     [self.firstTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 21));
         make.left.equalTo(self.cardView).offset(10);
+        make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.senTranLabel.mas_bottom).offset(20);
     }];
 
@@ -100,8 +101,8 @@
     self.secondTranLabel.numberOfLines = 0;
     [self.cardView addSubview:self.secondTranLabel];
     [self.secondTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 21));
         make.left.equalTo(self.cardView).offset(10);
+        make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.firstTranLabel.mas_bottom).offset(20);
     }];
 
@@ -109,8 +110,8 @@
     self.thirdTranLabel.numberOfLines = 0;
     [self.cardView addSubview:self.thirdTranLabel];
     [self.thirdTranLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 80, 21));
         make.left.equalTo(self.cardView).offset(10);
+        make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.secondTranLabel.mas_bottom).offset(20);
     }];
 }
