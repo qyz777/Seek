@@ -85,9 +85,9 @@ NSNotificationName const WordDidLikedNotification = @"WordDidLikedNotification";
     }
     if (pan.state == UIGestureRecognizerStateChanged) {
         if (offsetX > 0) {
-            self.detailView.imageView.image = [UIImage imageNamed:@"喜欢表情"];
+            self.detailView.imageView.image = [UIImage imageNamed:@"detail_like"];
         }else {
-            self.detailView.imageView.image = [UIImage imageNamed:@"不喜欢表情"];
+            self.detailView.imageView.image = [UIImage imageNamed:@"detail_dontlike"];
         }
         CGAffineTransform t1 = CGAffineTransformMakeRotation(M_PI * offsetX * 0.0006);
         CGAffineTransform t2 = CGAffineTransformTranslate(t1, offsetX * 2, 0);

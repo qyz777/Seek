@@ -34,7 +34,7 @@
     [self addSubview:self.leftSymLabel];
     [self.leftSymLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2 - 40, 30));
-        make.left.equalTo(self).offset(30);
+        make.left.equalTo(self).offset(15);
         make.top.equalTo(self.wordLabel.mas_bottom).offset(30);
     }];
     
@@ -44,50 +44,54 @@
     [self addSubview:self.rightSymLabel];
     [self.rightSymLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2 - 40, 30));
-        make.right.equalTo(self).offset(-30);
+        make.right.equalTo(self).offset(-15);
         make.top.equalTo(self.wordLabel.mas_bottom).offset(30);
     }];
     
     self.translateLabel = [UILabel new];
     self.translateLabel.text = @"翻译:";
+    self.translateLabel.hidden = true;
     self.translateLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     self.translateLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.translateLabel];
     [self.translateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 60, 30));
-        make.centerX.equalTo(self);
+        make.height.mas_equalTo(21);
+        make.left.equalTo(self).offset(15);
         make.top.equalTo(self.wordLabel.mas_bottom).offset(120);
     }];
     
     self.firstTranslateLabel = [UILabel new];
-    self.firstTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
+    self.firstTranslateLabel.numberOfLines = 0;
+    self.firstTranslateLabel.font = [UIFont boldSystemFontOfSize:18.f];
     self.firstTranslateLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.firstTranslateLabel];
     [self.firstTranslateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 60, 30));
-        make.centerX.equalTo(self);
+        make.left.equalTo(self).offset(15);
+        make.right.equalTo(self).offset(-15);
         make.top.equalTo(self.translateLabel.mas_bottom).offset(8);
     }];
     
     self.secondTranslateLabel = [UILabel new];
-    self.secondTranslateLabel.font = [UIFont boldSystemFontOfSize:20.f];
+    self.secondTranslateLabel.numberOfLines = 0;
+    self.secondTranslateLabel.font = [UIFont boldSystemFontOfSize:18.f];
     self.secondTranslateLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.secondTranslateLabel];
     [self.secondTranslateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 60, 30));
-        make.centerX.equalTo(self);
+        make.left.equalTo(self).offset(15);
+        make.right.equalTo(self).offset(-15);
         make.top.equalTo(self.firstTranslateLabel.mas_bottom).offset(12);
     }];
     
     self.selectLabel = [UILabel new];
     self.selectLabel.text = @"精选短句:";
+    self.selectLabel.hidden = true;
     self.selectLabel.numberOfLines = 0;
     self.selectLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     self.selectLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.selectLabel];
     [self.selectLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_offset(CGSizeMake(80, 21));
-        make.left.equalTo(self).offset(10);
+        make.height.mas_equalTo(21);
+        make.left.equalTo(self).offset(15);
         make.top.equalTo(self.secondTranslateLabel.mas_bottom).offset(18);
     }];
     
@@ -97,9 +101,8 @@
     self.enLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.enLabel];
     [self.enLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(10);
-        make.right.equalTo(self).offset(-10);
-        make.centerX.equalTo(self);
+        make.left.equalTo(self).offset(15);
+        make.right.equalTo(self).offset(-15);
         make.top.equalTo(self.selectLabel.mas_bottom).offset(8);
     }];
     
@@ -109,7 +112,7 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_offset(CGSizeMake(80, 80));
         make.centerX.equalTo(self);
-        make.bottom.equalTo(self).offset(-20);
+        make.bottom.equalTo(self).offset(-15);
     }];
 }
 
@@ -120,15 +123,21 @@
     self.leftSymLabel.text = ukStr;
     NSString *usStr = [@"" stringByAppendingFormat:@"美:/%@/",word.usPhone];
     self.rightSymLabel.text = usStr;
+    if (word.sentence.length > 0) {
+        self.selectLabel.hidden = false;
+    }
     self.enLabel.text = word.sentence;
     int i = 0;
-    for (NSString *str in word.translate) {
-        if (i == 0) {
-            self.firstTranslateLabel.text = str;
-        }else {
-            self.secondTranslateLabel.text = str;
+    if (word.translate.count > 0) {
+        self.translateLabel.hidden = false;
+        for (NSString *str in word.translate) {
+            if (i == 0) {
+                self.firstTranslateLabel.text = str;
+            }else {
+                self.secondTranslateLabel.text = str;
+            }
+            i++;
         }
-        i++;
     }
 }
 

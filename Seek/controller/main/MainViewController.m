@@ -10,7 +10,7 @@
 #import "MainView.h"
 #import "UIViewController+YZNavigationBar.h"
 #import "YZSearchViewController.h"
-#import "YZMoreViewController.h"
+#import "YZFindViewController.h"
 #import "YZLoginViewController.h"
 #import "YZWord.h"
 
@@ -35,7 +35,7 @@
     self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
     self.searchBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"main_search_btn"]];
     [self.searchBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"main_more_btn"]];
+    UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"main_find_btn"]];
     [rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     self.mainView = [MainView new];
@@ -100,7 +100,7 @@
 }
 
 - (void)clickRightBtn:(id)sender {
-    YZMoreViewController *vc = [[YZMoreViewController alloc]init];
+    YZFindViewController *vc = [[YZFindViewController alloc]init];
     [self presentViewController:vc animated:false completion:^{
         
     }];
