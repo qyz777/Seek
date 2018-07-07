@@ -87,16 +87,25 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     }];
 }
 
-#pragma make - yz_delegate
+#pragma mark - yz_delegate
 - (void)cellDidSelectWithDict:(NSDictionary *)dict {
-    YZWordDetailViewController *vc = [[YZWordDetailViewController alloc]init];
+    YZWordDetailViewController *vc = [YZWordDetailViewController new];
     vc.word = dict[@"entry"];
-    [self presentViewController:vc animated:false completion:^{
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [YZHistoryWord removeAllSearchHistory];
-            [YZHistoryWord searchHistoryCacheWithArray:self.searchView.historyDataArray.mutableCopy];
-        });
-    }];
+    [self.navigationController pushViewController:vc animated:true];
+//    [self presentViewController:vc animated:true completion:nil];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZHistoryWord removeAllSearchHistory];
+        [YZHistoryWord searchHistoryCacheWithArray:self.searchView.historyDataArray.mutableCopy];
+    });
+}
+
+- (void)clearSearchHistoryBtnDidTouchUpInside {
+    self.searchView.clearHistoryBtn.hidden = true;
+    [self.searchView.historyDataArray removeAllObjects];
+    [self.searchView reloadData];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [YZHistoryWord removeAllSearchHistory];
+    });
 }
 
 - (void)searchFieldDidChange:(UITextField *)textField {
@@ -121,19 +130,10 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     return [[SearchAnimation alloc]init];
 }
 
-#pragma make - UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.searchField resignFirstResponder];
     return true;
-}
-
-- (void)clearSearchHistoryBtnDidTouchUpInside {
-    self.searchView.clearHistoryBtn.hidden = true;
-    [self.searchView.historyDataArray removeAllObjects];
-    [self.searchView reloadData];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [YZHistoryWord removeAllSearchHistory];
-    });
 }
 
 @end

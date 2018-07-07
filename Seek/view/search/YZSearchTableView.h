@@ -13,7 +13,6 @@ UIKIT_EXTERN NSNotificationName const SearchTableViewDidScrollNotification;
 @protocol YZSearchTableViewDelegate <NSObject>
 
 - (void)cellDidSelectWithDict:(NSDictionary*)dict;
-- (void)cellDidSelectWithSearchHistoryArray:(NSArray*)array;
 - (void)clearSearchHistoryBtnDidTouchUpInside;
 
 @end

@@ -95,10 +95,4 @@
     });
 }
 
-#pragma make - setter
-- (void)setWord:(NSString *)word {
-    _word = word;
-    [self requestData];
-}
-
 @end

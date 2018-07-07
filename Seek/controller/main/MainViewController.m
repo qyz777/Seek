@@ -94,7 +94,8 @@
 
 - (void)clickLeftBtn:(id)sender {
     YZSearchViewController *vc = [[YZSearchViewController alloc]init];
-    [self presentViewController:vc animated:true completion:^{
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nav animated:true completion:^{
         
     }];
 }
