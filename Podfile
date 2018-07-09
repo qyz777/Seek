@@ -5,6 +5,7 @@ pod 'Masonry'
 pod 'AFNetworking'
 pod 'mob_smssdk'
 pod 'SVProgressHUD'
+pod 'CocoaAsyncSocket'
 
 end
 
