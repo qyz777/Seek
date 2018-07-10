@@ -26,8 +26,22 @@
 
 - (void)initView {
     self.view.backgroundColor = [UIColor whiteColor];
+    CAGradientLayer *backLayer = [CAGradientLayer layer];
+    backLayer.frame = self.view.bounds;
+    [backLayer setColors:[NSArray arrayWithObjects:(id)[[UIColor blackColor] CGColor],(id)[UIColorFromRGB(0xf5f5f5) CGColor],nil]];
+    [backLayer setLocations:@[@(0.65),@(1.0)]];
+    [backLayer setStartPoint:CGPointMake(0, 0)];
+    [backLayer setEndPoint:CGPointMake(0.0, 1.0)];
+    [self.view.layer addSublayer:backLayer];
+    
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+    effectView.frame = self.view.frame;
+    [self.view addSubview:effectView];
+    effectView.alpha = 0.50;
+    
     [self navigationBar];
-    self.yz_navigationBar.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
+    self.yz_navigationBar.backgroundColor = [UIColor clearColor];
     self.loginView = [[YZLoginView alloc]init];
     self.loginView.yz_delegate = self;
     [self.view addSubview:self.loginView];

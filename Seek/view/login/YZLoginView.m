@@ -11,8 +11,8 @@
 @implementation YZLoginView
 
 - (instancetype)init {
-    self = [super init];
-    self.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
+    self = [super init];    
+//    self.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
     self.isRegister = false;
     [self initSubviews];
