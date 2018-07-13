@@ -12,42 +12,42 @@
 
 - (instancetype)init {
     self = [super init];
-    self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [self initSubviews];
     return self;
 }
 
 - (void)initSubviews {
-    self.headerImageView = [UIImageView new];
-    self.headerImageView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.headerImageView.layer.shadowOffset = CGSizeMake(1, 1);
-    self.headerImageView.layer.shadowOpacity = 0.7;
-    [self addSubview:self.headerImageView];
-    [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 240));
-        make.centerX.equalTo(self);
-        make.top.equalTo(self);
+    self.backImageView = [UIImageView new];
+    [self addSubview:self.backImageView];
+    [self.backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.bottom.left.equalTo(self);
     }];
     
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+    effectView.alpha = 0.7f;
+    effectView.frame = self.frame;
+    [self.backImageView addSubview:effectView];
+    
     self.cardView = [UIView new];
-    self.cardView.backgroundColor = RGB(248, 248, 255);
+    self.cardView.backgroundColor = RGB_ALPHA(248, 248, 255, 0.8);
     self.cardView.layer.cornerRadius = 8;
     self.cardView.layer.shadowOffset = CGSizeMake(1, 1);
     self.cardView.layer.shadowOpacity = 0.7;
     self.cardView.layer.shadowColor = [UIColor blackColor].CGColor;
-    [self addSubview:self.cardView];
+    [self.backImageView addSubview:self.cardView];
     [self.cardView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 280));
-        make.top.equalTo(self.headerImageView.mas_bottom).offset(-60);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 240));
+        make.top.equalTo(self.backImageView).offset(140);
         make.centerX.equalTo(self);
     }];
     
     self.wordLabel = [UILabel new];
-    self.wordLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.wordLabel.font = [UIFont boldSystemFontOfSize:25.0f];
     self.wordLabel.textAlignment = NSTextAlignmentCenter;
     [self.cardView addSubview:self.wordLabel];
     [self.wordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(25);
         make.left.equalTo(self.cardView).offset(10);
         make.right.equalTo(self.cardView).offset(-10);
         make.top.equalTo(self.cardView).offset(5);
@@ -58,7 +58,7 @@
     [self.ukPhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(21);
         make.left.equalTo(self.cardView).offset(10);
-        make.top.equalTo(self.wordLabel.mas_bottom).offset(10);
+        make.top.equalTo(self.wordLabel.mas_bottom).offset(20);
     }];
 
     self.usPhoneLabel = [UILabel new];

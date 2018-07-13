@@ -21,7 +21,7 @@
 @property(nonatomic, strong)UILabel *thirdTranLabel;
 
 @property(nonatomic, strong)UIView *cardView;
-@property(nonatomic, strong)UIImageView *headerImageView;
+@property(nonatomic, strong)UIImageView *backImageView;
 
 @property(nonatomic, copy)YZWord *wordData;
 

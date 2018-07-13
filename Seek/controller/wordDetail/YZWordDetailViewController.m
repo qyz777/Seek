@@ -26,30 +26,32 @@
 }
 
 - (void)initView {
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     [self navigationBar];
-    UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"返回"]];
+    self.yz_navigationBar.navigationBarColor = [UIColor clearColor];
+    UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"pop"]];
     [leftBtn addTarget:self action:@selector(leftBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"喜欢爱心"]];
+    UIButton *rightBtn = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"detail_heart_like"]];
     rightBtn.tag = -1;
     [rightBtn addTarget:self action:@selector(rightBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     self.detailView = [[YZWordDetailView alloc]init];
     [self.view addSubview:self.detailView];
+    [self.view bringSubviewToFront:self.yz_navigationBar];
     [self requestData];
 }
 
 - (void)leftBtnDidClicked:(id)sender {
-    [self dismissViewControllerAnimated:false completion:nil];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)rightBtnDidClicked:(id)sender {
     UIButton *btn = sender;
     if (btn.tag == -1) {
-        [btn setImage:[UIImage imageNamed:@"喜欢的爱心"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"detail_heart_liked"] forState:UIControlStateNormal];
         btn.tag = 1;
     }else {
-        [btn setImage:[UIImage imageNamed:@"喜欢爱心"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"detail_heart_like"] forState:UIControlStateNormal];
         btn.tag = -1;
     }
     [YZWord likeWithWord:_word success:^(BOOL isLike) {
@@ -90,7 +92,7 @@
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         self.detailView.wordData = shortWord;
-        self.detailView.headerImageView.image = shortImage;
+        self.detailView.backImageView.image = shortImage;
         [SVProgressHUD dismiss];
     });
 }

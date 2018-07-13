@@ -33,7 +33,7 @@
 
 - (void)initView {
     [self navigationBar];
-    self.yz_navigationBar.backgroundColor = [UIColor blackColor];
+    self.yz_navigationBar.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     UIButton *rightButton = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"叉"]];
     [rightButton addTarget:self action:@selector(rightBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLabel = [UILabel new];

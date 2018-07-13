@@ -25,7 +25,7 @@ static NSString *identifier = @"cell";
 }
 
 - (void)initSubviews {
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     self.showsVerticalScrollIndicator = false;
     self.showsHorizontalScrollIndicator = false;
     [self registerClass:[YZFindCollectionViewCell class] forCellWithReuseIdentifier:identifier];
