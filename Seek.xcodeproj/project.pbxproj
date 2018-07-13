@@ -29,6 +29,7 @@
 		A0132CF7209DA92B00CBA33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0132CF5209DA92B00CBA33F /* LaunchScreen.storyboard */; };
 		A0132CFA209DA92B00CBA33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0132CF9209DA92B00CBA33F /* main.m */; };
 		A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A023F74820A47437003A1E9C /* YZMoreTitleView.m */; };
+		A02D028C20F4DEB8006219D5 /* YZGameInterludeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02D028B20F4DEB8006219D5 /* YZGameInterludeViewController.m */; };
 		A06F46E820D9347D00D3A1DA /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06F46E720D9347D00D3A1DA /* MeViewController.m */; };
 		A06F46EF20D9366300D3A1DA /* MeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A06F46EE20D9366300D3A1DA /* MeView.m */; };
 		A06F46F920D93A9300D3A1DA /* YZMeNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A06F46F820D93A9300D3A1DA /* YZMeNormalCell.m */; };
@@ -42,6 +43,7 @@
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
 		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
 		A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */; };
+		A0BA18A920F7952300E2FD84 /* YZGameInterludeFindView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BA18A820F7952300E2FD84 /* YZGameInterludeFindView.m */; };
 		A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DA121320B7CD1F00469D33 /* YZLikedViewController.m */; };
 		A0DA121720B7CD5100469D33 /* YZLikedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DA121620B7CD5100469D33 /* YZLikedView.m */; };
 		A0DA121B20B8468300469D33 /* YZDetailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DA121A20B8468300469D33 /* YZDetailImage.m */; };
@@ -52,6 +54,7 @@
 		A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888820A68FDB00CA810C /* YZFindCollectionViewCell.m */; };
 		A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */; };
 		A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB889020A6A1DE00CA810C /* YZDetailView.m */; };
+		A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DE418520F38ED100E61A3C /* SocketManager.m */; };
 		A0E3906420D749060067B309 /* YZTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E3906320D749060067B309 /* YZTabBarView.m */; };
 		A0E3906720D74DA10067B309 /* YZTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E3906620D74DA10067B309 /* YZTabBar.m */; };
 		A0E3906A20D74E850067B309 /* YZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E3906920D74E850067B309 /* YZTabBarController.m */; };
@@ -107,6 +110,8 @@
 		A0132CF9209DA92B00CBA33F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A023F74720A47437003A1E9C /* YZMoreTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMoreTitleView.h; sourceTree = "<group>"; };
 		A023F74820A47437003A1E9C /* YZMoreTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZMoreTitleView.m; sourceTree = "<group>"; };
+		A02D028A20F4DEB8006219D5 /* YZGameInterludeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZGameInterludeViewController.h; sourceTree = "<group>"; };
+		A02D028B20F4DEB8006219D5 /* YZGameInterludeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZGameInterludeViewController.m; sourceTree = "<group>"; };
 		A06F46E620D9347D00D3A1DA /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		A06F46E720D9347D00D3A1DA /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		A06F46ED20D9366300D3A1DA /* MeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeView.h; sourceTree = "<group>"; };
@@ -134,6 +139,8 @@
 		A0A86644209EE70600674BF6 /* YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZNavigationBar.m; sourceTree = "<group>"; };
 		A0A86649209EED7D00674BF6 /* UIViewController+YZNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YZNavigationBar.h"; sourceTree = "<group>"; };
 		A0A8664A209EED7D00674BF6 /* UIViewController+YZNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YZNavigationBar.m"; sourceTree = "<group>"; };
+		A0BA18A720F7952300E2FD84 /* YZGameInterludeFindView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZGameInterludeFindView.h; sourceTree = "<group>"; };
+		A0BA18A820F7952300E2FD84 /* YZGameInterludeFindView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZGameInterludeFindView.m; sourceTree = "<group>"; };
 		A0DA121220B7CD1F00469D33 /* YZLikedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLikedViewController.h; sourceTree = "<group>"; };
 		A0DA121320B7CD1F00469D33 /* YZLikedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLikedViewController.m; sourceTree = "<group>"; };
 		A0DA121520B7CD5100469D33 /* YZLikedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLikedView.h; sourceTree = "<group>"; };
@@ -154,6 +161,8 @@
 		A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailViewController.m; sourceTree = "<group>"; };
 		A0DB888F20A6A1DE00CA810C /* YZDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZDetailView.h; sourceTree = "<group>"; };
 		A0DB889020A6A1DE00CA810C /* YZDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailView.m; sourceTree = "<group>"; };
+		A0DE418420F38ED100E61A3C /* SocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
+		A0DE418520F38ED100E61A3C /* SocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
 		A0E3906220D749060067B309 /* YZTabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZTabBarView.h; sourceTree = "<group>"; };
 		A0E3906320D749060067B309 /* YZTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZTabBarView.m; sourceTree = "<group>"; };
 		A0E3906520D74DA10067B309 /* YZTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZTabBar.h; sourceTree = "<group>"; };
@@ -340,6 +349,7 @@
 				A0A86616209DB5EF00674BF6 /* view */,
 				A0A86615209DB5EA00674BF6 /* model */,
 				A0A86613209DAFD100674BF6 /* expansion */,
+				A0DE418320F38EAB00E61A3C /* manager */,
 				A0132CEA209DA92A00CBA33F /* AppDelegate.h */,
 				A0132CEB209DA92A00CBA33F /* AppDelegate.m */,
 				A0132CED209DA92A00CBA33F /* ViewController.h */,
@@ -351,6 +361,15 @@
 				A0132CF9209DA92B00CBA33F /* main.m */,
 			);
 			path = Seek;
+			sourceTree = "<group>";
+		};
+		A02D028920F4DE8D006219D5 /* interlude */ = {
+			isa = PBXGroup;
+			children = (
+				A02D028A20F4DEB8006219D5 /* YZGameInterludeViewController.h */,
+				A02D028B20F4DEB8006219D5 /* YZGameInterludeViewController.m */,
+			);
+			path = interlude;
 			sourceTree = "<group>";
 		};
 		A06F46E520D9346200D3A1DA /* me */ = {
@@ -530,6 +549,15 @@
 			path = navigation;
 			sourceTree = "<group>";
 		};
+		A0BA18A620F794EB00E2FD84 /* interlude */ = {
+			isa = PBXGroup;
+			children = (
+				A0BA18A720F7952300E2FD84 /* YZGameInterludeFindView.h */,
+				A0BA18A820F7952300E2FD84 /* YZGameInterludeFindView.m */,
+			);
+			path = interlude;
+			sourceTree = "<group>";
+		};
 		A0DA121020B7CCF500469D33 /* liked */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +633,15 @@
 				A0DB889020A6A1DE00CA810C /* YZDetailView.m */,
 			);
 			path = detail;
+			sourceTree = "<group>";
+		};
+		A0DE418320F38EAB00E61A3C /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				A0DE418420F38ED100E61A3C /* SocketManager.h */,
+				A0DE418520F38ED100E61A3C /* SocketManager.m */,
+			);
+			path = manager;
 			sourceTree = "<group>";
 		};
 		A0E3905C20D746490067B309 /* tabbar */ = {
@@ -695,6 +732,7 @@
 		F5C5095820BAD6940094F4BA /* game */ = {
 			isa = PBXGroup;
 			children = (
+				A0BA18A620F794EB00E2FD84 /* interlude */,
 				F5C5095F20BAD9610094F4BA /* index */,
 				F5C5095A20BAD6A30094F4BA /* single */,
 			);
@@ -713,6 +751,7 @@
 		F5C5095B20BAD6BC0094F4BA /* game */ = {
 			isa = PBXGroup;
 			children = (
+				A02D028920F4DE8D006219D5 /* interlude */,
 				A070798320BCD12000F3B045 /* single */,
 				A070798220BCD11500F3B045 /* index */,
 			);
@@ -852,6 +891,7 @@
 				A00BBEBA20E8B80C00E2D934 /* MeEditInfoViewController.m in Sources */,
 				A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
+				A02D028C20F4DEB8006219D5 /* YZGameInterludeViewController.m in Sources */,
 				A00BBEB720E8A55300E2D934 /* YZMeAvatarCell.m in Sources */,
 				A06F46E820D9347D00D3A1DA /* MeViewController.m in Sources */,
 				A070798620BCD14900F3B045 /* ZKGameSingleViewController.m in Sources */,
@@ -878,9 +918,11 @@
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
 				F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */,
+				A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
+				A0BA18A920F7952300E2FD84 /* YZGameInterludeFindView.m in Sources */,
 				F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */,
 				F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */,
 				A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */,
