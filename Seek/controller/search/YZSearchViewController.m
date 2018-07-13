@@ -9,7 +9,6 @@
 
 #import "YZSearchViewController.h"
 #import "YZSearchTableView.h"
-#import "SearchAnimation.h"
 #import "UIViewController+YZNavigationBar.h"
 #import "YZWord.h"
 #import "YZHistoryWord.h"
@@ -17,7 +16,7 @@
 
 NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChangeNotification";
 
-@interface YZSearchViewController ()<UIViewControllerTransitioningDelegate,UITextFieldDelegate,YZSearchTableViewDelegate>
+@interface YZSearchViewController ()<UITextFieldDelegate,YZSearchTableViewDelegate>
 
 @property(nonatomic, strong)YZSearchTableView *searchView;
 @property(nonatomic, strong)UITextField *searchField;
@@ -28,7 +27,6 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.transitioningDelegate = self;
     self.modalPresentationStyle = UIModalPresentationCustom;
     [self initView];
     Add_Observer(SearchTableViewDidScrollNotification, self, searchTableViewDidScroll, nil);
@@ -82,9 +80,7 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 }
 
 - (void)clickRightBtn:(id)sender {
-    [self dismissViewControllerAnimated:true completion:^{
-        
-    }];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 #pragma mark - yz_delegate
@@ -92,7 +88,6 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     YZWordDetailViewController *vc = [YZWordDetailViewController new];
     vc.word = dict[@"entry"];
     [self.navigationController pushViewController:vc animated:true];
-//    [self presentViewController:vc animated:true completion:nil];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [YZHistoryWord removeAllSearchHistory];
         [YZHistoryWord searchHistoryCacheWithArray:self.searchView.historyDataArray.mutableCopy];
@@ -119,15 +114,6 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
 
 - (void)searchTableViewDidScroll {
     [self.searchField resignFirstResponder];
-}
-
-#pragma mark - UIViewControllerTransitioningDelegate
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    return [[SearchAnimation alloc]init];
-}
-
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    return [[SearchAnimation alloc]init];
 }
 
 #pragma mark - UITextFieldDelegate

@@ -13,8 +13,9 @@
 #import "YZFindViewController.h"
 #import "YZLoginViewController.h"
 #import "YZWord.h"
+#import "SearchAnimation.h"
 
-@interface MainViewController ()<MainViewDelegate>
+@interface MainViewController ()<MainViewDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic, strong)MainView *mainView;
 @property(nonatomic, copy)NSArray<YZWord *> *fiveWordArray;
@@ -27,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    self.navigationController.delegate = self;
 }
 
 - (void)initView {
@@ -94,17 +96,22 @@
 
 - (void)clickLeftBtn:(id)sender {
     YZSearchViewController *vc = [[YZSearchViewController alloc]init];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-    [self presentViewController:nav animated:true completion:^{
-        
-    }];
+    vc.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (void)clickRightBtn:(id)sender {
     YZFindViewController *vc = [[YZFindViewController alloc]init];
-    [self presentViewController:vc animated:false completion:^{
-        
-    }];
+    vc.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:vc animated:true];
+}
+
+#pragma mark - UINavigationControllerDelegate
+- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                            animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                         fromViewController:(UIViewController *)fromVC
+                                                           toViewController:(UIViewController *)toVC  NS_AVAILABLE_IOS(7_0) {
+    return [[SearchAnimation alloc]init];
 }
 
 #pragma make - mainViewDelegate

@@ -69,7 +69,7 @@
         _backView = [UIView new];
         _backView.layer.borderColor = [UIColor whiteColor].CGColor;
         _backView.layer.borderWidth = 1.0;
-        _backView.layer.cornerRadius = 30.0f;
+        _backView.layer.cornerRadius = 40.0f;
     }
     return _backView;
 }
