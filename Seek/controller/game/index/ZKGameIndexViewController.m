@@ -9,6 +9,8 @@
 #import "ZKGameIndexViewController.h"
 #import "ZKGameIndexView.h"
 #import "ZKGameSingleViewController.h"
+#import "ZKGameBattleViewController.h"
+#import "YZGameInterludeViewController.h"
 
 @interface ZKGameIndexViewController ()
 
@@ -16,11 +18,18 @@
 
 @implementation ZKGameIndexViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     ZKGameIndexView *indexView = [[ZKGameIndexView alloc] init];
-    self.view = indexView;
+    self.view.backgroundColor = UIColor.whiteColor;
+    [self.view addSubview:indexView];
     
     [indexView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     [indexView setTagActionHandle:^(NSInteger tag) {
@@ -30,10 +39,19 @@
                     [self presentViewController:singleVC animated:YES completion:nil];
                 }
                 break;
-            case 1002:
-            case 1003:
-                [SVProgressHUD showInfoWithStatus:@"此功能暂未开放"];
-                [SVProgressHUD dismissWithDelay:1.5f];
+            case 1002:{
+                    YZGameInterludeViewController *findVC = [[YZGameInterludeViewController alloc] init];
+                    [self presentViewController:findVC animated:YES completion:nil];    
+                }
+                break;
+            case 1003:{
+                    //测试
+                    ZKGameBattleViewController *battleVC = [[ZKGameBattleViewController alloc] init];
+                    [self presentViewController:battleVC animated:YES completion:nil];
+                
+                    [SVProgressHUD showInfoWithStatus:@"此功能暂未开放"];
+                    [SVProgressHUD dismissWithDelay:1.5f];
+                }
                 break;
             default:
                 break;
@@ -47,6 +65,12 @@
 
 - (void)closeAction {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

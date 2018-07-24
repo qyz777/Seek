@@ -16,9 +16,10 @@ PODS:
     - AFNetworking/NSURLSession
   - CocoaAsyncSocket (7.6.3)
   - Masonry (1.1.0)
-  - mob_smssdk (3.1.0):
+  - mob_smssdk (3.2.1):
     - MOBFoundation
-  - MOBFoundation (3.1.5)
+  - MOBFoundation (3.1.6)
+  - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -26,25 +27,28 @@ DEPENDENCIES:
   - CocoaAsyncSocket
   - Masonry
   - mob_smssdk
+  - SocketRocket
   - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - CocoaAsyncSocket
     - Masonry
     - mob_smssdk
     - MOBFoundation
+    - SocketRocket
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  mob_smssdk: 50a3c764232919f78578d911a60afc142ee7a405
-  MOBFoundation: d961251ce6de54917f678dc711962d1385ae7ee1
+  mob_smssdk: edc462704cc07c6d245eee16c4c09ac4f4d53e61
+  MOBFoundation: a87c5f11fb87f873337189c3ec0add4d3ec6221a
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 8251b1284e3adf33b480489411693067f45c02a7
+PODFILE CHECKSUM: abb57f241f85f844222edcfa2c34a41f21a5ef8d
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
