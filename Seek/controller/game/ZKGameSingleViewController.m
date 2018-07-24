@@ -26,7 +26,7 @@ static NSInteger rightAns = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     ZKGameSingleView *singleView = [[ZKGameSingleView alloc] init];
     self.view = singleView;
     self.singleView = singleView;

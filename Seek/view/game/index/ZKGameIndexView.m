@@ -25,16 +25,16 @@ static const CGFloat kInterval = 20;
 
 - (void)initView {
     self.frame = [UIScreen mainScreen].bounds;
-    self.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1];
+//    self.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1];
+    self.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     
     //设置顶部主题
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60 + kInterval)];
-    titleView.backgroundColor = UIColor.whiteColor;
     [self addSubview:titleView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kInterval, kInterval, SCREEN_WIDTH - 2  *kInterval, 60)];
     titleLabel.text = @"游戏大厅";
-    titleLabel.textColor = DEFAULT_COLOR;
+    titleLabel.textColor = UIColor.whiteColor;
     titleLabel.font = [UIFont systemFontOfSize:25];
     [titleView addSubview:titleLabel];
     
@@ -43,7 +43,7 @@ static const CGFloat kInterval = 20;
     closeBtn.frame = CGRectMake(SCREEN_WIDTH - kInterval - 32, 0, 32, 32);
     [closeBtn setImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
     closeBtn.center_y = titleLabel.center_y;
-    [titleView addSubview:closeBtn];
+//    [titleView addSubview:closeBtn];
     
     self.closeBtn = closeBtn;
     

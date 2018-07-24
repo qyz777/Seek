@@ -6,6 +6,7 @@ pod 'AFNetworking'
 pod 'mob_smssdk'
 pod 'SVProgressHUD'
 pod 'CocoaAsyncSocket'
+pod 'SocketRocket'
 
 end
 

@@ -61,6 +61,8 @@
 		A0F8908020B546B20070B0C7 /* YZHistoryWord.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8907F20B546B20070B0C7 /* YZHistoryWord.m */; };
 		A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8908420B552370070B0C7 /* YZWordDetailViewController.m */; };
 		A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F8908720B552A80070B0C7 /* YZWordDetailView.m */; };
+		F50B6A7A21061C8400294947 /* ZKGameBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B6A7921061C8400294947 /* ZKGameBattleViewController.m */; };
+		F50B6A7D2106B31400294947 /* ZKGameBattleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B6A7C2106B31400294947 /* ZKGameBattleView.m */; };
 		F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF0C20B9512400D6A136 /* ZKSettingView.m */; };
 		F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */; };
 		F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */; };
@@ -176,6 +178,10 @@
 		A0F8908620B552A80070B0C7 /* YZWordDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZWordDetailView.h; sourceTree = "<group>"; };
 		A0F8908720B552A80070B0C7 /* YZWordDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZWordDetailView.m; sourceTree = "<group>"; };
 		E078D1022F4E2473FE5D2819 /* libPods-Seek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50B6A7821061C8400294947 /* ZKGameBattleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameBattleViewController.h; sourceTree = "<group>"; };
+		F50B6A7921061C8400294947 /* ZKGameBattleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameBattleViewController.m; sourceTree = "<group>"; };
+		F50B6A7B2106B31400294947 /* ZKGameBattleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameBattleView.h; sourceTree = "<group>"; };
+		F50B6A7C2106B31400294947 /* ZKGameBattleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameBattleView.m; sourceTree = "<group>"; };
 		F517BF0B20B9512400D6A136 /* ZKSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKSettingView.h; sourceTree = "<group>"; };
 		F517BF0C20B9512400D6A136 /* ZKSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKSettingView.m; sourceTree = "<group>"; };
 		F517BF0F20B9513E00D6A136 /* ZKSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKSettingViewController.h; sourceTree = "<group>"; };
@@ -368,6 +374,8 @@
 			children = (
 				A02D028A20F4DEB8006219D5 /* YZGameInterludeViewController.h */,
 				A02D028B20F4DEB8006219D5 /* YZGameInterludeViewController.m */,
+				F50B6A7821061C8400294947 /* ZKGameBattleViewController.h */,
+				F50B6A7921061C8400294947 /* ZKGameBattleViewController.m */,
 			);
 			path = interlude;
 			sourceTree = "<group>";
@@ -554,6 +562,8 @@
 			children = (
 				A0BA18A720F7952300E2FD84 /* YZGameInterludeFindView.h */,
 				A0BA18A820F7952300E2FD84 /* YZGameInterludeFindView.m */,
+				F50B6A7B2106B31400294947 /* ZKGameBattleView.h */,
+				F50B6A7C2106B31400294947 /* ZKGameBattleView.m */,
 			);
 			path = interlude;
 			sourceTree = "<group>";
@@ -898,7 +908,9 @@
 				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
+				F50B6A7D2106B31400294947 /* ZKGameBattleView.m in Sources */,
 				A00F03BB20A1D4BC008E60B9 /* YZSearchTableView.m in Sources */,
+				F50B6A7A21061C8400294947 /* ZKGameBattleViewController.m in Sources */,
 				A00F03D520A3202A008E60B9 /* YZWord.m in Sources */,
 				A070798D20BCD18F00F3B045 /* ZKSingleGameModel.m in Sources */,
 				A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */,
