@@ -27,4 +27,10 @@ typedef void (^answerHandle)(NSInteger index);
 //答案事件
 @property(nonatomic,strong)answerHandle answerHandle;
 
+//倒计时标签
+@property(nonatomic,weak)UILabel *timerLabel;
+
+//设置用户信息
+- (void)setLeftUserWithInfo:(NSMutableDictionary *)left andRightInfo:(NSMutableDictionary *)right;
+
 @end
