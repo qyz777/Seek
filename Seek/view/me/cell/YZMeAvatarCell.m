@@ -35,7 +35,7 @@
     
     [self.backView addSubview:self.avatarImageView];
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.backView).offset(10);
+        make.left.equalTo(self.backView);
         make.centerY.equalTo(self.backView);
         make.size.mas_equalTo(CGSizeMake(80, 80));
     }];
@@ -46,6 +46,7 @@
         make.centerY.equalTo(self.avatarImageView);
         make.right.equalTo(self.backView).offset(-15);
     }];
+    self.nameLabel.text = @"Seek";
 }
 
 - (void)setDataDict:(NSDictionary *)dataDict {
@@ -77,7 +78,7 @@
 - (UILabel *)nameLabel {
     if (!_nameLabel) {
         _nameLabel = [UILabel new];
-        _nameLabel.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+        _nameLabel.font = [UIFont systemFontOfSize:20.0f weight:UIFontWeightBold];
         _nameLabel.textColor = [UIColor whiteColor];
     }
     return _nameLabel;

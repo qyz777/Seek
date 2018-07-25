@@ -53,6 +53,53 @@
     }
     cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YZMeNormalCell class]) forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSInteger index = indexPath.row;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, 0, cell.width - 30 * 2 - 50, cell.height)];
+    label.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightBold];
+    label.textColor = UIColor.whiteColor;
+    
+    switch (index) {
+        case 1:{
+            //签名
+            label.text = @"个性签名：让背单词变得更简单！";
+            [cell.contentView addSubview:label];
+            break;
+        }
+        case 2:{
+            UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+            progressView.frame = CGRectMake(55, cell.height - 4 - 15, label.width + 2, 50);
+            NSLog(@"%f",progressView.height);
+            CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 2.0f);
+            progressView.transform = transform;
+            progressView.tintColor = [UIColor colorWithRed:0 green:205 / 255.0 blue:205 / 255.0 alpha:1.0];
+            progressView.layer.cornerRadius = 1.0f;
+            progressView.layer.masksToBounds = YES;
+
+//            for (UIImageView * imageview in progressView.subviews) {
+//                imageview.layer.cornerRadius = 1;
+//                imageview.clipsToBounds = YES;
+//            }
+            [UIView animateWithDuration:0.5 animations:^{
+                [progressView setProgress:0.25];
+            }];
+            [cell.contentView addSubview:progressView];
+            
+            label.text = @"经验值：300/1200";
+            label.textAlignment = NSTextAlignmentCenter;
+            [cell.contentView addSubview:label];
+            
+            break;
+        }
+        case 3:{
+            label.text = @"当前段位: 单词少侠";
+            label.textAlignment = NSTextAlignmentCenter;
+            [cell.contentView addSubview:label];
+            break;
+        }
+        default:
+            break;
+    }
     return cell;
 }
 
