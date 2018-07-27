@@ -31,23 +31,24 @@
     [indexView setTagActionHandle:^(NSInteger tag) {
         switch (tag) {
             case 1001:{
-                    ZKGameSingleViewController *singleVC = [[ZKGameSingleViewController alloc] init];
-                    [self presentViewController:singleVC animated:YES completion:nil];
-                }
+                ZKGameSingleViewController *singleVC = [[ZKGameSingleViewController alloc] init];
+                [self presentViewController:singleVC animated:YES completion:nil];
+            }
                 break;
             case 1002:{
-                    YZGameInterludeViewController *findVC = [[YZGameInterludeViewController alloc] init];
-                    [self presentViewController:findVC animated:YES completion:nil];    
-                }
+                YZGameInterludeViewController *findVC = [[YZGameInterludeViewController alloc] init];
+                findVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self presentViewController:findVC animated:YES completion:nil];
+            }
                 break;
             case 1003:{
-                    //测试
-                    ZKGameBattleViewController *battleVC = [[ZKGameBattleViewController alloc] init];
-                    [self presentViewController:battleVC animated:YES completion:nil];
+                //测试
+                ZKGameBattleViewController *battleVC = [[ZKGameBattleViewController alloc] init];
+                [self presentViewController:battleVC animated:YES completion:nil];
                 
-                    [SVProgressHUD showInfoWithStatus:@"此功能暂未开放"];
-                    [SVProgressHUD dismissWithDelay:1.5f];
-                }
+                [SVProgressHUD showInfoWithStatus:@"此功能暂未开放"];
+                [SVProgressHUD dismissWithDelay:1.5f];
+            }
                 break;
             default:
                 break;

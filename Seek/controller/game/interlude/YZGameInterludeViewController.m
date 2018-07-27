@@ -48,8 +48,10 @@
 - (void)initView {
     CAGradientLayer *backLayer = [CAGradientLayer layer];
     backLayer.frame = self.view.bounds;
-    [backLayer setColors:@[(id)[UIColorFromRGB(0x703691) CGColor], (id)[UIColorFromRGB(0xaa66d1) CGColor]]];
-    [backLayer setLocations:@[@0.5, @1.0]];
+    [backLayer setColors:@[(id)[UIColorFromRGB(0xc24ca1) CGColor],
+                           (id)[UIColorFromRGB(0xbd49d4) CGColor],
+                           (id)[UIColorFromRGB(0x8a52cb) CGColor]]];
+    [backLayer setLocations:@[@0.35, @0.75, @1.0]];
     [backLayer setStartPoint:CGPointMake(0, 0)];
     [backLayer setEndPoint:CGPointMake(0.4, 1)];
     [self.view.layer addSublayer:backLayer];
