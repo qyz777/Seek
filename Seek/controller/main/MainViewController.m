@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.delegate = self;
 }
 

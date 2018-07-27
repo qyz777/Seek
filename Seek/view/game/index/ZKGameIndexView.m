@@ -24,31 +24,11 @@ static const CGFloat kInterval = 20;
 }
 
 - (void)initView {
-    self.frame = [UIScreen mainScreen].bounds;
-//    self.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1];
+    self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight - TabBarHeight);
     self.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     
-    //设置顶部主题
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60 + kInterval)];
-    [self addSubview:titleView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kInterval, kInterval, SCREEN_WIDTH - 2  *kInterval, 60)];
-    titleLabel.text = @"游戏大厅";
-    titleLabel.textColor = UIColor.whiteColor;
-    titleLabel.font = [UIFont systemFontOfSize:25];
-    [titleView addSubview:titleLabel];
-    
-    //设置右部编辑
-    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeBtn.frame = CGRectMake(SCREEN_WIDTH - kInterval - 32, 0, 32, 32);
-    [closeBtn setImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
-    closeBtn.center_y = titleLabel.center_y;
-//    [titleView addSubview:closeBtn];
-    
-    self.closeBtn = closeBtn;
-    
-    
-    UIView *view1 = [self getCardWithIcon:@"game-1" background:@"bg-1" shadowColor:[UIColor colorWithRed:253 / 255.0 green:145 / 255.0 blue:189 / 255.0 alpha:1.0] title:@"单人挑战" star:1 andViewTag:@"突破个人收藏夹" y:titleView.bottom + kInterval * 2  tag:1001];
+    UIView *view1 = [self getCardWithIcon:@"game-1" background:@"bg-1" shadowColor:[UIColor colorWithRed:253 / 255.0 green:145 / 255.0 blue:189 / 255.0 alpha:1.0] title:@"单人挑战" star:1 andViewTag:@"突破个人收藏夹" y:kInterval * 2  tag:1001];
     [self addSubview:view1];
     
     UIView *view2 = [self getCardWithIcon:@"game-2" background:@"bg-2" shadowColor:[UIColor colorWithRed:44 / 255.0 green:227 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"联机挑战" star:1 andViewTag:@"双人对抗赛" y:view1.bottom + kInterval  tag:1002];

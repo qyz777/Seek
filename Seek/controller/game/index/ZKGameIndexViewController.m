@@ -18,20 +18,16 @@
 
 @implementation ZKGameIndexViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
-    [super viewWillAppear:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self navigationBar];
+    self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
+    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"游戏大厅" font:[UIFont systemFontOfSize:20.0f weight:UIFontWeightBold] color:[UIColor whiteColor]];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     ZKGameIndexView *indexView = [[ZKGameIndexView alloc] init];
     self.view.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:indexView];
     
-    [indexView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     [indexView setTagActionHandle:^(NSInteger tag) {
         switch (tag) {
             case 1001:{
@@ -61,10 +57,6 @@
 
 - (void)loadingTap {
     
-}
-
-- (void)closeAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

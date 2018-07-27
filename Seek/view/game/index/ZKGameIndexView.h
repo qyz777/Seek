@@ -12,9 +12,6 @@ typedef void (^tagActionHandle)(NSInteger tag);
 
 @interface ZKGameIndexView : UIView
 
-//关闭按钮
-@property(nonatomic,weak)UIButton *closeBtn;
-
 //block
 @property(nonatomic,strong)tagActionHandle tagActionHandle;
 

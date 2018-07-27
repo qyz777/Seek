@@ -41,6 +41,10 @@
     [self matchingStart];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)initView {
     CAGradientLayer *backLayer = [CAGradientLayer layer];
     backLayer.frame = self.view.bounds;
