@@ -40,6 +40,7 @@
 		A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */; };
 		A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40620A81E110046C0A6 /* YZLoginView.m */; };
 		A0A4AE4E210B260600F4C6BE /* UIViewController+ClassLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */; };
+		A0A4AE52210BFE5900F4C6BE /* MeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE51210BFE5900F4C6BE /* MeHeaderView.m */; };
 		A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661A209DB61100674BF6 /* MainViewController.m */; };
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
 		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
@@ -135,6 +136,8 @@
 		A08BD40620A81E110046C0A6 /* YZLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLoginView.m; sourceTree = "<group>"; };
 		A0A4AE4C210B260600F4C6BE /* UIViewController+ClassLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassLog.h"; sourceTree = "<group>"; };
 		A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ClassLog.m"; sourceTree = "<group>"; };
+		A0A4AE50210BFE5900F4C6BE /* MeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeHeaderView.h; sourceTree = "<group>"; };
+		A0A4AE51210BFE5900F4C6BE /* MeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeHeaderView.m; sourceTree = "<group>"; };
 		A0A86614209DAFEA00674BF6 /* YZGeneral.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZGeneral.pch; sourceTree = "<group>"; };
 		A0A86619209DB61100674BF6 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A0A8661A209DB61100674BF6 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -397,6 +400,7 @@
 		A06F46E920D9355000D3A1DA /* me */ = {
 			isa = PBXGroup;
 			children = (
+				A0A4AE4F210BFD2E00F4C6BE /* header */,
 				A06F46F020D9396700D3A1DA /* cell */,
 				A06F46ED20D9366300D3A1DA /* MeView.h */,
 				A06F46EE20D9366300D3A1DA /* MeView.m */,
@@ -476,6 +480,15 @@
 				A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */,
 			);
 			path = classLog;
+			sourceTree = "<group>";
+		};
+		A0A4AE4F210BFD2E00F4C6BE /* header */ = {
+			isa = PBXGroup;
+			children = (
+				A0A4AE50210BFE5900F4C6BE /* MeHeaderView.h */,
+				A0A4AE51210BFE5900F4C6BE /* MeHeaderView.m */,
+			);
+			path = header;
 			sourceTree = "<group>";
 		};
 		A0A86613209DAFD100674BF6 /* expansion */ = {
@@ -941,6 +954,7 @@
 				A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */,
 				A0DB888620A68E8400CA810C /* YZFindLayoutAttributes.m in Sources */,
 				A0132CEC209DA92A00CBA33F /* AppDelegate.m in Sources */,
+				A0A4AE52210BFE5900F4C6BE /* MeHeaderView.m in Sources */,
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
 				F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */,
 				A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */,

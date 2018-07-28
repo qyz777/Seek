@@ -10,7 +10,12 @@
 
 @interface YZMeNormalCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIImageView *arrowImageView;
 @property (nonatomic, strong) UIView *backView;
+
+@property (nonatomic, copy) NSDictionary *data;
 
 + (CGFloat)cellHeight;
 

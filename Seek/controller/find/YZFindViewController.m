@@ -34,7 +34,7 @@
 - (void)initView {
     [self navigationBar];
     self.yz_navigationBar.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
-    UIButton *rightButton = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"叉"]];
+    UIButton *rightButton = [self.yz_navigationBar addRightButtonWithImage:[UIImage imageNamed:@"close"]];
     [rightButton addTarget:self action:@selector(rightBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = @"寻找";

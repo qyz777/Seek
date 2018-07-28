@@ -7,22 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MeHeaderView.h"
 
 
-typedef NS_ENUM(NSInteger, YZMeCellStyle) {
-    YZMeAvatarCellStyle = 0,
-    YZMeNormalCellStyle
+typedef NS_ENUM(NSInteger, MeCell) {
+    MeCellRank = 0,
+    MeCellSetting
 };
 
 @protocol MeViewDelegate <NSObject>
 
-- (void)avatarCellDidSelect;
+- (void)avatarImageDidSelect;
+- (void)rankCellDidSelect;
+- (void)settingCellDidSelect;
 - (void)logOutBtnDidClicked;
 
 @end
 
 @interface MeView : UITableView<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) UIView *footerView;
+@property (nonatomic, strong) UIButton *logOutBtn;
 @property (nonatomic, copy) NSArray *dataArray;
 
 @property (nonatomic, weak) id<MeViewDelegate> yz_delegate;

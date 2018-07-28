@@ -10,6 +10,7 @@
 #import "MeView.h"
 #import "MeEditInfoViewController.h"
 #import "YZLoginViewController.h"
+#import "ZKSettingViewController.h"
 
 @interface MeViewController ()<MeViewDelegate>
 
@@ -24,6 +25,8 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self initView];
     [self requestData];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ExLayerShouldBegin object:nil];
 }
 
 - (void)initView {
@@ -41,9 +44,18 @@
 }
 
 #pragma mark - MeViewDelegate
-- (void)avatarCellDidSelect {
+- (void)avatarImageDidSelect {
     MeEditInfoViewController *vc = [MeEditInfoViewController new];
     vc.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:vc animated:true];
+}
+
+- (void)rankCellDidSelect {
+    
+}
+
+- (void)settingCellDidSelect {
+    ZKSettingViewController *vc = [ZKSettingViewController new];
     [self.navigationController pushViewController:vc animated:true];
 }
 

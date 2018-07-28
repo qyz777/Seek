@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "cell_arrow.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "default_icon.png",
       "scale" : "2x"
     },
     {
