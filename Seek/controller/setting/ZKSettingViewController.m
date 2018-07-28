@@ -17,31 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.yz_navigationBar.navigationBarColor = RGB(245, 245, 245);
+    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"设置" font:[UIFont systemFontOfSize:20.0f weight:UIFontWeightBold] color:[UIColor blackColor]];
+    [self.popButton setImage:[UIImage imageNamed:@"pop_black"] forState:UIControlStateNormal];
     ZKSettingView *settingView = [[ZKSettingView alloc] init];
-    [settingView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.view = settingView;
+    [self.view addSubview:settingView];
 }
 
-
-- (void)closeAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

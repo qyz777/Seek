@@ -10,7 +10,4 @@
 
 @interface ZKSettingView : UIView
 
-//关闭按钮
-@property(nonatomic,weak)UIButton *closeBtn;
-
 @end

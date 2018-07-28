@@ -22,8 +22,8 @@
 - (void)viewConfig {
     [self navigationBar];
     self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
-    UIButton *popButton = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"pop"]];
-    [popButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
+    self.popButton = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"pop"]];
+    [self.popButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

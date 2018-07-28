@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BasicsViewController.h"
 
-@interface ZKSettingViewController : UIViewController
+@interface ZKSettingViewController : BasicsViewController
 
 @end

@@ -25,45 +25,11 @@ static const NSInteger kInterval = 20;
 
 //初始化界面
 - (void)initView {
-    self.frame = [UIScreen mainScreen].bounds;
+    self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight - TabBarHeight);
     self.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0];
     
-    //设置顶部主题
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60 + kInterval)];
-    titleView.backgroundColor = UIColor.whiteColor;
-    [self addSubview:titleView];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kInterval, kInterval, SCREEN_WIDTH - 2  *kInterval, 60)];
-    titleLabel.text = @"设置";
-    titleLabel.textColor = DEFAULT_COLOR;
-    titleLabel.font = [UIFont systemFontOfSize:25];
-    [titleView addSubview:titleLabel];
-    
-    //设置左部icon
-    UIImageView *titleImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"设置"]];
-    titleImgView.frame = CGRectMake(kInterval, 0, 32, 32);
-    titleImgView.center_y = titleLabel.center_y;
-    [titleView addSubview:titleImgView];
-    
-    
-    //设置右部编辑
-    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeBtn.frame = CGRectMake(0, 0, 32, 32);
-    [closeBtn setImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
-    closeBtn.center_y = titleLabel.center_y;
-    [titleView addSubview:closeBtn];
-    
-    self.closeBtn = closeBtn;
-    
-    CGFloat left_width = titleImgView.x + titleImgView.width + 10;
-//    CGFloat right_width = closeBtn.width + 10;
-    titleLabel.x = left_width;
-    titleLabel.width -= (left_width + kInterval);
-    closeBtn.x = titleLabel.x + titleLabel.width + 10;
-    
-    
     //设置个人信息区域
-    UIView *infoView = [self getViewWithFrame:CGRectMake(kInterval, titleView.bottom + kInterval, SCREEN_WIDTH - 2 * kInterval, 60) andRadius:30];
+    UIView *infoView = [self getViewWithFrame:CGRectMake(kInterval, kInterval, SCREEN_WIDTH - 2 * kInterval, 60) andRadius:30];
     [self addSubview:infoView];
     
     //个人头像

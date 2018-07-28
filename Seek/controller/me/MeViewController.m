@@ -56,6 +56,7 @@
 
 - (void)settingCellDidSelect {
     ZKSettingViewController *vc = [ZKSettingViewController new];
+    vc.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:vc animated:true];
 }
 
