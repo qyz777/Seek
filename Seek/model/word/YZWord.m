@@ -239,8 +239,7 @@
 + (NSString *)filterHTML:(NSString *)html {
     NSScanner * scanner = [NSScanner scannerWithString:html];
     NSString * text = nil;
-    while([scanner isAtEnd]==NO)
-    {
+    while(![scanner isAtEnd]) {
         [scanner scanUpToString:@"<" intoString:nil];
         [scanner scanUpToString:@">" intoString:&text];
         html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
