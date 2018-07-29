@@ -11,7 +11,7 @@
 
 @interface SearchAnimation()
 
-@property(nonatomic, assign)BOOL isPresent;
+@property(nonatomic, assign)BOOL isPush;
 
 @end
 
@@ -26,28 +26,29 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    BOOL isParent = (toVC.presentingViewController == fromVC);
-    if (isParent) {
-        [self presentViewController:transitionContext];
-        _isPresent = true;
+    UINavigationController *nav = (UINavigationController *)toVC.parentViewController;
+    MainViewController *mainVC = nav.viewControllers[0];
+    
+    BOOL isPush = (mainVC == fromVC);
+    if (isPush) {
+        [self pushViewController:transitionContext];
+        _isPush = true;
     }else {
-        [self dismissViewController:transitionContext];
-        _isPresent = false;
+        [self popViewController:transitionContext];
+        _isPush = false;
     }
 }
 
-- (void)presentViewController:(id <UIViewControllerContextTransitioning>)transitionContext {
+- (void)pushViewController:(id <UIViewControllerContextTransitioning>)transitionContext {
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UINavigationController *fromVC = (UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    MainViewController *fromVC = (MainViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    UINavigationController *nav = fromVC.viewControllers[1];
-    MainViewController *mainVC = nav.viewControllers[0];
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
     
-    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:mainVC.searchBtn.frame];
-    CGFloat x = MAX(mainVC.searchBtn.frame.origin.x, containerView.frame.size.width - mainVC.searchBtn.frame.origin.x);
-    CGFloat y = MAX(mainVC.searchBtn.frame.origin.y, containerView.frame.size.height - mainVC.searchBtn.frame.origin.y);
+    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:fromVC.searchBtn.frame];
+    CGFloat x = MAX(fromVC.searchBtn.frame.origin.x, containerView.frame.size.width - fromVC.searchBtn.frame.origin.x);
+    CGFloat y = MAX(fromVC.searchBtn.frame.origin.y, containerView.frame.size.height - fromVC.searchBtn.frame.origin.y);
     CGFloat radius = sqrtf(pow(x, 2) + pow(y, 2));
     
     UIBezierPath *endPath = [UIBezierPath bezierPathWithArcCenter:containerView.center
@@ -69,38 +70,7 @@
     [maskLayer addAnimation:animation forKey:@"path"];
 }
 
-- (void)dismissViewController:(id <UIViewControllerContextTransitioning>)transitionContext {
-//    UIViewController * fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-//    UINavigationController * toVC = (UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-//
-//    MainViewController *mainVC = toVC.viewControllers.lastObject;
-//    UIView *containerView = [transitionContext containerView];
-//    containerView.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
-//
-//    CGFloat radius = sqrtf(containerView.frame.size.height * containerView.frame.size.height + containerView.frame.size.width * containerView.frame.size.width) / 2;
-//    UIBezierPath * startPath = [UIBezierPath bezierPathWithArcCenter:containerView.center
-//                                                              radius:radius
-//                                                          startAngle:0
-//                                                            endAngle:M_PI * 2
-//                                                           clockwise:true];
-//
-//    UIBezierPath *endPath =  [UIBezierPath bezierPathWithOvalInRect:mainVC.searchBtn.frame];
-//
-//    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-//    maskLayer.path = endPath.CGPath;
-//    fromVC.view.layer.mask = maskLayer;
-//
-//    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
-//    animation.delegate = self;
-//    animation.fromValue = (__bridge id _Nullable)(startPath.CGPath);
-//    animation.toValue = (__bridge id _Nullable)(endPath.CGPath);
-//    animation.duration = [self transitionDuration:transitionContext];
-//    animation.duration  = [self transitionDuration:transitionContext];
-//
-//    animation.timingFunction = [CAMediaTimingFunction  functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    [animation setValue:transitionContext forKey:@"transitionContext"];
-//    [maskLayer addAnimation:animation forKey:@"path"];
-    
+- (void)popViewController:(id <UIViewControllerContextTransitioning>)transitionContext {
     UIViewController * fromVC= [transitionContext viewControllerForKey:( UITransitionContextFromViewControllerKey)];
     UIViewController * toVC= [transitionContext viewControllerForKey:( UITransitionContextToViewControllerKey)];
 
@@ -127,7 +97,7 @@
 
 #pragma mark -  CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    if (_isPresent) {
+    if (_isPush) {
         id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContext"];
         [transitionContext completeTransition:true];
     }else {
