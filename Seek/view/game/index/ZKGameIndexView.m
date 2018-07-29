@@ -28,13 +28,13 @@ static const CGFloat kInterval = 20;
     self.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     
     
-    UIView *view1 = [self getCardWithIcon:@"game-1" background:@"bg-1" shadowColor:[UIColor colorWithRed:253 / 255.0 green:145 / 255.0 blue:189 / 255.0 alpha:1.0] title:@"单人挑战" star:1 andViewTag:@"突破个人收藏夹" y:kInterval * 2  tag:1001];
+    UIView *view1 = [self getCardWithIcon:@"game-1" background:@"bg2-1" shadowColor:[UIColor colorWithRed:77 / 255.0 green:194 / 255.0 blue:193 / 255.0 alpha:1.0] title:@"单人挑战" star:1 andViewTag:@"突破个人收藏夹" y:kInterval * 2  tag:1001];
     [self addSubview:view1];
     
-    UIView *view2 = [self getCardWithIcon:@"game-2" background:@"bg-2" shadowColor:[UIColor colorWithRed:44 / 255.0 green:227 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"联机挑战" star:1 andViewTag:@"双人对抗赛" y:view1.bottom + kInterval  tag:1002];
+    UIView *view2 = [self getCardWithIcon:@"game-2" background:@"bg2-2" shadowColor:[UIColor colorWithRed:42 / 255.0 green:46 / 255.0 blue:136 / 255.0 alpha:1.0] title:@"联机挑战" star:1 andViewTag:@"双人对抗赛" y:view1.bottom + kInterval  tag:1002];
     [self addSubview:view2];
 
-    UIView *view3 = [self getCardWithIcon:@"game-3" background:@"bg-3" shadowColor:[UIColor colorWithRed:139 / 255.0 green:183 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"提词随机查" star:1 andViewTag:@"课本单词轻松检查" y:view2.bottom + kInterval  tag:1003];
+    UIView *view3 = [self getCardWithIcon:@"game-3" background:@"bg2-3" shadowColor:[UIColor colorWithRed:139 / 255.0 green:183 / 255.0 blue:252 / 255.0 alpha:1.0] title:@"提词随机查" star:1 andViewTag:@"课本单词轻松检查" y:view2.bottom + kInterval  tag:1003];
     [self addSubview:view3];
     
 }
@@ -62,7 +62,8 @@ static const CGFloat kInterval = 20;
     
     //图标View
     UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(kInterval, kInterval * 0.5, 80, 80)];
-    iconView.backgroundColor = UIColor.whiteColor;
+//    iconView.backgroundColor = UIColor.whiteColor;
+    iconView.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0];
     iconView.layer.cornerRadius = 40;
     iconView.layer.masksToBounds = YES;
     [view addSubview:iconView];
@@ -86,7 +87,7 @@ static const CGFloat kInterval = 20;
     //标签View
     UIView *tagsView = [[UIView alloc] initWithFrame:titleLabel.frame];
     tagsView.y = titleLabel.bottom + 5;
-    tagsView.backgroundColor = UIColor.whiteColor;
+    tagsView.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0];;
     [view addSubview:tagsView];
     
     //标签
