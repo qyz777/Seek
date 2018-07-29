@@ -11,8 +11,12 @@
 #import "ZKGameSingleViewController.h"
 #import "ZKGameBattleViewController.h"
 #import "YZGameInterludeViewController.h"
+#import "YZCameraController.h"
+#import "YZCameraTransition.h"
 
-@interface ZKGameIndexViewController ()
+@interface ZKGameIndexViewController ()<UIGestureRecognizerDelegate>
+
+@property (nonatomic, strong) YZCameraController *cameraController;
 
 @end
 
@@ -23,6 +27,8 @@
     [self navigationBar];
     self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
     [self.yz_navigationBar addCenterTitleLabelWithTitle:@"游戏大厅" font:[UIFont systemFontOfSize:20.0f weight:UIFontWeightBold] color:[UIColor whiteColor]];
+    UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"game_photo"]];
+    [leftBtn addTarget:self action:@selector(leftBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     ZKGameIndexView *indexView = [[ZKGameIndexView alloc] init];
     self.view.backgroundColor = UIColor.whiteColor;
@@ -54,21 +60,51 @@
                 break;
         }
     }];
+    
+    self.cameraController = [[YZCameraController alloc] init];
+    self.cameraController.modalPresentationStyle = UIModalPresentationFullScreen;
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+    pan.delegate = self;
+    [self.view addGestureRecognizer:pan];
 }
 
 - (void)loadingTap {
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    [super viewWillDisappear:animated];
+- (void)leftBtnDidClicked:(id)sender {
+    [self presentViewController:self.cameraController animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)onPan:(UIPanGestureRecognizer *)pan {
+    CGPoint velocity = [pan velocityInView:self.view];
+    switch (pan.state) {
+        case UIGestureRecognizerStateBegan:{
+            if (velocity.x > 0) {
+                [self.cameraController beginPresentTransition];
+                [self presentViewController:self.cameraController animated:YES completion:nil];
+            }
+        }
+            break;
+        case UIGestureRecognizerStateChanged:{
+            CGPoint currentPoint = [pan translationInView:self.view];
+            [self.cameraController updatePresentTransition:fabs(currentPoint.x) / SCREEN_WIDTH];
+        }
+            break;
+        case UIGestureRecognizerStateEnded:{
+            CGPoint currentPoint = [pan translationInView:self.view];
+            [self.cameraController endPresentTransition:fabs(currentPoint.x) / SCREEN_WIDTH];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 

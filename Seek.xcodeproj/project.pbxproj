@@ -41,6 +41,9 @@
 		A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40620A81E110046C0A6 /* YZLoginView.m */; };
 		A0A4AE4E210B260600F4C6BE /* UIViewController+ClassLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */; };
 		A0A4AE52210BFE5900F4C6BE /* MeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE51210BFE5900F4C6BE /* MeHeaderView.m */; };
+		A0A4AE5B210C4F0700F4C6BE /* YZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE5A210C4F0700F4C6BE /* YZCameraController.m */; };
+		A0A4AE5F210C9FF000F4C6BE /* YZTakePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE5E210C9FF000F4C6BE /* YZTakePhotoView.m */; };
+		A0A4AE66210D5A0300F4C6BE /* YZCameraTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE65210D5A0300F4C6BE /* YZCameraTransition.m */; };
 		A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661A209DB61100674BF6 /* MainViewController.m */; };
 		A0A8661F209DB69F00674BF6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8661E209DB69F00674BF6 /* MainView.m */; };
 		A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A86644209EE70600674BF6 /* YZNavigationBar.m */; };
@@ -138,6 +141,12 @@
 		A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ClassLog.m"; sourceTree = "<group>"; };
 		A0A4AE50210BFE5900F4C6BE /* MeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeHeaderView.h; sourceTree = "<group>"; };
 		A0A4AE51210BFE5900F4C6BE /* MeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeHeaderView.m; sourceTree = "<group>"; };
+		A0A4AE59210C4F0700F4C6BE /* YZCameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCameraController.h; sourceTree = "<group>"; };
+		A0A4AE5A210C4F0700F4C6BE /* YZCameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCameraController.m; sourceTree = "<group>"; };
+		A0A4AE5D210C9FF000F4C6BE /* YZTakePhotoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZTakePhotoView.h; sourceTree = "<group>"; };
+		A0A4AE5E210C9FF000F4C6BE /* YZTakePhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZTakePhotoView.m; sourceTree = "<group>"; };
+		A0A4AE64210D5A0300F4C6BE /* YZCameraTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCameraTransition.h; sourceTree = "<group>"; };
+		A0A4AE65210D5A0300F4C6BE /* YZCameraTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCameraTransition.m; sourceTree = "<group>"; };
 		A0A86614209DAFEA00674BF6 /* YZGeneral.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZGeneral.pch; sourceTree = "<group>"; };
 		A0A86619209DB61100674BF6 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A0A8661A209DB61100674BF6 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -491,9 +500,37 @@
 			path = header;
 			sourceTree = "<group>";
 		};
+		A0A4AE58210C4E6300F4C6BE /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				A0A4AE59210C4F0700F4C6BE /* YZCameraController.h */,
+				A0A4AE5A210C4F0700F4C6BE /* YZCameraController.m */,
+			);
+			path = camera;
+			sourceTree = "<group>";
+		};
+		A0A4AE5C210C9FD300F4C6BE /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				A0A4AE5D210C9FF000F4C6BE /* YZTakePhotoView.h */,
+				A0A4AE5E210C9FF000F4C6BE /* YZTakePhotoView.m */,
+			);
+			path = camera;
+			sourceTree = "<group>";
+		};
+		A0A4AE60210D592F00F4C6BE /* cameraAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				A0A4AE64210D5A0300F4C6BE /* YZCameraTransition.h */,
+				A0A4AE65210D5A0300F4C6BE /* YZCameraTransition.m */,
+			);
+			path = cameraAnimation;
+			sourceTree = "<group>";
+		};
 		A0A86613209DAFD100674BF6 /* expansion */ = {
 			isa = PBXGroup;
 			children = (
+				A0A4AE60210D592F00F4C6BE /* cameraAnimation */,
 				A0A4AE48210B229D00F4C6BE /* classLog */,
 				A0E3905C20D746490067B309 /* tabbar */,
 				F5C5095420B9B49E0094F4BA /* Category */,
@@ -520,6 +557,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A0A4AE5C210C9FD300F4C6BE /* camera */,
 				A06F46E920D9355000D3A1DA /* me */,
 				F5C5095820BAD6940094F4BA /* game */,
 				F517BF0A20B9510E00D6A136 /* setting */,
@@ -538,6 +576,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A0A4AE58210C4E6300F4C6BE /* camera */,
 				A00BBEBB20E8BD9500E2D934 /* basics */,
 				A06F46E520D9346200D3A1DA /* me */,
 				F5C5095B20BAD6BC0094F4BA /* game */,
@@ -944,7 +983,9 @@
 				A070798920BCD16E00F3B045 /* ZKGameSingleView.m in Sources */,
 				A0E3906420D749060067B309 /* YZTabBarView.m in Sources */,
 				A00F03C820A310F8008E60B9 /* YZSearchTableViewCell.m in Sources */,
+				A0A4AE5F210C9FF000F4C6BE /* YZTakePhotoView.m in Sources */,
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
+				A0A4AE66210D5A0300F4C6BE /* YZCameraTransition.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */,
@@ -957,6 +998,7 @@
 				A0A4AE52210BFE5900F4C6BE /* MeHeaderView.m in Sources */,
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
 				F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */,
+				A0A4AE5B210C4F0700F4C6BE /* YZCameraController.m in Sources */,
 				A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
