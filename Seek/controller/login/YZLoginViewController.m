@@ -40,8 +40,8 @@
     [self.view addSubview:effectView];
     effectView.alpha = 0.50;
     
-    [self navigationBar];
-    self.yz_navigationBar.backgroundColor = [UIColor clearColor];
+//    [self navigationBar];
+//    self.yz_navigationBar.backgroundColor = [UIColor clearColor];
     self.loginView = [[YZLoginView alloc]init];
     self.loginView.yz_delegate = self;
     [self.view addSubview:self.loginView];
@@ -104,6 +104,10 @@
     }];
     [alert addAction:action];
     [self presentViewController:alert animated:true completion:nil];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end

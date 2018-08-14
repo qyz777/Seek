@@ -8,18 +8,38 @@
 
 #import "YZLoginView.h"
 
+@interface YZLoginView()
+
+@property(nonatomic,weak)UIView *messageLine;
+
+@end
+
 @implementation YZLoginView
 
 - (instancetype)init {
     self = [super init];    
-//    self.backgroundColor = BACKGROUND_COLOR_STYLE_ONE;
-    self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
+    self.backgroundColor = UIColorFromRGB(0x2c3b49);
+//    self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight);
+    self.frame = [UIScreen mainScreen].bounds;
     self.isRegister = false;
     [self initSubviews];
     return self;
 }
 
 - (void)initSubviews {
+    // 背景图
+    UIImageView *bgImgView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"login-bg"]];
+    bgImgView.frame = [UIScreen mainScreen].bounds;
+    [self addSubview:bgImgView];
+    
+    // Seek
+    UILabel *logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 40)];
+    logoLabel.text = @"Seek";
+    logoLabel.textColor = UIColor.whiteColor;
+    logoLabel.textAlignment = NSTextAlignmentCenter;
+    logoLabel.font = [UIFont boldSystemFontOfSize:40];
+    [self addSubview:logoLabel];
+    
     self.imageView = [UIImageView new];
     [self addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -29,28 +49,44 @@
     }];
     
     self.userName = [UITextField new];
-    self.userName.placeholder = @"请输入手机号";
-    self.userName.textColor = BACKGROUND_COLOR_STYLE_ONE;
-    self.userName.backgroundColor = [UIColor whiteColor];
-    self.userName.layer.cornerRadius = 12.0f;
+    self.userName.placeholder = @"手机号";
+    self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"手机号" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor}];
+    self.userName.textColor = UIColor.whiteColor;
+//    self.userName.backgroundColor = [UIColor whiteColor];
+    self.userName.layer.cornerRadius = 20.0f;
+//    self.userName.textAlignment = NSTextAlignmentCenter;
     self.userName.keyboardType = UIKeyboardTypeNumberPad;
-    UIView *nameLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
-    self.userName.leftView = nameLeftView;
+//    UIView *nameLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
+//    self.userName.leftView = nameLeftView;
     self.userName.leftViewMode = UITextFieldViewModeAlways;
     [self addSubview:self.userName];
     [self.userName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 40));
         make.centerX.equalTo(self);
-        make.top.equalTo(self.imageView.mas_bottom).offset(20);
+        make.top.equalTo(self.imageView.mas_bottom).offset(100);
     }];
     
+    UIView *line1 = [[UIView alloc] init];
+    line1.backgroundColor = UIColor.lightGrayColor;
+    [self addSubview:line1];
+    [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 1));
+        make.centerX.equalTo(self);
+        make.top.equalTo(self.userName.mas_bottom).offset(2);
+    }];
+    
+    
     self.password = [UITextField new];
-    self.password.placeholder = @"请输入密码";
+    self.password.placeholder = @"密码";
+    self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor}];
+
     self.password.secureTextEntry = true;
-    self.password.backgroundColor = [UIColor whiteColor];
-    self.password.layer.cornerRadius = 12.0f;
-    UIView *pwLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
-    self.password.leftView = pwLeftView;
+//    self.password.backgroundColor = [UIColor whiteColor];
+    self.password.textColor = UIColor.whiteColor;
+    self.password.layer.cornerRadius = 20.0f;
+//    self.password.textAlignment = NSTextAlignmentCenter;
+//    UIView *pwLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
+//    self.password.leftView = pwLeftView;
     self.password.leftViewMode = UITextFieldViewModeAlways;
     [self addSubview:self.password];
     [self.password mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,23 +95,34 @@
         make.top.equalTo(self.userName.mas_bottom).offset(18);
     }];
     
+    UIView *line2 = [[UIView alloc] init];
+    line2.backgroundColor = UIColor.lightGrayColor;
+    [self addSubview:line2];
+    [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 1));
+        make.centerX.equalTo(self);
+        make.top.equalTo(self.password.mas_bottom).offset(2);
+    }];
+    
+    
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.loginBtn.backgroundColor = [UIColor whiteColor];
-    [self.loginBtn setTitle:@"登入" forState:UIControlStateNormal];
-    self.loginBtn.titleLabel.font = [UIFont boldSystemFontOfSize:30.0f];
-    [self.loginBtn setTitleColor:BACKGROUND_COLOR_STYLE_ONE forState:UIControlStateNormal];
-    self.loginBtn.layer.cornerRadius = 60;
+    [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    self.loginBtn.titleLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    [self.loginBtn setTitleColor:UIColorFromRGB(0x9977db) forState:UIControlStateNormal];
+    self.loginBtn.layer.cornerRadius = 25.0f;
     [self.loginBtn addTarget:self action:@selector(loginBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.loginBtn];
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_offset(CGSizeMake(120, 120));
+        make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 50));
         make.top.equalTo(self.password.mas_bottom).offset(18);
         make.centerX.equalTo(self);
     }];
     
     self.stateLabel = [UILabel new];
-    self.stateLabel.text = @"右扫切换到注册";
-    self.stateLabel.font = [UIFont systemFontOfSize:14.0f];
+    self.stateLabel.text = @"注册";
+    self.stateLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    self.stateLabel.textAlignment = NSTextAlignmentCenter;
     self.stateLabel.textColor = [UIColor whiteColor];
     [self addSubview:self.stateLabel];
     [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -84,47 +131,54 @@
         make.centerX.equalTo(self);
     }];
     
+    self.stateLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *registerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeStatus)];
+    [self.stateLabel addGestureRecognizer:registerTap];
+    
     self.phoneNumber = [UITextField new];
     self.phoneNumber.hidden = true;
-    self.phoneNumber.textColor = BACKGROUND_COLOR_STYLE_ONE;
-    self.phoneNumber.placeholder = @"请输入手机号";
-    self.phoneNumber.backgroundColor = [UIColor whiteColor];
-    self.phoneNumber.layer.cornerRadius = 12.0f;
+    self.phoneNumber.textColor = UIColor.whiteColor;
+    self.phoneNumber.placeholder = @"手机号";
+    self.phoneNumber.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"手机号" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor}];
+//    self.phoneNumber.backgroundColor = [UIColor whiteColor];
+    self.phoneNumber.layer.cornerRadius = 20.0f;
     self.phoneNumber.keyboardType = UIKeyboardTypeNumberPad;
-    UIView *pnLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
-    self.phoneNumber.leftView = pnLeftView;
+//    UIView *pnLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
+//    self.phoneNumber.leftView = pnLeftView;
     self.phoneNumber.leftViewMode = UITextFieldViewModeAlways;
     [self addSubview:self.phoneNumber];
     [self.phoneNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 100, 40));
+        make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 40));
         make.centerX.equalTo(self);
-        make.top.equalTo(self).offset(80);
+        make.top.equalTo(self.imageView.mas_bottom).offset(100);
     }];
     
     self.message = [UITextField new];
-    self.message.hidden = true;
-    self.message.textColor = BACKGROUND_COLOR_STYLE_ONE;
-    self.message.placeholder = @"请输入验证码";
-    self.message.backgroundColor = [UIColor whiteColor];
-    self.message.layer.cornerRadius = 12.0f;
+    self.message.textColor = UIColor.whiteColor;
+    self.message.placeholder = @"验证码";
+    self.message.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"验证码" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor}];
+//    self.message.backgroundColor = [UIColor whiteColor];
+//    self.message.layer.cornerRadius = 20.0f;
     self.message.clearsOnBeginEditing = true;
     self.message.keyboardType = UIKeyboardTypeNumberPad;
-    UIView *mLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
-    self.message.leftView = mLeftView;
+//    UIView *mLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 0)];
+//    self.message.leftView = mLeftView;
     self.message.leftViewMode = UITextFieldViewModeAlways;
     [self addSubview:self.message];
     [self.message mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_offset(CGSizeMake(SCREEN_WIDTH / 2, 40));
-        make.left.equalTo(self).offset(50);
-        make.top.equalTo(self.phoneNumber.mas_bottom).offset(10);
+        make.left.equalTo(self.phoneNumber);
+        make.top.equalTo(self.password.mas_bottom).offset(18);
     }];
+    self.message.hidden = true;
+
     
     self.messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.messageBtn.hidden = true;
-    self.messageBtn.backgroundColor = [UIColor whiteColor];
+//    self.messageBtn.backgroundColor = [UIColor whiteColor];
     [self.messageBtn setTitle:@"短信验证" forState:UIControlStateNormal];
     self.messageBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
-    [self.messageBtn setTitleColor:BACKGROUND_COLOR_STYLE_ONE forState:UIControlStateNormal];
+//    [self.messageBtn setTitleColor:BACKGROUND_COLOR_STYLE_ONE forState:UIControlStateNormal];
+    [self.messageBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     self.messageBtn.layer.cornerRadius = 12.0f;
     [self.messageBtn addTarget:self action:@selector(messageBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.messageBtn];
@@ -133,9 +187,22 @@
         make.centerY.equalTo(self.message);
         make.right.equalTo(self).offset(-50);
     }];
+    self.messageBtn.hidden = true;
     
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeButton:)];
-    [self addGestureRecognizer:swipe];
+    UIView *line3 = [[UIView alloc] init];
+    line3.hidden = YES;
+    line3.backgroundColor = UIColor.lightGrayColor;
+    [self addSubview:line3];
+    [line3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 2));
+        make.centerX.equalTo(self);
+        make.top.equalTo(self.message.mas_bottom).offset(2);
+    }];
+    
+    self.messageLine = line3;
+    
+//    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeButton:)];
+//    [self addGestureRecognizer:swipe];
 }
 
 - (void)loginBtnDidClicked:(id)sender {
@@ -143,7 +210,7 @@
     [self.password resignFirstResponder];
     [self.message resignFirstResponder];
     [self.phoneNumber resignFirstResponder];
-    if ([self.loginBtn.titleLabel.text isEqualToString:@"登入"]) {
+    if ([self.loginBtn.titleLabel.text isEqualToString:@"登录"]) {
         if ([self.yz_delegate respondsToSelector:@selector(loginBtnDidClicked)]) {
             [self.yz_delegate loginBtnDidClicked];
         }
@@ -170,11 +237,11 @@
                 make.centerX.equalTo(self);
                 make.top.equalTo(self.message.mas_bottom).offset(10);
             }];
-            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_offset(CGSizeMake(180, 180));
-                make.top.equalTo(self.password.mas_bottom).offset(18);
-                make.centerX.equalTo(self);
-            }];
+//            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.size.mas_offset(CGSizeMake(180, 180));
+//                make.top.equalTo(self.password.mas_bottom).offset(18);
+//                make.centerX.equalTo(self);
+//            }];
         }];
         [self layoutIfNeeded];
         
@@ -208,27 +275,35 @@
     }
 }
 
-- (void)swipeButton:(UISwipeGestureRecognizer *)swipe {
+//- (void)swipeButton:(UISwipeGestureRecognizer *)swipe {
+//    [self changeStatus];
+//}
+
+- (void)changeStatus {
+    YZLog(@"change");
     if (self.userName.isHidden) {
-        swipe.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.loginBtn setTitle:@"登入" forState:UIControlStateNormal];
-        self.stateLabel.text = @"右扫切换到注册";
+//        swipe.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+        self.stateLabel.text = @"注册";
         self.messageBtn.hidden = true;
         self.phoneNumber.hidden = true;
         self.message.hidden = true;
-        self.loginBtn.layer.cornerRadius = 60;
+        self.messageLine.hidden = true;
+//        self.loginBtn.layer.cornerRadius = 60;
         [self setNeedsUpdateConstraints];
         [UIView animateWithDuration:0.3f animations:^{
             [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_offset(CGSizeMake(120, 120));
+                make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 50));
                 make.top.equalTo(self.password.mas_bottom).offset(18);
                 make.centerX.equalTo(self);
             }];
-            [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 40));
-                make.centerX.equalTo(self);
-                make.top.equalTo(self.userName.mas_bottom).offset(18);
-            }];
+            [self layoutIfNeeded];
+            
+//            [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 40));
+//                make.centerX.equalTo(self);
+//                make.top.equalTo(self.userName.mas_bottom).offset(18);
+//            }];
         }completion:^(BOOL finished) {
             self.userName.hidden = false;
             self.password.hidden = false;
@@ -236,40 +311,43 @@
         }];
         [self layoutIfNeeded];
     }else {
-        swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+//        swipe.direction = UISwipeGestureRecognizerDirectionLeft;
         [self.loginBtn setTitle:@"注册" forState:UIControlStateNormal];
-        self.stateLabel.text = @"左扫切换到登入";
+        self.stateLabel.text = @"登录";
         self.userName.hidden = true;
-        self.password.hidden = true;
-        self.imageView.hidden = true;
+        self.password.hidden = false;
+//        self.imageView.hidden = true;
         self.messageBtn.hidden = false;
         self.phoneNumber.hidden = false;
         self.message.hidden = false;
-        self.loginBtn.layer.cornerRadius = 90;
+        self.messageLine.hidden = false;
+//        self.loginBtn.layer.cornerRadius = 90;
         [self setNeedsUpdateConstraints];
         if (self.isRegister) {
-            self.password.hidden = false;
+//            self.password.hidden = false;
             [UIView animateWithDuration:0.3f animations:^{
-                [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 100, 40));
-                    make.centerX.equalTo(self);
-                    make.top.equalTo(self.message.mas_bottom).offset(10);
-                }];
+//                [self.password mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                    make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 100, 40));
+//                    make.centerX.equalTo(self);
+//                    make.top.equalTo(self.message.mas_bottom).offset(10);
+//                }];
                 [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.size.mas_offset(CGSizeMake(180, 180));
-                    make.top.equalTo(self.password.mas_bottom).offset(18);
+                    make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 50));
+                    make.top.equalTo(self.message.mas_bottom).offset(18);
                     make.centerX.equalTo(self);
                 }];
+                [self layoutIfNeeded];
             }];
         }else {
             [UIView animateWithDuration:0.3f animations:^{
                 [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.size.mas_offset(CGSizeMake(180, 180));
-                    make.center.equalTo(self);
+                    make.size.mas_offset(CGSizeMake(SCREEN_WIDTH - 120, 50));
+                    make.top.equalTo(self.message.mas_bottom).offset(18);
+                    make.centerX.equalTo(self);
                 }];
+                [self layoutIfNeeded];
             }];
         }
-        [self layoutIfNeeded];
     }
 }
 
