@@ -7,6 +7,7 @@
 //
 
 #import "YZLoginView.h"
+#import <SVProgressHUD.h>
 
 @interface YZLoginView()
 
@@ -201,8 +202,6 @@
     
     self.messageLine = line3;
     
-//    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeButton:)];
-//    [self addGestureRecognizer:swipe];
 }
 
 - (void)loginBtnDidClicked:(id)sender {
@@ -210,11 +209,22 @@
     [self.password resignFirstResponder];
     [self.message resignFirstResponder];
     [self.phoneNumber resignFirstResponder];
+    
     if ([self.loginBtn.titleLabel.text isEqualToString:@"登录"]) {
+        if (self.userName.text.length == 0 || self.password.text == 0) {
+            [SVProgressHUD showErrorWithStatus:@"手机号和密码不能为空"];
+            return ;
+        }
+        
         if ([self.yz_delegate respondsToSelector:@selector(loginBtnDidClicked)]) {
             [self.yz_delegate loginBtnDidClicked];
         }
     }else {
+        if (self.message.text.length == 0 || self.password.text == 0 || self.phoneNumber.text.length == 0) {
+            [SVProgressHUD showErrorWithStatus:@"请输入正确的注册信息"];
+            return ;
+        }
+        
         if ([self.yz_delegate respondsToSelector:@selector(registerBtnDidClicked)]) {
             [self.yz_delegate registerBtnDidClicked];
         }
@@ -275,10 +285,6 @@
     }
 }
 
-//- (void)swipeButton:(UISwipeGestureRecognizer *)swipe {
-//    [self changeStatus];
-//}
-
 - (void)changeStatus {
     YZLog(@"change");
     if (self.userName.isHidden) {
@@ -317,10 +323,10 @@
         self.userName.hidden = true;
         self.password.hidden = false;
 //        self.imageView.hidden = true;
-        self.messageBtn.hidden = false;
+//        self.messageBtn.hidden = false;
         self.phoneNumber.hidden = false;
-        self.message.hidden = false;
-        self.messageLine.hidden = false;
+//        self.message.hidden = false;
+//        self.messageLine.hidden = false;
 //        self.loginBtn.layer.cornerRadius = 90;
         [self setNeedsUpdateConstraints];
         if (self.isRegister) {
@@ -337,6 +343,10 @@
                     make.centerX.equalTo(self);
                 }];
                 [self layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                self.messageBtn.hidden = false;
+                self.message.hidden = false;
+                self.messageLine.hidden = false;
             }];
         }else {
             [UIView animateWithDuration:0.3f animations:^{
@@ -346,6 +356,11 @@
                     make.centerX.equalTo(self);
                 }];
                 [self layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                self.messageBtn.hidden = false;
+                self.message.hidden = false;
+                self.messageLine.hidden = false;
+                
             }];
         }
     }
