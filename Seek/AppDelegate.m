@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YZTabBarController.h"
+#import "ZKStartViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +24,10 @@
     [User userStashPop];
     
     // ZK 临时修改测试
-    self.window.rootViewController = [[YZTabBarController alloc]init];
+    ZKStartViewController *startVC = [[ZKStartViewController alloc] init];
+    startVC.vc = [[YZTabBarController alloc]init];
+    
+    self.window.rootViewController = startVC;
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -70,6 +70,8 @@
 		F50B6A7D2106B31400294947 /* ZKGameBattleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B6A7C2106B31400294947 /* ZKGameBattleView.m */; };
 		F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF0C20B9512400D6A136 /* ZKSettingView.m */; };
 		F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */; };
+		F53F1A272122A62B0021ADA3 /* ZKStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */; };
+		F53F1A2B2122AA8A0021ADA3 /* seek_start.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F53F1A2A2122AA890021ADA3 /* seek_start.m4v */; };
 		F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */; };
 		F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */; };
 		F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5096120BAD9750094F4BA /* ZKGameIndexView.m */; };
@@ -201,6 +203,9 @@
 		F517BF0C20B9512400D6A136 /* ZKSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKSettingView.m; sourceTree = "<group>"; };
 		F517BF0F20B9513E00D6A136 /* ZKSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKSettingViewController.h; sourceTree = "<group>"; };
 		F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKSettingViewController.m; sourceTree = "<group>"; };
+		F53F1A252122A62B0021ADA3 /* ZKStartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKStartViewController.h; sourceTree = "<group>"; };
+		F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKStartViewController.m; sourceTree = "<group>"; };
+		F53F1A2A2122AA890021ADA3 /* seek_start.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = seek_start.m4v; sourceTree = "<group>"; };
 		F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZKCategory.h"; sourceTree = "<group>"; };
 		F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZKCategory.m"; sourceTree = "<group>"; };
 		F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameIndexViewController.h; sourceTree = "<group>"; };
@@ -366,6 +371,7 @@
 		A0132CE9209DA92A00CBA33F /* Seek */ = {
 			isa = PBXGroup;
 			children = (
+				F53F1A282122AA5F0021ADA3 /* public */,
 				A0A86617209DB5F400674BF6 /* controller */,
 				A0A86616209DB5EF00674BF6 /* view */,
 				A0A86615209DB5EA00674BF6 /* model */,
@@ -576,6 +582,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F53F1A242122A5D90021ADA3 /* start */,
 				A0A4AE58210C4E6300F4C6BE /* camera */,
 				A00BBEBB20E8BD9500E2D934 /* basics */,
 				A06F46E520D9346200D3A1DA /* me */,
@@ -795,6 +802,31 @@
 			path = setting;
 			sourceTree = "<group>";
 		};
+		F53F1A242122A5D90021ADA3 /* start */ = {
+			isa = PBXGroup;
+			children = (
+				F53F1A252122A62B0021ADA3 /* ZKStartViewController.h */,
+				F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */,
+			);
+			path = start;
+			sourceTree = "<group>";
+		};
+		F53F1A282122AA5F0021ADA3 /* public */ = {
+			isa = PBXGroup;
+			children = (
+				F53F1A292122AA6A0021ADA3 /* video */,
+			);
+			path = public;
+			sourceTree = "<group>";
+		};
+		F53F1A292122AA6A0021ADA3 /* video */ = {
+			isa = PBXGroup;
+			children = (
+				F53F1A2A2122AA890021ADA3 /* seek_start.m4v */,
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
 		F5C5095420B9B49E0094F4BA /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,6 +935,7 @@
 			files = (
 				A0132CF7209DA92B00CBA33F /* LaunchScreen.storyboard in Resources */,
 				A0132CF4209DA92B00CBA33F /* Assets.xcassets in Resources */,
+				F53F1A2B2122AA8A0021ADA3 /* seek_start.m4v in Resources */,
 				A00F03C920A310F8008E60B9 /* YZSearchTableViewCell.xib in Resources */,
 				A0132CF2209DA92A00CBA33F /* Main.storyboard in Resources */,
 			);
@@ -1014,6 +1047,7 @@
 				A0F8908020B546B20070B0C7 /* YZHistoryWord.m in Sources */,
 				A0E3906A20D74E850067B309 /* YZTabBarController.m in Sources */,
 				A0DA121720B7CD5100469D33 /* YZLikedView.m in Sources */,
+				F53F1A272122A62B0021ADA3 /* ZKStartViewController.m in Sources */,
 				A00BBEC120E8C13500E2D934 /* UIViewController+YZTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
