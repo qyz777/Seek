@@ -9,6 +9,8 @@
 #import "ZKGameSingleViewController.h"
 #import "ZKGameSingleView.h"
 #import "ZKSingleGameModel.h"
+#import "ZKAnswerButton.h"
+#import "ZKGameAnswerTipView.h"
 
 //当前题目
  NSInteger questionIndex = 0;
@@ -28,7 +30,7 @@ static NSInteger rightAns = 0;
     [super viewDidLoad];
         
     ZKGameSingleView *singleView = [[ZKGameSingleView alloc] init];
-    self.view = singleView;
+    [self.view addSubview:singleView];
     self.singleView = singleView;
     
     [singleView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
@@ -74,20 +76,27 @@ static NSInteger rightAns = 0;
         return ;
         return ;
     }
+    
+    // 获取点击的Btn
+    ZKAnswerButton *answerBtn = (ZKAnswerButton *)[self.singleView viewWithTag:index];
+    
     NSInteger trueIndex = [self.resArray[questionIndex][@"choose"] intValue];
     if (trueIndex + 1001 == index) {
         //回答正确
         rightAns++;
-        [SVProgressHUD showSuccessWithStatus:@"答对了"];
-        [SVProgressHUD dismissWithDelay:1.0f];
+        [answerBtn rightAnimation];
+        [ZKGameAnswerTipView showTipWithType:ZKGameAnswerTipViewTypeRight];
     }else{
         //回答错误
-        [SVProgressHUD showErrorWithStatus:@"答错了"];
-        [SVProgressHUD dismissWithDelay:1.0f];
+        [answerBtn wrongAnimation];
+        [ZKGameAnswerTipView showTipWithType:ZKGameAnswerTipViewTypeWrong];
     }
     questionIndex++;
 
-    [self updateQuestion];
+    // 延时换题
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self updateQuestion];
+    });
 }
 
 - (void)closeAction {

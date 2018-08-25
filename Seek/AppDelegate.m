@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "YZTabBarController.h"
 #import "ZKStartViewController.h"
+#import "ZKTestViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,8 @@
     // ZK 临时修改测试
     ZKStartViewController *startVC = [[ZKStartViewController alloc] init];
     startVC.vc = [[YZTabBarController alloc]init];
+    
+//    ZKTestViewController *testVC = [[ZKTestViewController alloc] init];
     
     self.window.rootViewController = startVC;
     [self.window makeKeyAndVisible];

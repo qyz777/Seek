@@ -72,6 +72,9 @@
 		F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */; };
 		F53F1A272122A62B0021ADA3 /* ZKStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */; };
 		F53F1A2B2122AA8A0021ADA3 /* seek_start.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F53F1A2A2122AA890021ADA3 /* seek_start.m4v */; };
+		F5740AC3212F94D3004999C1 /* ZKAnswerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */; };
+		F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC5212FC163004999C1 /* ZKTestViewController.m */; };
+		F5740ACA212FD313004999C1 /* ZKGameAnswerTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */; };
 		F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */; };
 		F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */; };
 		F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5096120BAD9750094F4BA /* ZKGameIndexView.m */; };
@@ -206,6 +209,12 @@
 		F53F1A252122A62B0021ADA3 /* ZKStartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKStartViewController.h; sourceTree = "<group>"; };
 		F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKStartViewController.m; sourceTree = "<group>"; };
 		F53F1A2A2122AA890021ADA3 /* seek_start.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = seek_start.m4v; sourceTree = "<group>"; };
+		F5740AC1212F94D3004999C1 /* ZKAnswerButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKAnswerButton.h; sourceTree = "<group>"; };
+		F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKAnswerButton.m; sourceTree = "<group>"; };
+		F5740AC4212FC163004999C1 /* ZKTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKTestViewController.h; sourceTree = "<group>"; };
+		F5740AC5212FC163004999C1 /* ZKTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKTestViewController.m; sourceTree = "<group>"; };
+		F5740AC8212FD313004999C1 /* ZKGameAnswerTipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameAnswerTipView.h; sourceTree = "<group>"; };
+		F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameAnswerTipView.m; sourceTree = "<group>"; };
 		F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZKCategory.h"; sourceTree = "<group>"; };
 		F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZKCategory.m"; sourceTree = "<group>"; };
 		F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameIndexViewController.h; sourceTree = "<group>"; };
@@ -827,6 +836,24 @@
 			path = video;
 			sourceTree = "<group>";
 		};
+		F5740AC0212F9476004999C1 /* button */ = {
+			isa = PBXGroup;
+			children = (
+				F5740AC1212F94D3004999C1 /* ZKAnswerButton.h */,
+				F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */,
+			);
+			path = button;
+			sourceTree = "<group>";
+		};
+		F5740AC7212FD2FD004999C1 /* Tip */ = {
+			isa = PBXGroup;
+			children = (
+				F5740AC8212FD313004999C1 /* ZKGameAnswerTipView.h */,
+				F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */,
+			);
+			path = Tip;
+			sourceTree = "<group>";
+		};
 		F5C5095420B9B49E0094F4BA /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,6 +866,8 @@
 		F5C5095820BAD6940094F4BA /* game */ = {
 			isa = PBXGroup;
 			children = (
+				F5740AC7212FD2FD004999C1 /* Tip */,
+				F5740AC0212F9476004999C1 /* button */,
 				A0BA18A620F794EB00E2FD84 /* interlude */,
 				F5C5095F20BAD9610094F4BA /* index */,
 				F5C5095A20BAD6A30094F4BA /* single */,
@@ -861,6 +890,8 @@
 				A02D028920F4DE8D006219D5 /* interlude */,
 				A070798320BCD12000F3B045 /* single */,
 				A070798220BCD11500F3B045 /* index */,
+				F5740AC4212FC163004999C1 /* ZKTestViewController.h */,
+				F5740AC5212FC163004999C1 /* ZKTestViewController.m */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -997,6 +1028,7 @@
 				A00BBEBE20E8BDD100E2D934 /* BasicsViewController.m in Sources */,
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
 				A00BBEBA20E8B80C00E2D934 /* MeEditInfoViewController.m in Sources */,
+				F5740AC3212F94D3004999C1 /* ZKAnswerButton.m in Sources */,
 				A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
 				A02D028C20F4DEB8006219D5 /* YZGameInterludeViewController.m in Sources */,
@@ -1023,6 +1055,7 @@
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */,
 				A06F46EF20D9366300D3A1DA /* MeView.m in Sources */,
+				F5740ACA212FD313004999C1 /* ZKGameAnswerTipView.m in Sources */,
 				F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */,
 				A0132CFA209DA92B00CBA33F /* main.m in Sources */,
 				A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */,
@@ -1039,6 +1072,7 @@
 				A0A4AE4E210B260600F4C6BE /* UIViewController+ClassLog.m in Sources */,
 				A0BA18A920F7952300E2FD84 /* YZGameInterludeFindView.m in Sources */,
 				F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */,
+				F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */,
 				F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */,
 				A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */,
 				A0E3906720D74DA10067B309 /* YZTabBar.m in Sources */,

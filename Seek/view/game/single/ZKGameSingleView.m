@@ -7,8 +7,8 @@
 //
 
 #import "ZKGameSingleView.h"
+#import "ZKAnswerButton.h"
 
-static const CGFloat kInterval = 20;
 
 @interface ZKGameSingleView()
 
@@ -95,23 +95,21 @@ static const CGFloat kInterval = 20;
 //    view.layer.masksToBounds = YES;
 //    view.backgroundColor = UIColor.whiteColor;
     
-    UILabel *answerLabel = [[UILabel alloc] initWithFrame:CGRectMake(kInterval, y, SCREEN_WIDTH - 2 * kInterval, 50)];
-    answerLabel.text = title;
-    answerLabel.textAlignment = NSTextAlignmentCenter;
-//    answerLabel.font = [UIFont boldSystemFontOfSize:20];
-    answerLabel.textColor = [UIColor colorWithRed:72 / 255.0 green:197 / 355.0 blue:149 / 255.0 alpha:1.0];
-    answerLabel.layer.cornerRadius = 5;
-    answerLabel.layer.masksToBounds = YES;
-    answerLabel.backgroundColor = UIColor.whiteColor;
+//    UILabel *answerLabel = [[UILabel alloc] initWithFrame:CGRectMake(kInterval, y, SCREEN_WIDTH - 2 * kInterval, 50)];
+    
 //    [view addSubview:answerLabel];
-    [self addSubview:answerLabel];
+    
+    ZKAnswerButton *answerBtn = [[ZKAnswerButton alloc] init];
+    answerBtn.y = y;
+    answerBtn.text = title;
+    [self addSubview:answerBtn];
     
     //添加手势
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [answerLabel addGestureRecognizer:tapGesture];
-    answerLabel.userInteractionEnabled = YES;
+    [answerBtn addGestureRecognizer:tapGesture];
+    answerBtn.userInteractionEnabled = YES;
     
-    return answerLabel;
+    return answerBtn;
 }
 
 
