@@ -10,6 +10,7 @@
 
 #define kRightBgColor UIColorFromRGB(0x5FB878)
 #define kWrongBgColor UIColorFromRGB(0xFF5722)
+#define kLikeBgColor UIColorFromRGB(0xe2e2e2)
 
 @interface ZKGameAnswerTipView()
 
@@ -72,7 +73,22 @@
     if (self = [super init]) {
         self.viewType = type;
         
-        self.circleColor = (self.viewType == ZKGameAnswerTipViewTypeRight ? kRightBgColor : kWrongBgColor);
+        switch (self.viewType) {
+            case ZKGameAnswerTipViewTypeRight:
+                self.circleColor = kRightBgColor;
+                break;
+                
+            case ZKGameAnswerTipViewTypeWrong:
+                self.circleColor = kWrongBgColor;
+                break;
+                
+            case ZKGameAnswerTipViewTypeLike:
+                self.circleColor = kLikeBgColor;
+                break;
+                
+            default:
+                break;
+        }
         
         [self initView];
         [self setup];
@@ -209,7 +225,22 @@
     [self.layer addSublayer:self.imageShape];
     
     self.imageShape.mask = [CALayer layer];
-    self.imageShape.mask.contents = (id)[UIImage imageNamed:(self.viewType == ZKGameAnswerTipViewTypeRight ? @"right" : @"wrong")].CGImage;
+    NSString *imgStr = nil;
+    switch (self.viewType) {
+        case ZKGameAnswerTipViewTypeRight:
+            imgStr = @"right";
+            break;
+        case ZKGameAnswerTipViewTypeWrong:
+            imgStr = @"wrong";
+            break;
+        case ZKGameAnswerTipViewTypeLike:
+            imgStr = @"tip_like";
+            break;
+        default:
+            break;
+    }
+
+    self.imageShape.mask.contents = (id)[UIImage imageNamed:imgStr].CGImage;
     self.imageShape.mask.position = btnCenterPoint;
     self.imageShape.mask.bounds = btnFrame;
     

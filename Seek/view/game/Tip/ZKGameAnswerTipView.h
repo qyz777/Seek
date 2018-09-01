@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger,ZKGameAnswerTipViewType) {
     ZKGameAnswerTipViewTypeRight,   //回答正确
-    ZKGameAnswerTipViewTypeWrong    //回答错误
+    ZKGameAnswerTipViewTypeWrong,   //回答错误
+    ZKGameAnswerTipViewTypeLike,    //收藏成功
 };
 
 @interface ZKGameAnswerTipView : UIView

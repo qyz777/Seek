@@ -15,7 +15,7 @@
 @property(nonatomic,assign)CGFloat x;
 @property(nonatomic,assign)CGFloat y;
 
-@property(nonatomic,assign)CGFloat bottom;
+@property(nonatomic,assign,readonly)CGFloat bottom;
 
 @property(nonatomic,assign)CGFloat center_x;
 @property(nonatomic,assign)CGFloat center_y;

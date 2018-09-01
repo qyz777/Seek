@@ -30,6 +30,7 @@
     
 //    ZKTestViewController *testVC = [[ZKTestViewController alloc] init];
     
+//    self.window.rootViewController = testVC;
     self.window.rootViewController = startVC;
     [self.window makeKeyAndVisible];
     return YES;

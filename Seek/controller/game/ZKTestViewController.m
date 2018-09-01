@@ -8,10 +8,12 @@
 
 #import "ZKTestViewController.h"
 #import "ZKGameAnswerTipView.h"
+#import "ZKMainCardView.h"
 
 @interface ZKTestViewController ()
 
 @property(nonatomic,weak)ZKGameAnswerTipView *tipView;
+@property(nonatomic,weak)ZKMainCardView *cardView;
 
 @end
 
@@ -20,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = BACKGROUND_COLOR_STYLE_TWO;
     [self initView];
 }
 
@@ -36,11 +38,16 @@
 //
 //    [self.view addSubview:tipView];
 //    self.tipView = tipView;
+    
+    ZKMainCardView *cardView = [ZKMainCardView new];
+    [self.view addSubview:cardView];
+    self.cardView = cardView;
+
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    YZLog(@"点击");
-    [ZKGameAnswerTipView showTipWithType:ZKGameAnswerTipViewTypeWrong];
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    YZLog(@"点击");
+//    [ZKGameAnswerTipView showTipWithType:ZKGameAnswerTipViewTypeWrong];
+//}
 
 @end

@@ -72,6 +72,9 @@
 		F517BF1120B9513E00D6A136 /* ZKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F517BF1020B9513E00D6A136 /* ZKSettingViewController.m */; };
 		F53F1A272122A62B0021ADA3 /* ZKStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */; };
 		F53F1A2B2122AA8A0021ADA3 /* seek_start.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F53F1A2A2122AA890021ADA3 /* seek_start.m4v */; };
+		F55E1DC52133CE2200C0D183 /* ZKMainCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E1DC42133CE2200C0D183 /* ZKMainCardView.m */; };
+		F55E1DC92133CFB700C0D183 /* ZKMainCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E1DC82133CFB700C0D183 /* ZKMainCardViewCell.m */; };
+		F55E1DD1213432D500C0D183 /* UIColor+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E1DD0213432D500C0D183 /* UIColor+ZKCategory.m */; };
 		F5740AC3212F94D3004999C1 /* ZKAnswerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */; };
 		F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC5212FC163004999C1 /* ZKTestViewController.m */; };
 		F5740ACA212FD313004999C1 /* ZKGameAnswerTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */; };
@@ -209,6 +212,12 @@
 		F53F1A252122A62B0021ADA3 /* ZKStartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKStartViewController.h; sourceTree = "<group>"; };
 		F53F1A262122A62B0021ADA3 /* ZKStartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKStartViewController.m; sourceTree = "<group>"; };
 		F53F1A2A2122AA890021ADA3 /* seek_start.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = seek_start.m4v; sourceTree = "<group>"; };
+		F55E1DC32133CE2200C0D183 /* ZKMainCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKMainCardView.h; sourceTree = "<group>"; };
+		F55E1DC42133CE2200C0D183 /* ZKMainCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKMainCardView.m; sourceTree = "<group>"; };
+		F55E1DC72133CFB700C0D183 /* ZKMainCardViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKMainCardViewCell.h; sourceTree = "<group>"; };
+		F55E1DC82133CFB700C0D183 /* ZKMainCardViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKMainCardViewCell.m; sourceTree = "<group>"; };
+		F55E1DCF213432D500C0D183 /* UIColor+ZKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZKCategory.h"; sourceTree = "<group>"; };
+		F55E1DD0213432D500C0D183 /* UIColor+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZKCategory.m"; sourceTree = "<group>"; };
 		F5740AC1212F94D3004999C1 /* ZKAnswerButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKAnswerButton.h; sourceTree = "<group>"; };
 		F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKAnswerButton.m; sourceTree = "<group>"; };
 		F5740AC4212FC163004999C1 /* ZKTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKTestViewController.h; sourceTree = "<group>"; };
@@ -621,6 +630,7 @@
 		A0A8661C209DB63200674BF6 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				F55E1DC22133CDBB00C0D183 /* card */,
 				A0A8661D209DB69F00674BF6 /* MainView.h */,
 				A0A8661E209DB69F00674BF6 /* MainView.m */,
 			);
@@ -836,6 +846,43 @@
 			path = video;
 			sourceTree = "<group>";
 		};
+		F55E1DC22133CDBB00C0D183 /* card */ = {
+			isa = PBXGroup;
+			children = (
+				F55E1DC62133CFAA00C0D183 /* cell */,
+				F55E1DC32133CE2200C0D183 /* ZKMainCardView.h */,
+				F55E1DC42133CE2200C0D183 /* ZKMainCardView.m */,
+			);
+			path = card;
+			sourceTree = "<group>";
+		};
+		F55E1DC62133CFAA00C0D183 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				F55E1DC72133CFB700C0D183 /* ZKMainCardViewCell.h */,
+				F55E1DC82133CFB700C0D183 /* ZKMainCardViewCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		F55E1DCD213432B500C0D183 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */,
+				F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		F55E1DCE213432BA00C0D183 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				F55E1DCF213432D500C0D183 /* UIColor+ZKCategory.h */,
+				F55E1DD0213432D500C0D183 /* UIColor+ZKCategory.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 		F5740AC0212F9476004999C1 /* button */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,8 +904,8 @@
 		F5C5095420B9B49E0094F4BA /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */,
-				F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */,
+				F55E1DCE213432BA00C0D183 /* UIColor */,
+				F55E1DCD213432B500C0D183 /* UIView */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1029,6 +1076,7 @@
 				A0A8664B209EED7D00674BF6 /* UIViewController+YZNavigationBar.m in Sources */,
 				A00BBEBA20E8B80C00E2D934 /* MeEditInfoViewController.m in Sources */,
 				F5740AC3212F94D3004999C1 /* ZKAnswerButton.m in Sources */,
+				F55E1DC92133CFB700C0D183 /* ZKMainCardViewCell.m in Sources */,
 				A0DA121420B7CD1F00469D33 /* YZLikedViewController.m in Sources */,
 				A00F03C320A28610008E60B9 /* SearchAnimation.m in Sources */,
 				A02D028C20F4DEB8006219D5 /* YZGameInterludeViewController.m in Sources */,
@@ -1051,6 +1099,7 @@
 				A0A4AE5F210C9FF000F4C6BE /* YZTakePhotoView.m in Sources */,
 				A00F03DD20A322B6008E60B9 /* YZMoreView.m in Sources */,
 				A0A4AE66210D5A0300F4C6BE /* YZCameraTransition.m in Sources */,
+				F55E1DD1213432D500C0D183 /* UIColor+ZKCategory.m in Sources */,
 				A00F03B520A1D264008E60B9 /* YZSearchViewController.m in Sources */,
 				A0A86645209EE70600674BF6 /* YZNavigationBar.m in Sources */,
 				F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */,
@@ -1064,6 +1113,7 @@
 				A0A4AE52210BFE5900F4C6BE /* MeHeaderView.m in Sources */,
 				A00F03DA20A32275008E60B9 /* YZMoreViewController.m in Sources */,
 				F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */,
+				F55E1DC52133CE2200C0D183 /* ZKMainCardView.m in Sources */,
 				A0A4AE5B210C4F0700F4C6BE /* YZCameraController.m in Sources */,
 				A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
@@ -1224,7 +1274,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 437JAL24TE;
+				DEVELOPMENT_TEAM = JHFJ9EDM32;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Seek/expansion/YZGeneral.pch";
 				INFOPLIST_FILE = Seek/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1250,7 +1300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 437JAL24TE;
+				DEVELOPMENT_TEAM = JHFJ9EDM32;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Seek/expansion/YZGeneral.pch";
 				INFOPLIST_FILE = Seek/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
