@@ -13,12 +13,23 @@
 
 + (void)load {
 #ifdef DEBUG
-    //原本的viewWillAppear方法
-    Method viewWillAppear = class_getInstanceMethod(self, @selector(viewWillAppear:));
-    //需要替换成 能够输出日志的viewWillAppear
-    Method logViewWillAppear = class_getInstanceMethod(self, @selector(logViewWillAppear:));
-    //两方法进行交换
-    method_exchangeImplementations(viewWillAppear, logViewWillAppear);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        
+        SEL originalSelector = @selector(viewWillAppear:);
+        SEL swizzlingSelector = @selector(logViewWillAppear:);
+        
+        Method originalMethod = class_getInstanceMethod(self, originalSelector);
+        Method swizzlingMethod = class_getInstanceMethod(self, swizzlingSelector);
+        
+        BOOL success = class_addMethod(class, originalSelector, method_getImplementation(swizzlingMethod), method_getTypeEncoding(swizzlingMethod));
+        if (success) {
+            class_replaceMethod(class, swizzlingSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        }else {
+            method_exchangeImplementations(originalMethod, swizzlingMethod);
+        }
+    });
 #endif
 }
 
