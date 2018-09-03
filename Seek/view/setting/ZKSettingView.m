@@ -26,10 +26,10 @@ static const NSInteger kInterval = 20;
 //初始化界面
 - (void)initView {
     self.frame = CGRectMake(0, NavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBarHeight - TabBarHeight);
-    self.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0];
     
     //test: 允许对战
     UIView *gameView = [self getViewWithFrame:CGRectMake(kInterval, kInterval, SCREEN_WIDTH - 2 * kInterval, 50) andTitle:@"允许对战"];
+    gameView.backgroundColor = RGB(245, 245, 245);
     UISwitch *gameSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(gameView.width - 50 - 25, 0, 32, 32)];
     gameSwitch.on = YES;
     gameSwitch.center_y = gameView.height * 0.5;
@@ -38,6 +38,7 @@ static const NSInteger kInterval = 20;
     
     //test: 显示排行
     UIView *rankView = [self getViewWithFrame:CGRectMake(kInterval, gameView.bottom + kInterval, SCREEN_WIDTH - 2 * kInterval, 50) andTitle:@"允许排行榜显示"];
+    rankView.backgroundColor = RGB(245, 245, 245);
     UISwitch *rankSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(rankView.width - 50 - 25, 0, 32, 32)];
     rankSwitch.on = YES;
     rankSwitch.center_y = rankView.height * 0.5;

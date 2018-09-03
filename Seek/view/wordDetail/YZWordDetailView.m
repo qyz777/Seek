@@ -24,14 +24,14 @@
         make.top.right.bottom.left.equalTo(self);
     }];
     
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
-    effectView.alpha = 0.7f;
+    effectView.alpha = 0.85f;
     effectView.frame = self.frame;
     [self.backImageView addSubview:effectView];
     
     self.cardView = [UIView new];
-    self.cardView.backgroundColor = RGB_ALPHA(248, 248, 255, 0.8);
+    self.cardView.backgroundColor = [UIColor whiteColor];
     self.cardView.layer.cornerRadius = 8;
     self.cardView.layer.shadowOffset = CGSizeMake(1, 1);
     self.cardView.layer.shadowOpacity = 0.7;
