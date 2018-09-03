@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.yz_navigationBar.navigationBarColor = RGB(245, 245, 245);
-    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"设置" font:[UIFont systemFontOfSize:20.0f weight:UIFontWeightBold] color:[UIColor blackColor]];
+    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"设置" font:[UIFont systemFontOfSize:18.0f weight:UIFontWeightBold] color:[UIColor blackColor]];
     [self.popButton setImage:[UIImage imageNamed:@"pop_black"] forState:UIControlStateNormal];
     ZKSettingView *settingView = [[ZKSettingView alloc] init];
     [self.view addSubview:settingView];

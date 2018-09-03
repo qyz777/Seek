@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BasicsViewController.h"
 
-@interface YZLikedViewController : UIViewController
+@interface YZLikedViewController : BasicsViewController
 
 @end

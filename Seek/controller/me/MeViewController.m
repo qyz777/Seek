@@ -11,6 +11,7 @@
 #import "MeEditInfoViewController.h"
 #import "YZLoginViewController.h"
 #import "ZKSettingViewController.h"
+#import "YZLikedViewController.h"
 
 @interface MeViewController ()<MeViewDelegate>
 
@@ -33,7 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self navigationBar];
     self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
-    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"我" font:[UIFont systemFontOfSize:20.0f weight:UIFontWeightBold] color:[UIColor whiteColor]];
+    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"我" font:[UIFont systemFontOfSize:18.0f weight:UIFontWeightBold] color:[UIColor whiteColor]];
     self.meView = [[MeView alloc]init];
     self.meView.yz_delegate = self;
     [self.view addSubview:self.meView];
@@ -56,6 +57,12 @@
 
 - (void)settingCellDidSelect {
     ZKSettingViewController *vc = [ZKSettingViewController new];
+    vc.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:vc animated:true];
+}
+
+- (void)likeCellDidSelect {
+    YZLikedViewController *vc = [YZLikedViewController new];
     vc.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:vc animated:true];
 }

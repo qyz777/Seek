@@ -42,7 +42,8 @@
     [self registerClass:[YZMeNormalCell class] forCellReuseIdentifier:NSStringFromClass([YZMeNormalCell class])];
     
     self.dataArray = @[@{@"icon": @"me_rank",@"text": @"排行"},
-                      @{@"icon": @"me_setting",@"text": @"设置"}];
+                      @{@"icon": @"me_setting",@"text": @"设置"},
+                       @{@"icon": @"me_like",@"text": @"喜欢"}];
     [self reloadData];
 }
 
@@ -73,6 +74,10 @@
     }else if (indexPath.row == MeCellSetting) {
         if ([self.yz_delegate respondsToSelector:@selector(settingCellDidSelect)]) {
             [self.yz_delegate settingCellDidSelect];
+        }
+    }else if (indexPath.row == MeCellLike) {
+        if ([self.yz_delegate respondsToSelector:@selector(likeCellDidSelect)]) {
+            [self.yz_delegate likeCellDidSelect];
         }
     }
 }

@@ -21,7 +21,6 @@
 }
 
 - (void)initSubviews {
-    self.backgroundColor = [UIColor whiteColor];
     [self registerNib:[UINib nibWithNibName:@"YZSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"YZSearchTableViewCell"];
     self.tableFooterView = [UIView new];
 }

@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(NSInteger, MeCell) {
     MeCellRank = 0,
-    MeCellSetting
+    MeCellSetting,
+    MeCellLike
 };
 
 @protocol MeViewDelegate <NSObject>
@@ -20,6 +21,7 @@ typedef NS_ENUM(NSInteger, MeCell) {
 - (void)avatarImageDidSelect;
 - (void)rankCellDidSelect;
 - (void)settingCellDidSelect;
+- (void)likeCellDidSelect;
 - (void)logOutBtnDidClicked;
 
 @end

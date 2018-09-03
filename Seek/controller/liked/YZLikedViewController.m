@@ -22,21 +22,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 - (void)initView {
     self.view.backgroundColor = [UIColor whiteColor];
-    [self navigationBar];
-    UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"返回"]];
-    [leftBtn addTarget:self action:@selector(leftBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.yz_navigationBar.navigationBarColor = [UIColor whiteColor];
+    [self.popButton setImage:[UIImage imageNamed:@"pop_black"] forState:UIControlStateNormal];
+    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"喜欢" font:[UIFont systemFontOfSize:18.0f weight:UIFontWeightBold] color:[UIColor blackColor]];
     
     self.likedView = [[YZLikedView alloc]init];
     [self.view addSubview:self.likedView];
     [self requestData];
-}
-
-- (void)leftBtnDidClicked:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)requestData {

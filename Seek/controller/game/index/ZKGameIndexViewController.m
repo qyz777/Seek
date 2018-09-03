@@ -26,7 +26,7 @@
     [super viewDidLoad];
     [self navigationBar];
     self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
-    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"游戏大厅" font:[UIFont systemFontOfSize:20.0f weight:UIFontWeightBold] color:[UIColor whiteColor]];
+    [self.yz_navigationBar addCenterTitleLabelWithTitle:@"游戏大厅" font:[UIFont systemFontOfSize:18.0f weight:UIFontWeightBold] color:[UIColor whiteColor]];
     UIButton *leftBtn = [self.yz_navigationBar addLeftButtonWithImage:[UIImage imageNamed:@"game_photo"]];
     [leftBtn addTarget:self action:@selector(leftBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
