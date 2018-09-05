@@ -39,6 +39,8 @@
 		A08BD3FF20A819EB0046C0A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD3FE20A819EB0046C0A6 /* User.m */; };
 		A08BD40420A81DEF0046C0A6 /* YZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */; };
 		A08BD40720A81E110046C0A6 /* YZLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08BD40620A81E110046C0A6 /* YZLoginView.m */; };
+		A094A90C213F695F004B716F /* YZRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A094A90B213F695F004B716F /* YZRankViewController.m */; };
+		A094A90F213F6A81004B716F /* YZRankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A094A90E213F6A81004B716F /* YZRankTableViewCell.m */; };
 		A0A4AE4E210B260600F4C6BE /* UIViewController+ClassLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */; };
 		A0A4AE52210BFE5900F4C6BE /* MeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE51210BFE5900F4C6BE /* MeHeaderView.m */; };
 		A0A4AE5B210C4F0700F4C6BE /* YZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A4AE5A210C4F0700F4C6BE /* YZCameraController.m */; };
@@ -145,6 +147,10 @@
 		A08BD40320A81DEF0046C0A6 /* YZLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLoginViewController.m; sourceTree = "<group>"; };
 		A08BD40520A81E110046C0A6 /* YZLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZLoginView.h; sourceTree = "<group>"; };
 		A08BD40620A81E110046C0A6 /* YZLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZLoginView.m; sourceTree = "<group>"; };
+		A094A90A213F695F004B716F /* YZRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZRankViewController.h; sourceTree = "<group>"; };
+		A094A90B213F695F004B716F /* YZRankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZRankViewController.m; sourceTree = "<group>"; };
+		A094A90D213F6A81004B716F /* YZRankTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZRankTableViewCell.h; sourceTree = "<group>"; };
+		A094A90E213F6A81004B716F /* YZRankTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZRankTableViewCell.m; sourceTree = "<group>"; };
 		A0A4AE4C210B260600F4C6BE /* UIViewController+ClassLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassLog.h"; sourceTree = "<group>"; };
 		A0A4AE4D210B260600F4C6BE /* UIViewController+ClassLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ClassLog.m"; sourceTree = "<group>"; };
 		A0A4AE50210BFE5900F4C6BE /* MeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeHeaderView.h; sourceTree = "<group>"; };
@@ -506,6 +512,24 @@
 			path = login;
 			sourceTree = "<group>";
 		};
+		A094A908213F693E004B716F /* rank */ = {
+			isa = PBXGroup;
+			children = (
+				A094A90A213F695F004B716F /* YZRankViewController.h */,
+				A094A90B213F695F004B716F /* YZRankViewController.m */,
+			);
+			path = rank;
+			sourceTree = "<group>";
+		};
+		A094A909213F694B004B716F /* rank */ = {
+			isa = PBXGroup;
+			children = (
+				A094A90D213F6A81004B716F /* YZRankTableViewCell.h */,
+				A094A90E213F6A81004B716F /* YZRankTableViewCell.m */,
+			);
+			path = rank;
+			sourceTree = "<group>";
+		};
 		A0A4AE48210B229D00F4C6BE /* classLog */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +605,7 @@
 		A0A86616209DB5EF00674BF6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A094A909213F694B004B716F /* rank */,
 				A0A4AE5C210C9FD300F4C6BE /* camera */,
 				A06F46E920D9355000D3A1DA /* me */,
 				F5C5095820BAD6940094F4BA /* game */,
@@ -600,6 +625,7 @@
 		A0A86617209DB5F400674BF6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A094A908213F693E004B716F /* rank */,
 				F53F1A242122A5D90021ADA3 /* start */,
 				A0A4AE58210C4E6300F4C6BE /* camera */,
 				A00BBEBB20E8BD9500E2D934 /* basics */,
@@ -1083,6 +1109,7 @@
 				A00BBEB720E8A55300E2D934 /* YZMeAvatarCell.m in Sources */,
 				A06F46E820D9347D00D3A1DA /* MeViewController.m in Sources */,
 				A070798620BCD14900F3B045 /* ZKGameSingleViewController.m in Sources */,
+				A094A90C213F695F004B716F /* YZRankViewController.m in Sources */,
 				A0DB887F20A67D1000CA810C /* YZFindView.m in Sources */,
 				A00F03BF20A1D926008E60B9 /* NSString+Custom.m in Sources */,
 				A0132CEF209DA92A00CBA33F /* ViewController.m in Sources */,
@@ -1120,6 +1147,7 @@
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
 				A0A4AE4E210B260600F4C6BE /* UIViewController+ClassLog.m in Sources */,
+				A094A90F213F6A81004B716F /* YZRankTableViewCell.m in Sources */,
 				A0BA18A920F7952300E2FD84 /* YZGameInterludeFindView.m in Sources */,
 				F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */,
 				F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */,

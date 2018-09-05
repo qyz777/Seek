@@ -12,6 +12,7 @@
 #import "YZLoginViewController.h"
 #import "ZKSettingViewController.h"
 #import "YZLikedViewController.h"
+#import "YZRankViewController.h"
 
 @interface MeViewController ()<MeViewDelegate>
 
@@ -52,7 +53,9 @@
 }
 
 - (void)rankCellDidSelect {
-    
+    YZRankViewController *vc = [YZRankViewController new];
+    vc.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (void)settingCellDidSelect {
