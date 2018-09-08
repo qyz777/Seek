@@ -276,11 +276,18 @@ UIViewControllerTransitioningDelegate>
 
 - (void)requestWordWithImageUrl:(NSString *)imageUrl {
     NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Util/ocr";
-    [[AFHTTPSessionManager manager] POST:url parameters:@{@"img": imageUrl} progress:^(NSProgress * _Nonnull downloadProgress) {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
+    [manager POST:url parameters:@{@"img": imageUrl} progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
         NSDictionary *json = responseObject;
+        YZLog(@"%@",json);
         NSInteger code = [json[@"code"] integerValue];
         if (code == 0) {
             NSDictionary *data = json[@"data"];
@@ -301,6 +308,8 @@ UIViewControllerTransitioningDelegate>
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showInfoWithStatus:@"请求失败"];
+        
+        YZLog(@"%@",error);
     }];
 }
 
