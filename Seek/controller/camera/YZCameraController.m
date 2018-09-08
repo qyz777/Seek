@@ -236,7 +236,6 @@ UIViewControllerTransitioningDelegate>
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhotoSampleBuffer:(CMSampleBufferRef)photoSampleBuffer previewPhotoSampleBuffer:(CMSampleBufferRef)previewPhotoSampleBuffer resolvedSettings:(AVCaptureResolvedPhotoSettings *)resolvedSettings bracketSettings:(AVCaptureBracketedStillImageSettings *)bracketSettings error:(NSError *)error {
     NSData *data = [AVCapturePhotoOutput JPEGPhotoDataRepresentationForJPEGSampleBuffer:photoSampleBuffer previewPhotoSampleBuffer:previewPhotoSampleBuffer];
     UIImage *image = [UIImage imageWithData:data];
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 
     self.takePhotoView.imageData = image;
     self.takePhotoView.hidden = NO;
@@ -304,7 +303,6 @@ UIViewControllerTransitioningDelegate>
         if (code == 0) {
             NSDictionary *data = json[@"data"];
             NSArray *list = data[@"list"];
-            YZLog(@"%@",list);
             if (list.count == 0) {
                 [SVProgressHUD showInfoWithStatus:@"图片没有提取出单词哦"];
             }else {
@@ -314,7 +312,7 @@ UIViewControllerTransitioningDelegate>
                     ZKGameSingleViewController *vc = [ZKGameSingleViewController new];
                     vc.isFromCamera = YES;
                     vc.resArray = list.mutableCopy;
-                    [self.navigationController pushViewController:vc animated:YES];
+                    [self presentViewController:vc animated:YES completion:nil];
                 }
             }
         }
@@ -333,8 +331,9 @@ UIViewControllerTransitioningDelegate>
         [array addObject:sD];
     }
     YZCameraQueryController *vc = [YZCameraQueryController new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     vc.dataArray = array;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - getter

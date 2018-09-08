@@ -56,6 +56,8 @@ static NSInteger rightAns = 0;
             [SVProgressHUD showWithStatus:@"网络请求失败"];
             [SVProgressHUD dismissWithDelay:1.5f];
         }];
+    }else {
+        [self updateQuestion];
     }
 }
 

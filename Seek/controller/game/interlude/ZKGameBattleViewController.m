@@ -28,10 +28,10 @@
     
     ZKGameBattleView *battleView = [[ZKGameBattleView alloc] init];
     [battleView setLeftUserWithInfo:[@{
-                                      @"header": @"100",
+                                      @"header": @"default_icon",
                                       @"name": @"戚戚戚"
                                       } mutableCopy] andRightInfo:[@{
-                                                       @"header": @"200",
+                                                       @"header": @"default_icon",
                                                        @"name": @"李Lucky"
                                                        } mutableCopy]];
     [self startCountDown];

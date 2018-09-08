@@ -29,6 +29,7 @@
 
 - (void)popViewController {
     [self.navigationController popViewControllerAnimated:true];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

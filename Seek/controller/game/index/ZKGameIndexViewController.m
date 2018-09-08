@@ -48,12 +48,8 @@
             }
                 break;
             case 1003:{
-                //测试
-                ZKGameBattleViewController *battleVC = [[ZKGameBattleViewController alloc] init];
-                [self presentViewController:battleVC animated:YES completion:nil];
-                
-                [SVProgressHUD showInfoWithStatus:@"此功能暂未开放"];
-                [SVProgressHUD dismissWithDelay:1.5f];
+                self.cameraController.isQuery = NO;
+                [self presentViewController:self.cameraController animated:YES completion:nil];
             }
                 break;
             default:
@@ -74,6 +70,7 @@
 }
 
 - (void)leftBtnDidClicked:(id)sender {
+    self.cameraController.isQuery = YES;
     [self presentViewController:self.cameraController animated:YES completion:nil];
 }
 
