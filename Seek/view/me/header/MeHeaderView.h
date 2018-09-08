@@ -22,6 +22,4 @@ UIKIT_EXTERN NSNotificationName const ExLayerShouldBegin;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) dispatch_source_t timer;
 
-@property (nonatomic, copy) NSDictionary *data;
-
 @end

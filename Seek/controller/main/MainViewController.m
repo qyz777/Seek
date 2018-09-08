@@ -56,7 +56,11 @@
         NSTimeInterval now = [date timeIntervalSince1970];
         [User sharedUser].timestamp = now;
         [User updateLoginWithToken:[User sharedUser].token time:now success:^{
-
+            [User fetchUserDataWithSuccess:^{
+                
+            } failure:^(NSError *error) {
+                
+            }];
         } failure:^(NSError *error) {
 
         }];

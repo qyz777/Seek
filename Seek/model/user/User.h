@@ -10,11 +10,18 @@
 
 @interface User : NSObject<NSCoding>
 
-@property(nonatomic, strong)NSString *token;
-@property(nonatomic, strong)NSString *phone;
-@property(nonatomic, strong)NSString *password;
-@property(nonatomic, assign)NSTimeInterval timestamp;
-@property(nonatomic, assign)NSInteger userId;
+@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *password;
+@property (nonatomic, copy) NSString *nickName;
+@property (nonatomic, assign) NSTimeInterval timestamp;
+@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, assign) NSInteger exp;
+@property (nonatomic, assign) NSInteger needExp;
+@property (nonatomic, assign) NSInteger level;
+@property (nonatomic, assign) NSInteger rank;
+@property (nonatomic, assign) NSInteger gameCount;
+@property (nonatomic, assign) NSInteger winCount;
 
 + (instancetype)sharedUser;
 
@@ -67,5 +74,8 @@
                         time:(NSTimeInterval)time
                      success:(void(^)(void))success
                      failure:(void(^)(NSError *error))failure;
+
+
++ (void)fetchUserDataWithSuccess:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 
 @end

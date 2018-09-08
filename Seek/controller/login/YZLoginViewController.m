@@ -59,7 +59,11 @@
     NSString *phone = self.loginView.userName.text;
     NSString *password = self.loginView.password.text;
     [User loginWithPhone:phone Password:password success:^{
-        [self dismissViewControllerAnimated:true completion:nil];
+        [User fetchUserDataWithSuccess:^{
+            [self dismissViewControllerAnimated:true completion:nil];
+        } failure:^(NSError *error) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
     } failure:^(NSError *error) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"用户名或密码错误" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -78,7 +82,11 @@
         if (!error) {
             [User userRegisterWithPhone:phone Password:password success:^{
                 [self.loginView.password resignFirstResponder];
-                [self dismissViewControllerAnimated:true completion:nil];
+                [User fetchUserDataWithSuccess:^{
+                    [self dismissViewControllerAnimated:true completion:nil];
+                } failure:^(NSError *error) {
+                    [self dismissViewControllerAnimated:true completion:nil];
+                }];
             } failure:^(NSError *error) {
                 NSLog(@"%@",error);
             }];

@@ -17,6 +17,10 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
     if (self) {
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 190);
         [self initSubviews];
+        self.nameLabel.text = [User sharedUser].nickName;
+        self.exBottomLabel.text = [NSString stringWithFormat:@"经验:%ld/%ld",[User sharedUser].exp,[User sharedUser].needExp];
+        self.rankLabel.text = [self getLevelName:[User sharedUser].rank];
+        self.exLabel.text = [NSString stringWithFormat:@"%ld%%",(NSInteger)(([User sharedUser].exp / [User sharedUser].needExp) * 100)];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginAnimation) name:ExLayerShouldBegin object:nil];
     }
     return self;
@@ -77,8 +81,22 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
     dispatch_resume(self.timer);
 }
 
-- (void)setData:(NSDictionary *)data {
-    _data = data;
+- (NSString *)getLevelName:(NSInteger)rank {
+    if (rank == 0) {
+        return @" 单词菜鸟 ";
+    }else if (rank == 1) {
+        return @" 单词新手 ";
+    }else if (rank == 2) {
+        return @" 单词老手 ";
+    }else if (rank == 3) {
+        return @" 单词少侠 ";
+    }else if (rank == 4) {
+        return @" 单词高手 ";
+    }else if (rank == 5) {
+        return @" 绝顶高手 ";
+    }else {
+        return @" 单词大魔王 ";
+    }
 }
 
 #pragma mark - getter
@@ -97,7 +115,6 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
         _nameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
-        _nameLabel.text = @"测试测试";
     }
     return _nameLabel;
 }
@@ -115,7 +132,7 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         _exLabel.textColor = [UIColor whiteColor];
         _exLabel.textAlignment = NSTextAlignmentCenter;
         _exLabel.font = [UIFont systemFontOfSize:18.0f weight:UIFontWeightMedium];
-        _exLabel.text = @"80%";
+        _exLabel.text = @"0%";
     }
     return _exLabel;
 }
@@ -127,7 +144,7 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         _rankLabel.layer.cornerRadius = 10.5f;
         _rankLabel.font = [UIFont systemFontOfSize:11.0f weight:UIFontWeightRegular];
         _rankLabel.backgroundColor = UIColorFromRGB(0xf47ba6);
-        _rankLabel.text = @" 单词少侠 ";
+        _rankLabel.text = @" 单词菜鸟 ";
     }
     return _rankLabel;
 }
@@ -144,7 +161,7 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
 - (UILabel *)exBottomLabel {
     if (!_exBottomLabel) {
         _exBottomLabel = [UILabel new];
-        _exBottomLabel.text = @"经验:800/1000";
+        _exBottomLabel.text = @"经验:0/0";
         _exBottomLabel.textAlignment = NSTextAlignmentCenter;
         _exBottomLabel.font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightRegular];
         _exBottomLabel.textColor = [UIColor whiteColor];
@@ -173,8 +190,9 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         YZWeakObject(self);
         dispatch_source_set_event_handler(_timer, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakself.shapeLayer.strokeEnd += 0.1;
-                if (weakself.shapeLayer.strokeEnd >= 0.8) {
+                if (weakself.shapeLayer.strokeEnd < ([User sharedUser].exp) / [User sharedUser].needExp) {
+                    weakself.shapeLayer.strokeEnd += 0.05;
+                }else {
                     dispatch_source_cancel(weakself.timer);
                 }
             });
