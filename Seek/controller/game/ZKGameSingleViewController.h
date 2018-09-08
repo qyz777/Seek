@@ -10,4 +10,8 @@
 
 @interface ZKGameSingleViewController : UIViewController
 
+@property (nonatomic,strong) NSMutableArray *resArray;
+
+@property (nonatomic, assign) BOOL isFromCamera;
+
 @end

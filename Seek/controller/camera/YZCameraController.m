@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "YZTakePhotoView.h"
 #import "YZCameraTransition.h"
+#import "YZCameraQueryController.h"
+#import "ZKGameSingleViewController.h"
 
 @interface YZCameraController ()<
 AVCapturePhotoCaptureDelegate,
@@ -222,6 +224,7 @@ UIViewControllerTransitioningDelegate>
 - (void)okBtnDidClicked {
     self.takePhotoView.hidden = YES;
     self.photoBtn.hidden = NO;
+    [self uploadImage];
 }
 
 - (void)cancelBtnDidClicked {
@@ -237,6 +240,79 @@ UIViewControllerTransitioningDelegate>
     self.takePhotoView.hidden = NO;
     [self.view bringSubviewToFront:self.takePhotoView];
     self.photoBtn.hidden = YES;
+}
+
+#pragma mark - private
+- (void)uploadImage {
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Util/upload";
+    [SVProgressHUD show];
+    [[AFHTTPSessionManager manager] POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSData *imageData = UIImageJPEGRepresentation(self.takePhotoView.imageData, 0.5);
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formormat = [[NSDateFormatter alloc]init];
+        [formormat setDateFormat:@"YYYYHHmmss"];
+        NSString *dateString = [formormat stringFromDate:date];
+        NSString *fileName = [NSString  stringWithFormat:@"%@_%ld.png",dateString, [User sharedUser].userId];
+        [formData appendPartWithFileData:imageData name:@"image" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *json = responseObject;
+        NSInteger code = [json[@"code"] integerValue];
+        if (code == 0) {
+            if (json[@"data"]) {
+                NSString *imageUrl = [NSString stringWithFormat:@"http://seek-api.xuzhengke.cn/Uploads/%@",json[@"data"]];
+                [self requestWordWithImageUrl:imageUrl];
+            }
+        }else {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showInfoWithStatus:@"上传失败"];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showInfoWithStatus:@"上传失败"];
+    }];
+}
+
+- (void)requestWordWithImageUrl:(NSString *)imageUrl {
+    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Util/ocr";
+    [[AFHTTPSessionManager manager] POST:url parameters:@{@"img": imageUrl} progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        NSDictionary *json = responseObject;
+        NSInteger code = [json[@"code"] integerValue];
+        if (code == 0) {
+            NSDictionary *data = json[@"data"];
+            NSArray *list = data[@"list"];
+            if (list.count == 0) {
+                [SVProgressHUD showInfoWithStatus:@"图片没有提取出单词哦"];
+            }else {
+                if (self.isQuery) {
+                    [self handleQueryData:list];
+                }else {
+                    ZKGameSingleViewController *vc = [ZKGameSingleViewController new];
+                    vc.isFromCamera = YES;
+                    vc.resArray = list.mutableCopy;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showInfoWithStatus:@"请求失败"];
+    }];
+}
+
+- (void)handleQueryData:(NSArray *)data {
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSDictionary *d in data) {
+        NSDictionary *sD = @{@"entry": d[@"question"], @"explain": @""};
+        [array addObject:sD];
+    }
+    YZCameraQueryController *vc = [YZCameraQueryController new];
+    vc.dataArray = array;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - getter

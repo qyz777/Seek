@@ -19,7 +19,6 @@ static NSInteger rightAns = 0;
 
 @interface ZKGameSingleViewController ()
 
-@property(nonatomic,strong)NSMutableArray *resArray;
 @property(nonatomic,weak)ZKGameSingleView *singleView;
 
 @end
@@ -44,19 +43,20 @@ static NSInteger rightAns = 0;
     }];
     
     //请求数据
-    [SVProgressHUD show];
-    [ZKSingleGameModel getSingleSystemWithSuccess:^(NSMutableArray *resArray) {
-        [SVProgressHUD dismiss];
-        __strong typeof(self) strongSelf = weakSelf;
-        strongSelf.resArray = resArray;
-        [strongSelf updateQuestion];
-    } failure:^(NSError *error) {
-        NSLog(@"请求数据失败");
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showWithStatus:@"网络请求失败"];
-        [SVProgressHUD dismissWithDelay:1.5f];
-    }];
-    
+    if (!self.isFromCamera) {
+        [SVProgressHUD show];
+        [ZKSingleGameModel getSingleSystemWithSuccess:^(NSMutableArray *resArray) {
+            [SVProgressHUD dismiss];
+            __strong typeof(self) strongSelf = weakSelf;
+            strongSelf.resArray = resArray;
+            [strongSelf updateQuestion];
+        } failure:^(NSError *error) {
+            NSLog(@"请求数据失败");
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showWithStatus:@"网络请求失败"];
+            [SVProgressHUD dismissWithDelay:1.5f];
+        }];
+    }
 }
 
 //更新题目
