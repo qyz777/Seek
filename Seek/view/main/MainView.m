@@ -155,6 +155,27 @@
     if (self.isShow) {
         return;
     }
+    
+    // 拖动动画效果
+    
+    
+//    CGAffineTransform transform = getCGAffineTransformRotateAroundPoint(self.center_x, self.center_y, self.width * 0.5, self.height, 90);
+//
+//    [UIView animateWithDuration:0.25 animations:^{
+//        self.transform = transform;
+//    }];
+    
+    CATransition *animation = [CATransition animation];
+    // 动画时间
+    animation.duration = 0.25f;
+    // 动画类型
+    animation.type = @"cube";
+    animation.subtype = kCATransitionFromLeft;
+
+    // 动画缓冲|速度
+    animation.timingFunction = UIViewAnimationOptionCurveEaseInOut;
+    [self.layer addAnimation:animation forKey:@"animation"];
+    
     if ([self.yz_delegate respondsToSelector:@selector(wordDidSwipeRight)]) {
         [self.yz_delegate wordDidSwipeRight];
     }
@@ -320,6 +341,22 @@
         [_shareBtn setImage:[UIImage imageNamed:@"main_share_btn"] forState:UIControlStateNormal];
     }
     return _shareBtn;
+}
+
+/**
+ * 放射矩阵
+ */
+
+
+CGAffineTransform getCGAffineTransformRotateAroundPoint(float centerX, float centerY ,float x ,float y ,float angle)
+{
+    x = x - centerX; //计算(x,y)从(0,0)为原点的坐标系变换到(CenterX ，CenterY)为原点的坐标系下的坐标
+    y = y - centerY; //(0，0)坐标系的右横轴、下竖轴是正轴,(CenterX,CenterY)坐标系的正轴也一样
+    
+    CGAffineTransform  trans = CGAffineTransformMakeTranslation(x, y);
+    trans = CGAffineTransformRotate(trans,angle);
+    trans = CGAffineTransformTranslate(trans,-x, -y);
+    return trans;
 }
 
 @end
