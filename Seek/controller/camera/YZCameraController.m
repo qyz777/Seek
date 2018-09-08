@@ -97,7 +97,7 @@ UIViewControllerTransitioningDelegate>
         self.photoOutput = [[AVCapturePhotoOutput alloc] init];
         [self.photoOutput setPhotoSettingsForSceneMonitoring:outputSettings];
         self.session = [[AVCaptureSession alloc]init];
-        [self.session setSessionPreset:AVCaptureSessionPresetHigh];
+        [self.session setSessionPreset:AVCaptureSessionPresetPhoto];
         [self.session addInput:self.input];
         [self.session addOutput:self.photoOutput];
         self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
@@ -236,6 +236,8 @@ UIViewControllerTransitioningDelegate>
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhotoSampleBuffer:(CMSampleBufferRef)photoSampleBuffer previewPhotoSampleBuffer:(CMSampleBufferRef)previewPhotoSampleBuffer resolvedSettings:(AVCaptureResolvedPhotoSettings *)resolvedSettings bracketSettings:(AVCaptureBracketedStillImageSettings *)bracketSettings error:(NSError *)error {
     NSData *data = [AVCapturePhotoOutput JPEGPhotoDataRepresentationForJPEGSampleBuffer:photoSampleBuffer previewPhotoSampleBuffer:previewPhotoSampleBuffer];
     UIImage *image = [UIImage imageWithData:data];
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+
     self.takePhotoView.imageData = image;
     self.takePhotoView.hidden = NO;
     [self.view bringSubviewToFront:self.takePhotoView];
@@ -244,24 +246,33 @@ UIViewControllerTransitioningDelegate>
 
 #pragma mark - private
 - (void)uploadImage {
-    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Util/upload";
+//    NSString *url = @"http://seek-api.xuzhengke.cn/index.php/Api/Util/upload";
+    NSString *url = @"http://up.imgapi.com/";
     [SVProgressHUD show];
-    [[AFHTTPSessionManager manager] POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
+    [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager POST:url parameters:@{@"Token":@"93168e757658698195c41180399dadaae5c14bbd:7pNF1cr5ure9DqEn8vROCEQcEHI=:eyJkZWFkbGluZSI6MTUzNjQwNjQ1NSwiYWN0aW9uIjoiZ2V0IiwidWlkIjoiNDA3MyIsImFpZCI6IjgwMTIiLCJmcm9tIjoiZmlsZSJ9"} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSData *imageData = UIImageJPEGRepresentation(self.takePhotoView.imageData, 0.5);
         NSDate *date = [NSDate date];
         NSDateFormatter *formormat = [[NSDateFormatter alloc]init];
         [formormat setDateFormat:@"YYYYHHmmss"];
         NSString *dateString = [formormat stringFromDate:date];
-        NSString *fileName = [NSString  stringWithFormat:@"%@_%ld.png",dateString, [User sharedUser].userId];
-        [formData appendPartWithFileData:imageData name:@"image" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+        NSString *fileName = [NSString  stringWithFormat:@"%@_%ld.jpeg",dateString, [User sharedUser].userId];
+        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *json = responseObject;
-        NSInteger code = [json[@"code"] integerValue];
-        if (code == 0) {
-            if (json[@"data"]) {
-                NSString *imageUrl = [NSString stringWithFormat:@"http://seek-api.xuzhengke.cn/Uploads/%@",json[@"data"]];
+        YZLog(@"%@",json);
+        
+        NSInteger code = [json[@"width"] integerValue];
+        if (code > 0) {
+            if (json[@"linkurl"]) {
+//                NSString *imageUrl = [NSString stringWithFormat:@"http://seek-api.xuzhengke.cn/Uploads/%@",json[@"linkurl"]];
+                NSString *imageUrl = json[@"linkurl"];
                 [self requestWordWithImageUrl:imageUrl];
             }
         }else {
@@ -271,6 +282,7 @@ UIViewControllerTransitioningDelegate>
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showInfoWithStatus:@"上传失败"];
+        YZLog(@"error: %@",error);
     }];
 }
 
@@ -292,6 +304,7 @@ UIViewControllerTransitioningDelegate>
         if (code == 0) {
             NSDictionary *data = json[@"data"];
             NSArray *list = data[@"list"];
+            YZLog(@"%@",list);
             if (list.count == 0) {
                 [SVProgressHUD showInfoWithStatus:@"图片没有提取出单词哦"];
             }else {

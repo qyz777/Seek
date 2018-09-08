@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>获取您的相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要获取您的同意才可以读取照片</string>
 	<key>NSCameraUsageDescription</key>

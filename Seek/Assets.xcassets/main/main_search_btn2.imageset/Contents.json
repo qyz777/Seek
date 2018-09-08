@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "main_search_btn.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "搜索 (2).png",
       "scale" : "2x"
     },
     {

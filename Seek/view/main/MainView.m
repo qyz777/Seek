@@ -167,7 +167,7 @@
     
     CATransition *animation = [CATransition animation];
     // 动画时间
-    animation.duration = 0.25f;
+    animation.duration = 0.5f;
     // 动画类型
     animation.type = @"cube";
     animation.subtype = kCATransitionFromLeft;
