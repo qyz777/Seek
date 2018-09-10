@@ -20,7 +20,7 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         self.nameLabel.text = [User sharedUser].nickName;
         self.exBottomLabel.text = [NSString stringWithFormat:@"经验:%ld/%ld",[User sharedUser].exp,[User sharedUser].needExp];
         self.rankLabel.text = [self getLevelName:[User sharedUser].rank];
-        self.exLabel.text = [NSString stringWithFormat:@"%ld%%",(NSInteger)(([User sharedUser].exp / [User sharedUser].needExp) * 100)];
+        self.exLabel.text = [NSString stringWithFormat:@"%ld%%",(NSInteger)(((double)[User sharedUser].exp / (double)[User sharedUser].needExp) * 100)];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginAnimation) name:ExLayerShouldBegin object:nil];
     }
     return self;
@@ -190,7 +190,7 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         YZWeakObject(self);
         dispatch_source_set_event_handler(_timer, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakself.shapeLayer.strokeEnd < ([User sharedUser].exp) / [User sharedUser].needExp) {
+                if (weakself.shapeLayer.strokeEnd < ((double)[User sharedUser].exp) / (double)[User sharedUser].needExp) {
                     weakself.shapeLayer.strokeEnd += 0.05;
                 }else {
                     dispatch_source_cancel(weakself.timer);
