@@ -19,6 +19,9 @@ PODS:
   - mob_smssdk (3.2.1):
     - MOBFoundation
   - MOBFoundation (3.1.6)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
   - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
 
@@ -27,6 +30,7 @@ DEPENDENCIES:
   - CocoaAsyncSocket
   - Masonry
   - mob_smssdk
+  - SDWebImage
   - SocketRocket
   - SVProgressHUD
 
@@ -37,6 +41,7 @@ SPEC REPOS:
     - Masonry
     - mob_smssdk
     - MOBFoundation
+    - SDWebImage
     - SocketRocket
     - SVProgressHUD
 
@@ -46,9 +51,10 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   mob_smssdk: edc462704cc07c6d245eee16c4c09ac4f4d53e61
   MOBFoundation: a87c5f11fb87f873337189c3ec0add4d3ec6221a
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: abb57f241f85f844222edcfa2c34a41f21a5ef8d
+PODFILE CHECKSUM: e1abc3b83c39060d5e0a23a931208bd91914d4b6
 
 COCOAPODS: 1.5.3

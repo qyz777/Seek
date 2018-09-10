@@ -10,6 +10,7 @@
 #import "YZTabBarController.h"
 #import "ZKStartViewController.h"
 #import "ZKTestViewController.h"
+#import "YZRankViewController.h"
 
 @interface AppDelegate ()
 
@@ -31,6 +32,8 @@
 //    ZKTestViewController *testVC = [[ZKTestViewController alloc] init];
     
 //    self.window.rootViewController = testVC;
+    
+    YZRankViewController *rankVC = [YZRankViewController new];
     self.window.rootViewController = startVC;
     [self.window makeKeyAndVisible];
     return YES;

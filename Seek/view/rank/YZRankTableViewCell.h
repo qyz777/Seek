@@ -10,8 +10,13 @@
 
 @interface YZRankTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *rankLabel;
+//@property (nonatomic, strong) UILabel *nameLabel;
+//@property (nonatomic, strong) UILabel *rankLabel;
+
+// 排行ID
+@property(nonatomic,copy)NSString *rankID;
+@property(nonatomic,copy)NSString *exp;
+@property(nonatomic,copy)NSString *headimg;
 
 @property (nonatomic, strong) NSDictionary *data;
 

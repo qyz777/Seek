@@ -7,6 +7,6 @@ pod 'mob_smssdk'
 pod 'SVProgressHUD'
 pod 'CocoaAsyncSocket'
 pod 'SocketRocket'
-
+pod 'SDWebImage'
 end
 
