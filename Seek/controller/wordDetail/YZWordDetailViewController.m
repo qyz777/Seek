@@ -64,7 +64,7 @@
 - (void)requestData {
     [SVProgressHUD show];
     __block YZWord *shortWord = [YZWord new];
-    __block UIImage *shortImage = [UIImage new];
+    __block NSURL *shortImageUrl = nil;
     
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
@@ -80,10 +80,8 @@
     dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [YZDetailImage wordDetailImageSuccess:^(NSURL *imageUrl) {
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                shortImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl] scale:0.05f];
-                dispatch_group_leave(group);
-            });
+            shortImageUrl = imageUrl;
+            dispatch_group_leave(group);
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
             dispatch_group_leave(group);
@@ -92,7 +90,7 @@
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         self.detailView.wordData = shortWord;
-        self.detailView.backImageView.image = shortImage;
+        [self.detailView.backImageView sd_setImageWithURL:shortImageUrl];
         [SVProgressHUD dismiss];
     });
 }

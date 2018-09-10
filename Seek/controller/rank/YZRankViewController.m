@@ -39,6 +39,7 @@
 - (void)initView {
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.popButton setImage:[UIImage imageNamed:@"pop_black"] forState:UIControlStateNormal];
     [self.yz_navigationBar addCenterTitleLabelWithTitle:@"排行" font:[UIFont systemFontOfSize:18] color:[UIColor blackColor]];
     self.yz_navigationBar.navigationBarColor = [UIColor whiteColor];
 
