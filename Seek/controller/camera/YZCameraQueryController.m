@@ -9,6 +9,7 @@
 #import "YZCameraQueryController.h"
 #import "YZSearchTableView.h"
 #import "YZWordDetailViewController.h"
+#import <SVProgressHUD.h>
 
 @interface YZCameraQueryController ()<YZSearchTableViewDelegate>
 
@@ -32,6 +33,8 @@
     self.yz_navigationBar.navigationBarColor = BACKGROUND_COLOR_STYLE_TWO;
     [self.yz_navigationBar addCenterTitleLabelWithTitle:@"提取的单词" font:[UIFont systemFontOfSize:18] color:[UIColor whiteColor]];
     [self.view addSubview:self.tableView];
+    
+    [SVProgressHUD showSuccessWithStatus:@"已过滤无意义单词，请留意"];
 }
 
 - (void)setDataArray:(NSMutableArray *)dataArray {

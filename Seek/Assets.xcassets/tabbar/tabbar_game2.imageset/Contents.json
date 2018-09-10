@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "tabbar_game.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "首页.png",
       "scale" : "2x"
     },
     {

@@ -327,7 +327,7 @@ UIViewControllerTransitioningDelegate>
 - (void)handleQueryData:(NSArray *)data {
     NSMutableArray *array = [NSMutableArray array];
     for (NSDictionary *d in data) {
-        NSDictionary *sD = @{@"entry": d[@"question"], @"explain": @""};
+        NSDictionary *sD = @{@"entry": d[@"question"][0], @"explain": @""};
         [array addObject:sD];
     }
     YZCameraQueryController *vc = [YZCameraQueryController new];

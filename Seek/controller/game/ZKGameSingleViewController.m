@@ -12,14 +12,17 @@
 #import "ZKAnswerButton.h"
 #import "ZKGameAnswerTipView.h"
 
-//当前题目
- NSInteger questionIndex = 0;
-//答对几道题
-static NSInteger rightAns = 0;
+////当前题目
+// NSInteger questionIndex = 0;
+////答对几道题
+//static NSInteger rightAns = 0;
 
 @interface ZKGameSingleViewController ()
 
 @property(nonatomic,weak)ZKGameSingleView *singleView;
+
+@property(nonatomic,assign)NSInteger questionIndex;
+@property(nonatomic,assign)NSInteger rightAns;
 
 @end
 
@@ -31,6 +34,9 @@ static NSInteger rightAns = 0;
     ZKGameSingleView *singleView = [[ZKGameSingleView alloc] init];
     [self.view addSubview:singleView];
     self.singleView = singleView;
+    
+    self.questionIndex = 0;
+    self.rightAns = 0;
     
     [singleView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -63,17 +69,17 @@ static NSInteger rightAns = 0;
 
 //更新题目
 - (void)updateQuestion {
-    _singleView.question = [self.resArray[questionIndex][@"question"][0] copy];
-    _singleView.ansArray = [self.resArray[questionIndex][@"answers"] mutableCopy];
-    NSInteger trueIndex = [self.resArray[questionIndex][@"choose"] intValue];
+    _singleView.question = [self.resArray[_questionIndex][@"question"][0] copy];
+    _singleView.ansArray = [self.resArray[_questionIndex][@"answers"] mutableCopy];
+    NSInteger trueIndex = [self.resArray[_questionIndex][@"choose"] intValue];
     NSLog(@"当前答案,%ld",trueIndex);
 }
 
 //答题
 - (void)answerQuestionWithAns:(NSInteger)index {
-    if(questionIndex >= 4){
+    if(_questionIndex >= 4){
         //当前已经答完题目了
-        [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"答题完成,共答对%ld道题",(long)rightAns]];
+        [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"答题完成,共答对%ld道题",(long)_rightAns]];
         [SVProgressHUD dismissWithDelay:2.0f];
         return ;
         return ;
@@ -82,10 +88,10 @@ static NSInteger rightAns = 0;
     // 获取点击的Btn
     ZKAnswerButton *answerBtn = (ZKAnswerButton *)[self.singleView viewWithTag:index];
     
-    NSInteger trueIndex = [self.resArray[questionIndex][@"choose"] intValue];
+    NSInteger trueIndex = [self.resArray[_questionIndex][@"choose"] intValue];
     if (trueIndex + 1001 == index) {
         //回答正确
-        rightAns++;
+        self.rightAns++;
         [answerBtn rightAnimation];
         [ZKGameAnswerTipView showTipWithType:ZKGameAnswerTipViewTypeRight];
     }else{
@@ -93,7 +99,7 @@ static NSInteger rightAns = 0;
         [answerBtn wrongAnimation];
         [ZKGameAnswerTipView showTipWithType:ZKGameAnswerTipViewTypeWrong];
     }
-    questionIndex++;
+    self.questionIndex++;
 
     // 延时换题
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
