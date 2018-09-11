@@ -11,6 +11,7 @@
 #import "ZKSingleGameModel.h"
 #import "ZKAnswerButton.h"
 #import "ZKGameAnswerTipView.h"
+#import "ZKSingleGameModel.h"
 
 ////当前题目
 // NSInteger questionIndex = 0;
@@ -79,9 +80,14 @@
 - (void)answerQuestionWithAns:(NSInteger)index {
     if(_questionIndex >= 4){
         //当前已经答完题目了
+        
+        [ZKSingleGameModel finishGame:@"win"];
+        
         [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"答题完成,共答对%ld道题",(long)_rightAns]];
         [SVProgressHUD dismissWithDelay:2.0f];
-        return ;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
         return ;
     }
     

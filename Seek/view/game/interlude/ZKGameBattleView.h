@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZKGameProgressView.h"
+
+typedef NS_ENUM(NSInteger,GameProgressType){
+    GameProgressTypeLeft = 0,
+    GameProgressTypeRight = 1
+};
 
 typedef void (^answerHandle)(NSInteger index);
 
@@ -30,7 +36,14 @@ typedef void (^answerHandle)(NSInteger index);
 //倒计时标签
 @property(nonatomic,weak)UILabel *timerLabel;
 
+//进度条
+@property(nonatomic,weak)ZKGameProgressView *leftProgress;
+@property(nonatomic,weak)ZKGameProgressView *rightProgress;
+
 //设置用户信息
 - (void)setLeftUserWithInfo:(NSMutableDictionary *)left andRightInfo:(NSMutableDictionary *)right;
+
+//更新进度
+- (void)setProgress:(GameProgressType)type;
 
 @end

@@ -82,6 +82,8 @@
 		F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC5212FC163004999C1 /* ZKTestViewController.m */; };
 		F5740ACA212FD313004999C1 /* ZKGameAnswerTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */; };
 		F57CA17921460B1E0025886B /* Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = F57CA17821460B1E0025886B /* Rank.m */; };
+		F58F02992147505E001A01C5 /* ZKGameProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58F02982147505D001A01C5 /* ZKGameProgressView.m */; };
+		F58F029C214799A4001A01C5 /* ZKGameFinishTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58F029B214799A4001A01C5 /* ZKGameFinishTipView.m */; };
 		F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */; };
 		F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5095D20BAD8FA0094F4BA /* ZKGameIndexViewController.m */; };
 		F5C5096220BAD9750094F4BA /* ZKGameIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C5096120BAD9750094F4BA /* ZKGameIndexView.m */; };
@@ -236,6 +238,10 @@
 		F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameAnswerTipView.m; sourceTree = "<group>"; };
 		F57CA17721460B1E0025886B /* Rank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rank.h; sourceTree = "<group>"; };
 		F57CA17821460B1E0025886B /* Rank.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rank.m; sourceTree = "<group>"; };
+		F58F02972147505D001A01C5 /* ZKGameProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameProgressView.h; sourceTree = "<group>"; };
+		F58F02982147505D001A01C5 /* ZKGameProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameProgressView.m; sourceTree = "<group>"; };
+		F58F029A214799A4001A01C5 /* ZKGameFinishTipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameFinishTipView.h; sourceTree = "<group>"; };
+		F58F029B214799A4001A01C5 /* ZKGameFinishTipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameFinishTipView.m; sourceTree = "<group>"; };
 		F5C5095520B9B4AD0094F4BA /* UIView+ZKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZKCategory.h"; sourceTree = "<group>"; };
 		F5C5095620B9B4AD0094F4BA /* UIView+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZKCategory.m"; sourceTree = "<group>"; };
 		F5C5095C20BAD8FA0094F4BA /* ZKGameIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameIndexViewController.h; sourceTree = "<group>"; };
@@ -932,6 +938,8 @@
 			children = (
 				F5740AC8212FD313004999C1 /* ZKGameAnswerTipView.h */,
 				F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */,
+				F58F029A214799A4001A01C5 /* ZKGameFinishTipView.h */,
+				F58F029B214799A4001A01C5 /* ZKGameFinishTipView.m */,
 			);
 			path = Tip;
 			sourceTree = "<group>";
@@ -943,6 +951,15 @@
 				F57CA17821460B1E0025886B /* Rank.m */,
 			);
 			path = rank;
+			sourceTree = "<group>";
+		};
+		F58F02962147504A001A01C5 /* progressView */ = {
+			isa = PBXGroup;
+			children = (
+				F58F02972147505D001A01C5 /* ZKGameProgressView.h */,
+				F58F02982147505D001A01C5 /* ZKGameProgressView.m */,
+			);
+			path = progressView;
 			sourceTree = "<group>";
 		};
 		F5C5095420B9B49E0094F4BA /* Category */ = {
@@ -957,6 +974,7 @@
 		F5C5095820BAD6940094F4BA /* game */ = {
 			isa = PBXGroup;
 			children = (
+				F58F02962147504A001A01C5 /* progressView */,
 				F5740AC7212FD2FD004999C1 /* Tip */,
 				F5740AC0212F9476004999C1 /* button */,
 				A0BA18A620F794EB00E2FD84 /* interlude */,
@@ -1111,6 +1129,7 @@
 			files = (
 				A08BD3FF20A819EB0046C0A6 /* User.m in Sources */,
 				A0DB887C20A67A6800CA810C /* YZFindViewController.m in Sources */,
+				F58F02992147505E001A01C5 /* ZKGameProgressView.m in Sources */,
 				A0A8661F209DB69F00674BF6 /* MainView.m in Sources */,
 				A06F46F920D93A9300D3A1DA /* YZMeNormalCell.m in Sources */,
 				A0DA121B20B8468300469D33 /* YZDetailImage.m in Sources */,
@@ -1166,6 +1185,7 @@
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
+				F58F029C214799A4001A01C5 /* ZKGameFinishTipView.m in Sources */,
 				A0A4AE4E210B260600F4C6BE /* UIViewController+ClassLog.m in Sources */,
 				A094A90F213F6A81004B716F /* YZRankTableViewCell.m in Sources */,
 				A0BA18A920F7952300E2FD84 /* YZGameInterludeFindView.m in Sources */,

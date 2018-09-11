@@ -123,23 +123,24 @@
         make.top.equalTo(self.firstTranslateLabel.mas_bottom).offset(15);
     }];
     
-    [self.bottomView addSubview:self.seeBtn];
-    [self.seeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.bottomView);
-        make.bottom.equalTo(self.bottomView).offset(-100);
-    }];
+//    [self.bottomView addSubview:self.seeBtn];
+//    [self.seeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self.bottomView);
+//        make.bottom.equalTo(self.bottomView).offset(-100);
+//    }];
     
     [self.bottomView addSubview:self.collectBtn];
     [self.collectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.seeBtn);
-        make.right.equalTo(self.seeBtn.mas_left).offset(-80);
+        make.bottom.equalTo(self.bottomView).offset(-100);
+//        make.right.equalTo(self.seeBtn.mas_left).offset(-80);
+        make.centerX.equalTo(self.bottomView);
     }];
     
-    [self.bottomView addSubview:self.shareBtn];
-    [self.shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.seeBtn);
-        make.left.equalTo(self.seeBtn.mas_right).offset(80);
-    }];
+//    [self.bottomView addSubview:self.shareBtn];
+//    [self.shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.seeBtn);
+//        make.left.equalTo(self.seeBtn.mas_right).offset(80);
+//    }];
     
     [self changeBottomViewCornerRadius];
     
@@ -152,6 +153,7 @@
 }
 
 - (void)swipeWordLabel:(UISwipeGestureRecognizer *)swipe {
+    self.collectBtn.selected = NO;
     if (self.isShow) {
         return;
     }
@@ -323,8 +325,15 @@
     if (!_collectBtn) {
         _collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_collectBtn setImage:[UIImage imageNamed:@"main_collect_btn"] forState:UIControlStateNormal];
+        [_collectBtn setImage:[UIImage imageNamed:@"main_collect_btn_s"] forState:UIControlStateSelected];
+        
+        [_collectBtn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _collectBtn;
+}
+
+- (void)collectBtnClick:(UIButton *)btn{
+    btn.selected = !btn.selected;
 }
 
 - (UIButton *)seeBtn {

@@ -13,4 +13,6 @@
 //获取题库
 + (void)getSingleSystemWithSuccess:(void(^)(NSMutableArray *resArray))success failure:(void(^)(NSError *error))failure;
 
++ (void)finishGame:(NSString *)type;
+
 @end

@@ -23,6 +23,10 @@ static const CGFloat kInterval = 20;
 @property(nonatomic,weak)UILabel *answerC;
 @property(nonatomic,weak)UILabel *answerD;
 
+// 进度条
+//@property(nonatomic,weak)UIProgressView *leftProgressView;
+//@property(nonatomic,weak)UIProgressView *rightProgressView;
+
 @end
 
 @implementation ZKGameBattleView
@@ -97,6 +101,18 @@ static const CGFloat kInterval = 20;
     
     self.timerLabel = timerLabel;
     
+    
+    // 初始化进度条
+    ZKGameProgressView *leftView = [[ZKGameProgressView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 20, 0, 0)];
+    leftView.type = ZKGameProgressViewTypeLeft;
+    
+    [self addSubview:leftView];
+    self.leftProgress = leftView;
+    
+    ZKGameProgressView *rightView = [[ZKGameProgressView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * 0.5, SCREEN_HEIGHT - 20, 0, 0 )];
+    rightView.type = ZKGameProgressViewTypeRight;
+    [self addSubview:rightView];
+    self.rightProgress = rightView;
     
 }
 

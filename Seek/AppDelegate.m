@@ -29,11 +29,11 @@
     ZKStartViewController *startVC = [[ZKStartViewController alloc] init];
     startVC.vc = [[YZTabBarController alloc]init];
     
-//    ZKTestViewController *testVC = [[ZKTestViewController alloc] init];
+    ZKTestViewController *testVC = [[ZKTestViewController alloc] init];
     
 //    self.window.rootViewController = testVC;
     
-    YZRankViewController *rankVC = [YZRankViewController new];
+//    YZRankViewController *rankVC = [YZRankViewController new];
     self.window.rootViewController = startVC;
     [self.window makeKeyAndVisible];
     return YES;

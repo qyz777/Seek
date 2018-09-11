@@ -8,6 +8,7 @@
 
 #import "ZKSingleGameModel.h"
 #import <AFNetworking.h>
+#import "User.h"
 
 @implementation ZKSingleGameModel
 
@@ -20,6 +21,18 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
+}
+
++ (void)finishGame:(NSString *)type {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"http://seek-api.xuzhengke.cn/index.php/Api/Game/finishGame" parameters:@{
+                                                                                            @"type":type,
+                                                                                            @"id":@([User sharedUser].userId)
+                                                                                            } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                                                
+                                                                                            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                                                
+                                                                                            }];
 }
 
 @end

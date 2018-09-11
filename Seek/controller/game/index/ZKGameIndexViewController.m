@@ -63,6 +63,13 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     pan.delegate = self;
     [self.view addGestureRecognizer:pan];
+    
+    // 通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginPK) name:@"beginPK" object:nil];
+}
+
+- (void)beginPK {
+    
 }
 
 - (void)loadingTap {
@@ -102,6 +109,11 @@
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:nil];
 }
 
 

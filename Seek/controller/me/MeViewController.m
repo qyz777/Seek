@@ -22,6 +22,14 @@
 
 @implementation MeViewController
 
+//- (void)viewWillAppear:(BOOL)animated {
+//    [User fetchUserDataWithSuccess:^{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:ExLayerShouldBegin object:nil];
+//    } failure:^(NSError *error) {
+//        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];
+//    }];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;

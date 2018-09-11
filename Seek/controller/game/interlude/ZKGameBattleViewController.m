@@ -15,6 +15,8 @@
 
 @property(nonatomic,weak)YZGameInterludeViewController *interludeVC;
 
+@property(nonatomic,assign)BOOL disabled;
+
 @end
 
 @implementation ZKGameBattleViewController
@@ -25,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.disabled = false;
     
     ZKGameBattleView *battleView = [[ZKGameBattleView alloc] init];
     [battleView setLeftUserWithInfo:[@{
@@ -46,17 +50,21 @@
         
         __strong typeof(self) strongSelf = weakSelf;
         
-        strongSelf.btnIndex = index;
-        
-        UILabel *btn = (UILabel *)[strongSelf.battleView viewWithTag:index];
-        btn.backgroundColor = UIColor.lightGrayColor;
-        
-        NSInteger newIndex = index - 1001;
-        char ansCh = 'A' + newIndex;
-        
-        // 回答问题
-        NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,strongSelf.questionID,ansCh];
-        [strongSelf.interludeVC sendData:data];
+        if (!_disabled) {
+            strongSelf.btnIndex = index;
+            
+            UILabel *btn = (UILabel *)[strongSelf.battleView viewWithTag:index];
+            btn.backgroundColor = UIColor.lightGrayColor;
+            
+            NSInteger newIndex = index - 1001;
+            char ansCh = 'A' + newIndex;
+            
+            // 回答问题
+            NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,strongSelf.questionID,ansCh];
+            [strongSelf.interludeVC sendData:data];
+            
+            _disabled = YES;
+        }
     }];
 }
 
@@ -66,6 +74,7 @@
     }
     _battleView.timerLabel.text = @"20";
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerLabelChanged) userInfo:nil repeats:YES];
+    self.disabled = NO;
 }
 
 - (void)stopCountDown {
@@ -105,9 +114,9 @@
         self.timer = nil;
     }
     UIViewController *lastVC = self.presentingViewController;
-    
+    [lastVC dismissViewControllerAnimated:NO completion:nil];
     [self dismissViewControllerAnimated:YES completion:^{
-        [lastVC dismissViewControllerAnimated:YES completion:nil];
+//        [lastVC dismissViewControllerAnimated:NO completion:nil];
     }];
 }
 

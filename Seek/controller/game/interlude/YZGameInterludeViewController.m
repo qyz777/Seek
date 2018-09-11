@@ -12,6 +12,8 @@
 #import "User.h"
 #import <SocketRocket.h>
 #import <SVProgressHUD.h>
+#import "ZKGameFinishTipView.h"
+#import "ZKSingleGameModel.h"
 
 @interface YZGameInterludeViewController ()<SRWebSocketDelegate>
 
@@ -89,7 +91,7 @@
     }];
     
     //匹配成功头像
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"100"]];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"default_icon"]];
     imgView.frame = CGRectMake(0, 0, 50, 50);
     imgView.layer.masksToBounds = YES;
     imgView.layer.cornerRadius = 25;
@@ -171,13 +173,14 @@
     NSLog(@"websocket连接成功");
     
     //登录
-    NSInteger userID = [User sharedUser].userId;
+//    NSInteger userID = [User sharedUser].userId;
+    User *user = [User sharedUser];
 //    userID = 99789;
-    NSString *data = [NSString stringWithFormat:@"{\"type\":\"login\",\"uid\":\"%ld\"}",userID];
+    NSString *data = [NSString stringWithFormat:@"{\"type\":\"login\",\"uid\":\"%ld\",\"nickname\":\"%@\",\"headimg\":\"\"}",user.userId,user.nickName];
     [self sendData:data];
     
     //开始匹配
-    data = [NSString stringWithFormat:@"{\"type\":\"start_game\",\"uid\":\"%ld\",\"conditions_id\":\"1\"}",userID];
+    data = [NSString stringWithFormat:@"{\"type\":\"start_game\",\"uid\":\"%ld\",\"conditions_id\":\"1\"}",user.userId];
     [self sendData:data];
 }
 
@@ -252,12 +255,17 @@
         self.battleVC = battleVC;
 
         [self presentViewController:battleVC animated:YES completion:nil];
+//        NSNotification *notification = [NSNotification notificationWithName:@"beginPK" object:nil];
+        
+//        [[NSNotificationCenter defaultCenter] postNotification:notification];
+//        [self dismissViewControllerAnimated:NO completion:nil];
         
     });
 }
 
 //开始答题 题目和倒计时的初始化
 - (void)gameBeggnAndInitQuestionWithData:(NSDictionary *)data {
+    YZLog(@"换题目");
     //开始倒计时
     [self.battleVC startCountDown];
     self.battleVC.questionID = data[@"id"];
@@ -285,6 +293,7 @@
     if ([data[@"uid"] integerValue] == [User sharedUser].userId) {
         if ([data[@"is_right"] integerValue] == 1) {
             [SVProgressHUD showSuccessWithStatus:@"回答正确"];
+            [self.battleVC.battleView.leftProgress updateProgress];
         }else if([data[@"is_right"] integerValue] == 0){
             [SVProgressHUD showErrorWithStatus:@"回答错误"];
         }
@@ -294,6 +303,9 @@
         });
     }else{
         //对方回答
+        if ([data[@"is_right"] integerValue] == 1) {
+            [self.battleVC.battleView.rightProgress updateProgress];
+        }
     }
 }
 
@@ -310,7 +322,7 @@
     NSLog(@"111");
     NSArray *keys1 = [scoreData allKeys];
     for(int i = 0;i < [keys1 count];i++){
-        score = 0;
+//        score = 0;
         //二层遍历
         NSArray *detailArray = (NSArray *)[scoreData objectForKey:keys1[i]];
 
@@ -326,11 +338,20 @@
     }
     
     if (myScore > otherScore) {
-        [SVProgressHUD showSuccessWithStatus:@"恭喜您战胜了对方 :)"];
+//        [SVProgressHUD showSuccessWithStatus:@"恭喜您战胜了对方 :)"];
+        [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypeWin];
+        [ZKSingleGameModel finishGame:@"win"];
+
     }else if(myScore < otherScore){
-        [SVProgressHUD showErrorWithStatus:@"失败了，继续加油！"];
+//        [SVProgressHUD showErrorWithStatus:@"失败了，继续加油！"];
+        [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypeLose];
+        [ZKSingleGameModel finishGame:@"lose"];
+
     }else{
-        [SVProgressHUD showErrorWithStatus:@"平局，加油吧！"];
+//        [SVProgressHUD showErrorWithStatus:@"平局，加油吧！"];
+        [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypePing];
+        [ZKSingleGameModel finishGame:@"ping"];
+
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
