@@ -31,6 +31,7 @@
     // 背景图
     UIImageView *bgImgView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"login-bg"]];
     bgImgView.frame = [UIScreen mainScreen].bounds;
+    bgImgView.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:bgImgView];
     
     // Seek
