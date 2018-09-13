@@ -192,8 +192,9 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         YZWeakObject(self);
         dispatch_source_set_event_handler(_timer, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakself.shapeLayer.strokeEnd < ((double)[User sharedUser].exp) / (double)[User sharedUser].needExp) {
-                    weakself.shapeLayer.strokeEnd += 0.05;
+                double tanh = ((double)[User sharedUser].exp) / (double)[User sharedUser].needExp;
+                if (weakself.shapeLayer.strokeEnd < tanh) {
+                    weakself.shapeLayer.strokeEnd += tanh * 0.1;
                 }else {
                     dispatch_source_cancel(weakself.timer);
                 }
