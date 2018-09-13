@@ -22,21 +22,20 @@
 
 @implementation MeViewController
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [User fetchUserDataWithSuccess:^{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:ExLayerShouldBegin object:nil];
-//    } failure:^(NSError *error) {
-//        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];
-//    }];
-//}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self initView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self requestData];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:ExLayerShouldBegin object:nil];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 - (void)initView {
@@ -50,7 +49,11 @@
 }
 
 - (void)requestData {
-    
+    [User fetchUserDataWithSuccess:^{
+        [self.meView.headerView refreshUserData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - MeViewDelegate

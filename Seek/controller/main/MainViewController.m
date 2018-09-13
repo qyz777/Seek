@@ -28,8 +28,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 - (void)initView {

@@ -26,7 +26,8 @@
     self.delegate = self;
     self.dataSource = self;
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableHeaderView = [[MeHeaderView alloc] init];
+    self.headerView = [[MeHeaderView alloc] init];
+    self.tableHeaderView = self.headerView;
     
     [self.footerView addSubview:self.logOutBtn];
     [self.logOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {

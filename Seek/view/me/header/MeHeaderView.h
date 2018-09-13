@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSNotificationName const ExLayerShouldBegin;
-
 @interface MeHeaderView : UIView
 
 @property (nonatomic, strong) UIImageView *avaterImageView;
@@ -21,5 +19,7 @@ UIKIT_EXTERN NSNotificationName const ExLayerShouldBegin;
 @property (nonatomic, strong) UILabel *rankLabel;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) dispatch_source_t timer;
+
+- (void)refreshUserData;
 
 @end

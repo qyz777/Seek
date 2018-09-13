@@ -32,6 +32,11 @@ NSNotificationName const SearchFieldDidChangeNotification = @"SearchFieldDidChan
     Add_Observer(SearchTableViewDidScrollNotification, self, searchTableViewDidScroll, nil);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+}
+
 - (void)dealloc {
     Remove_Observer(self);
 }

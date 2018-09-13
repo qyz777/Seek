@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MeHeaderView.h"
 
+@class MeHeaderView;
 
 typedef NS_ENUM(NSInteger, MeCell) {
     MeCellRank = 0,
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSInteger, MeCell) {
 
 @interface MeView : UITableView<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) MeHeaderView *headerView;
 @property (nonatomic, strong) UIView *footerView;
 @property (nonatomic, strong) UIButton *logOutBtn;
 @property (nonatomic, copy) NSArray *dataArray;

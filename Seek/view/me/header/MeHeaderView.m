@@ -8,8 +8,6 @@
 
 #import "MeHeaderView.h"
 
-NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
-
 @implementation MeHeaderView
 
 
@@ -20,16 +18,12 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 190);
         [self initSubviews];
         self.nameLabel.text = [User sharedUser].nickName;
-        self.exBottomLabel.text = [NSString stringWithFormat:@"经验:%ld/%ld",[User sharedUser].exp,[User sharedUser].needExp];
-        self.rankLabel.text = [self getLevelName:[User sharedUser].rank];
-        self.exLabel.text = [NSString stringWithFormat:@"%ld%%",(NSInteger)(((double)[User sharedUser].exp / (double)[User sharedUser].needExp) * 100)];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginAnimation) name:ExLayerShouldBegin object:nil];
     }
     return self;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    dispatch_source_cancel(self.timer);
 }
 
 - (void)initSubviews {
@@ -79,7 +73,11 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
     }];
 }
 
-- (void)beginAnimation {
+- (void)refreshUserData {
+    self.exLabel.text = [NSString stringWithFormat:@"%ld%%",(NSInteger)(((double)[User sharedUser].exp / (double)[User sharedUser].needExp) * 100)];
+    self.exBottomLabel.text = [NSString stringWithFormat:@"经验:%ld/%ld",[User sharedUser].exp,[User sharedUser].needExp];
+    self.rankLabel.text = [self getLevelName:[User sharedUser].rank];
+//    开始经验动画
     dispatch_resume(self.timer);
 }
 
@@ -193,10 +191,17 @@ NSNotificationName const ExLayerShouldBegin = @"ExLayerShouldBegin";
         dispatch_source_set_event_handler(_timer, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 double tanh = ((double)[User sharedUser].exp) / (double)[User sharedUser].needExp;
+                double gap = tanh + weakself.shapeLayer.strokeEnd;
                 if (weakself.shapeLayer.strokeEnd < tanh) {
                     weakself.shapeLayer.strokeEnd += tanh * 0.1;
+                    if (weakself.shapeLayer.strokeEnd >= 1) {
+                        if (gap > 1) {
+                            weakself.shapeLayer.strokeEnd = 0;
+                            tanh = gap - 1;
+                        }
+                    }
                 }else {
-                    dispatch_source_cancel(weakself.timer);
+                    dispatch_suspend(weakself.timer);
                 }
             });
         });
