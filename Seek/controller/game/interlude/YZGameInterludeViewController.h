@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^matchSuccess)(void);
+typedef void(^matchSuccess)(NSDictionary *data);
 
 @interface YZGameInterludeViewController : UIViewController
 

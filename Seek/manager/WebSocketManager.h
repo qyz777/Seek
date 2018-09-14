@@ -13,7 +13,7 @@
 
 @optional
 // 匹配成功 即将开始
-- (void)gameShouldBegin;
+- (void)gameShouldBeginWithData:(NSDictionary *)data;
 // 刷新题目
 - (void)refreshQuestionWithData:(NSDictionary *)data;
 // 答题结果

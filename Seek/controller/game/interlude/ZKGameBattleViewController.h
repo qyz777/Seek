@@ -13,6 +13,8 @@
 
 @property(nonatomic,weak)ZKGameBattleView *battleView;
 
+@property (nonatomic, copy) NSDictionary *playData;
+
 @property(nonatomic,copy)NSString *questionID;
 
 @property(nonatomic,assign)NSInteger btnIndex;

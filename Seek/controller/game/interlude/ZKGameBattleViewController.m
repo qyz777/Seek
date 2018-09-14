@@ -26,14 +26,13 @@
     [WebSocketManager manager].socket_delegate = self;
     self.disabled = false;
     
+    NSMutableDictionary *playAData = [self.playData[@"data"][@"player_a"] mutableCopy];
+    NSMutableDictionary *playBData = [self.playData[@"data"][@"player_b"] mutableCopy];
+    playAData[@"header"] = @"default_icon";
+    playBData[@"header"] = @"default_icon";
+    
     ZKGameBattleView *battleView = [[ZKGameBattleView alloc] init];
-    [battleView setLeftUserWithInfo:[@{
-                                      @"header": @"default_icon",
-                                      @"name": @"戚戚戚"
-                                      } mutableCopy] andRightInfo:[@{
-                                                       @"header": @"default_icon",
-                                                       @"name": @"李Lucky"
-                                                       } mutableCopy]];
+    [battleView setLeftUserWithInfo:playAData andRightInfo:playBData];
     [self startCountDown];
     [battleView.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -42,22 +41,20 @@
     
     __weak typeof(self) weakSelf = self;
     [_battleView setAnswerHandle:^(NSInteger index) {
-//        if (!weakSelf.disabled) {
-            weakSelf.btnIndex = index;
-            
-            UILabel *btn = (UILabel *)[weakSelf.battleView viewWithTag:index];
-            btn.backgroundColor = UIColor.lightGrayColor;
-            
-            NSInteger newIndex = index - 1001;
-            char ansCh = 'A' + newIndex;
-            
-            // 回答问题
-            YZLog(@"回答问题!!!!!");
-            NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,weakSelf.questionID,ansCh];
-            [[WebSocketManager manager] sendData:data];
-//            weakSelf.disabled = YES;
-//        }
+        weakSelf.btnIndex = index;
+        
+        UILabel *btn = (UILabel *)[weakSelf.battleView viewWithTag:index];
+        btn.backgroundColor = UIColor.lightGrayColor;
+        
+        NSInteger newIndex = index - 1001;
+        char ansCh = 'A' + newIndex;
+        
+        // 回答问题
+        YZLog(@"回答问题!!!!!");
+        NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,weakSelf.questionID,ansCh];
+        [[WebSocketManager manager] sendData:data];
     }];
+    [SVProgressHUD show];
 }
 
 - (void)startCountDown {
@@ -112,6 +109,7 @@
 #pragma mark - WebSocketManagerDelegate
 //开始答题 题目和倒计时的初始化
 - (void)refreshQuestionWithData:(NSDictionary *)data {
+    [SVProgressHUD dismiss];
     YZLog(@"换题目");
     YZLog(@"%@",data);
     //开始倒计时
@@ -161,47 +159,18 @@
 
 // 答题结果
 - (void)finishWithData:(NSDictionary *)data {
-//    NSMutableDictionary *scoreData = [data[@"data"][@"round_info"][@"titi_rounds_detail"] mutableCopy];
-//
-//    NSInteger myScore = 0;
-//    NSInteger otherScore = 0;
-//    NSInteger score = 0;
-//    NSInteger userID = [User sharedUser].userId;
-//
-//    //遍历一层字典
-//    NSLog(@"111");
-//    NSArray *keys1 = [scoreData allKeys];
-//    for(int i = 0;i < [keys1 count];i++){
-//        //        score = 0;
-//        //二层遍历
-//        NSArray *detailArray = (NSArray *)[scoreData objectForKey:keys1[i]];
-//
-//        for(int j = 0;j < [detailArray count];j++){
-//            NSDictionary *dict2 = (NSDictionary *)[detailArray objectAtIndex:j];
-//            score += [dict2[@"is_score"] integerValue];
-//        }
-//        if ([keys1[i] isEqualToString:[NSString stringWithFormat:@"%ld",userID]]) {
-//            myScore = score;
-//        }else{
-//            otherScore = score;
-//        }
-//    }
-    
     NSInteger myScore = self.battleView.leftProgress.length;
     NSInteger otherScore = self.battleView.rightProgress.length;
     
     if (myScore > otherScore) {
-        //        [SVProgressHUD showSuccessWithStatus:@"恭喜您战胜了对方 :)"];
         [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypeWin];
         [ZKSingleGameModel finishGame:@"win"];
         
-    }else if(myScore < otherScore){
-        //        [SVProgressHUD showErrorWithStatus:@"失败了，继续加油！"];
+    }else if(myScore < otherScore) {
         [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypeLose];
         [ZKSingleGameModel finishGame:@"lose"];
         
-    }else{
-        //        [SVProgressHUD showErrorWithStatus:@"平局，加油吧！"];
+    }else {
         [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypePing];
         [ZKSingleGameModel finishGame:@"ping"];
         

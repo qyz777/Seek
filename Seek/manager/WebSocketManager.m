@@ -93,8 +93,8 @@ static WebSocketManager * manager;
                     break;
                 case 6:
                     //匹配成功 即将开始
-                    if ([self.socket_delegate respondsToSelector:@selector(gameShouldBegin)]) {
-                        [self.socket_delegate gameShouldBegin];
+                    if ([self.socket_delegate respondsToSelector:@selector(gameShouldBeginWithData:)]) {
+                        [self.socket_delegate gameShouldBeginWithData:data];
                     }
                     break;
                 case 8:

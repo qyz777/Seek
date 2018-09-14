@@ -112,13 +112,13 @@
 }
 
 // 匹配成功,即将开始
-- (void)gameShouldBegin {
+- (void)gameShouldBeginWithData:(NSDictionary *)data {
     [UIView animateWithDuration:1 animations:^{
         self.battleUserImg.alpha = 1;
     }completion:^(BOOL finished) {
         [self dismissViewControllerAnimated:YES completion:^{
             if (self.block) {
-                self.block();
+                self.block(data);
             }
         }];
     }];

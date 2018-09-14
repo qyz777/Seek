@@ -63,7 +63,6 @@
 		A0DB888920A68FDB00CA810C /* YZFindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888820A68FDB00CA810C /* YZFindCollectionViewCell.m */; };
 		A0DB888E20A6A1A100CA810C /* YZDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */; };
 		A0DB889120A6A1DE00CA810C /* YZDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DB889020A6A1DE00CA810C /* YZDetailView.m */; };
-		A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DE418520F38ED100E61A3C /* SocketManager.m */; };
 		A0E3906420D749060067B309 /* YZTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E3906320D749060067B309 /* YZTabBarView.m */; };
 		A0E3906720D74DA10067B309 /* YZTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E3906620D74DA10067B309 /* YZTabBar.m */; };
 		A0E3906A20D74E850067B309 /* YZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E3906920D74E850067B309 /* YZTabBarController.m */; };
@@ -80,7 +79,6 @@
 		F55E1DC92133CFB700C0D183 /* ZKMainCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E1DC82133CFB700C0D183 /* ZKMainCardViewCell.m */; };
 		F55E1DD1213432D500C0D183 /* UIColor+ZKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E1DD0213432D500C0D183 /* UIColor+ZKCategory.m */; };
 		F5740AC3212F94D3004999C1 /* ZKAnswerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */; };
-		F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC5212FC163004999C1 /* ZKTestViewController.m */; };
 		F5740ACA212FD313004999C1 /* ZKGameAnswerTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */; };
 		F57CA17921460B1E0025886B /* Rank.m in Sources */ = {isa = PBXBuildFile; fileRef = F57CA17821460B1E0025886B /* Rank.m */; };
 		F58F02992147505E001A01C5 /* ZKGameProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F58F02982147505D001A01C5 /* ZKGameProgressView.m */; };
@@ -201,8 +199,6 @@
 		A0DB888D20A6A1A100CA810C /* YZDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailViewController.m; sourceTree = "<group>"; };
 		A0DB888F20A6A1DE00CA810C /* YZDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZDetailView.h; sourceTree = "<group>"; };
 		A0DB889020A6A1DE00CA810C /* YZDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZDetailView.m; sourceTree = "<group>"; };
-		A0DE418420F38ED100E61A3C /* SocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
-		A0DE418520F38ED100E61A3C /* SocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
 		A0E3906220D749060067B309 /* YZTabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZTabBarView.h; sourceTree = "<group>"; };
 		A0E3906320D749060067B309 /* YZTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZTabBarView.m; sourceTree = "<group>"; };
 		A0E3906520D74DA10067B309 /* YZTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZTabBar.h; sourceTree = "<group>"; };
@@ -235,8 +231,6 @@
 		F55E1DD0213432D500C0D183 /* UIColor+ZKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZKCategory.m"; sourceTree = "<group>"; };
 		F5740AC1212F94D3004999C1 /* ZKAnswerButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKAnswerButton.h; sourceTree = "<group>"; };
 		F5740AC2212F94D3004999C1 /* ZKAnswerButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKAnswerButton.m; sourceTree = "<group>"; };
-		F5740AC4212FC163004999C1 /* ZKTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKTestViewController.h; sourceTree = "<group>"; };
-		F5740AC5212FC163004999C1 /* ZKTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKTestViewController.m; sourceTree = "<group>"; };
 		F5740AC8212FD313004999C1 /* ZKGameAnswerTipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZKGameAnswerTipView.h; sourceTree = "<group>"; };
 		F5740AC9212FD313004999C1 /* ZKGameAnswerTipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZKGameAnswerTipView.m; sourceTree = "<group>"; };
 		F57CA17721460B1E0025886B /* Rank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rank.h; sourceTree = "<group>"; };
@@ -783,8 +777,6 @@
 		A0DE418320F38EAB00E61A3C /* manager */ = {
 			isa = PBXGroup;
 			children = (
-				A0DE418420F38ED100E61A3C /* SocketManager.h */,
-				A0DE418520F38ED100E61A3C /* SocketManager.m */,
 				A07597C3214B68D200BCC3D4 /* WebSocketManager.h */,
 				A07597C4214B68D200BCC3D4 /* WebSocketManager.m */,
 			);
@@ -1004,8 +996,6 @@
 				A02D028920F4DE8D006219D5 /* interlude */,
 				A070798320BCD12000F3B045 /* single */,
 				A070798220BCD11500F3B045 /* index */,
-				F5740AC4212FC163004999C1 /* ZKTestViewController.h */,
-				F5740AC5212FC163004999C1 /* ZKTestViewController.m */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -1187,7 +1177,6 @@
 				F5C5095E20BAD8FA0094F4BA /* ZKGameIndexViewController.m in Sources */,
 				F55E1DC52133CE2200C0D183 /* ZKMainCardView.m in Sources */,
 				A0A4AE5B210C4F0700F4C6BE /* YZCameraController.m in Sources */,
-				A0DE418620F38ED100E61A3C /* SocketManager.m in Sources */,
 				A023F74920A47437003A1E9C /* YZMoreTitleView.m in Sources */,
 				A0A8661B209DB61100674BF6 /* MainViewController.m in Sources */,
 				A0F8908520B552370070B0C7 /* YZWordDetailViewController.m in Sources */,
@@ -1196,7 +1185,6 @@
 				A094A90F213F6A81004B716F /* YZRankTableViewCell.m in Sources */,
 				A0BA18A920F7952300E2FD84 /* YZGameInterludeFindView.m in Sources */,
 				F5C5095720B9B4AD0094F4BA /* UIView+ZKCategory.m in Sources */,
-				F5740AC6212FC163004999C1 /* ZKTestViewController.m in Sources */,
 				F517BF0D20B9512400D6A136 /* ZKSettingView.m in Sources */,
 				A0F8908820B552A80070B0C7 /* YZWordDetailView.m in Sources */,
 				A0E3906720D74DA10067B309 /* YZTabBar.m in Sources */,
