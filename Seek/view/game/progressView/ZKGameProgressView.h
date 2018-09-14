@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger,ZKGameProgressViewType){
 
 @property(nonatomic,assign)ZKGameProgressViewType type;
 
+@property(nonatomic,assign,readonly)NSInteger length;
 
 - (void)updateProgress;
 

@@ -111,6 +111,7 @@ static WebSocketManager * manager;
                     break;
                 case 9:
                     //答题结束
+                    YZLog(@"答题结束");
                     if ([self.socket_delegate respondsToSelector:@selector(finishWithData:)]) {
                         [self.socket_delegate finishWithData:data];
                     }

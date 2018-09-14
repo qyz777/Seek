@@ -52,6 +52,7 @@
             char ansCh = 'A' + newIndex;
             
             // 回答问题
+            YZLog(@"回答问题!!!!!");
             NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,weakSelf.questionID,ansCh];
             [[WebSocketManager manager] sendData:data];
             weakSelf.disabled = YES;
@@ -112,6 +113,7 @@
 //开始答题 题目和倒计时的初始化
 - (void)refreshQuestionWithData:(NSDictionary *)data {
     YZLog(@"换题目");
+    YZLog(@"%@",data);
     //开始倒计时
     [self startCountDown];
     self.questionID = data[@"id"];
@@ -157,31 +159,34 @@
 
 // 答题结果
 - (void)finishWithData:(NSDictionary *)data {
-    NSMutableDictionary *scoreData = [data[@"data"][@"round_info"][@"titi_rounds_detail"] mutableCopy];
+//    NSMutableDictionary *scoreData = [data[@"data"][@"round_info"][@"titi_rounds_detail"] mutableCopy];
+//    
+//    NSInteger myScore = 0;
+//    NSInteger otherScore = 0;
+//    NSInteger score = 0;
+//    NSInteger userID = [User sharedUser].userId;
+//    
+//    //遍历一层字典
+//    NSLog(@"111");
+//    NSArray *keys1 = [scoreData allKeys];
+//    for(int i = 0;i < [keys1 count];i++){
+//        //        score = 0;
+//        //二层遍历
+//        NSArray *detailArray = (NSArray *)[scoreData objectForKey:keys1[i]];
+//        
+//        for(int j = 0;j < [detailArray count];j++){
+//            NSDictionary *dict2 = (NSDictionary *)[detailArray objectAtIndex:j];
+//            score += [dict2[@"is_score"] integerValue];
+//        }
+//        if ([keys1[i] isEqualToString:[NSString stringWithFormat:@"%ld",userID]]) {
+//            myScore = score;
+//        }else{
+//            otherScore = score;
+//        }
+//    }
     
-    NSInteger myScore = 0;
-    NSInteger otherScore = 0;
-    NSInteger score = 0;
-    NSInteger userID = [User sharedUser].userId;
-    
-    //遍历一层字典
-    NSLog(@"111");
-    NSArray *keys1 = [scoreData allKeys];
-    for(int i = 0;i < [keys1 count];i++){
-        //        score = 0;
-        //二层遍历
-        NSArray *detailArray = (NSArray *)[scoreData objectForKey:keys1[i]];
-        
-        for(int j = 0;j < [detailArray count];j++){
-            NSDictionary *dict2 = (NSDictionary *)[detailArray objectAtIndex:j];
-            score += [dict2[@"is_score"] integerValue];
-        }
-        if ([keys1[i] isEqualToString:[NSString stringWithFormat:@"%ld",userID]]) {
-            myScore = score;
-        }else{
-            otherScore = score;
-        }
-    }
+    NSInteger myScore = self.battleView.leftProgress.length;
+    NSInteger otherScore = self.battleView.rightProgress.length;
     
     if (myScore > otherScore) {
         //        [SVProgressHUD showSuccessWithStatus:@"恭喜您战胜了对方 :)"];

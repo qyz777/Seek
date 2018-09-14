@@ -14,6 +14,9 @@
 // 进度条
 @property(nonatomic,weak)UIView *progressView;
 
+@property(nonatomic,assign,readwrite)NSInteger length;
+
+
 @end
 
 @implementation ZKGameProgressView
@@ -38,6 +41,7 @@
 }
 
 - (void)initView {
+    self.length = 0;
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 10;
 
@@ -70,9 +74,12 @@
         frame.origin.x -= self.width * 0.2;
     }
     
+    _length++;
+    
     [UIView animateWithDuration:0.25 animations:^{
         self.progressView.frame = frame;
     }];
+    
 }
 
 @end
