@@ -10,6 +10,4 @@
 
 @interface YZGameInterludeViewController : UIViewController
 
-- (void)sendData:(id)data;
-
 @end

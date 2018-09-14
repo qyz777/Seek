@@ -7,23 +7,17 @@
 //
 
 #import "ZKGameBattleViewController.h"
-#import "YZGameInterludeViewController.h"
+#import "WebSocketManager.h"
 
 @interface ZKGameBattleViewController ()
 
 @property(nonatomic,strong)NSTimer *timer;
-
-@property(nonatomic,weak)YZGameInterludeViewController *interludeVC;
 
 @property(nonatomic,assign)BOOL disabled;
 
 @end
 
 @implementation ZKGameBattleViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.interludeVC = (YZGameInterludeViewController *)self.presentingViewController;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,25 +39,20 @@
     self.battleView = battleView;
     
     __weak typeof(self) weakSelf = self;
-    
     [_battleView setAnswerHandle:^(NSInteger index) {
-        
-        __strong typeof(self) strongSelf = weakSelf;
-        
-        if (!_disabled) {
-            strongSelf.btnIndex = index;
+        if (!weakSelf.disabled) {
+            weakSelf.btnIndex = index;
             
-            UILabel *btn = (UILabel *)[strongSelf.battleView viewWithTag:index];
+            UILabel *btn = (UILabel *)[weakSelf.battleView viewWithTag:index];
             btn.backgroundColor = UIColor.lightGrayColor;
             
             NSInteger newIndex = index - 1001;
             char ansCh = 'A' + newIndex;
             
             // 回答问题
-            NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,strongSelf.questionID,ansCh];
-            [strongSelf.interludeVC sendData:data];
-            
-            _disabled = YES;
+            NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,weakSelf.questionID,ansCh];
+            [[WebSocketManager manager] sendData:data];
+            weakSelf.disabled = YES;
         }
     }];
 }

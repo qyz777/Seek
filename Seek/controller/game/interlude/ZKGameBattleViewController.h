@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SocketRocket.h>
 #import "ZKGameBattleView.h"
 
 @interface ZKGameBattleViewController : UIViewController
-
-@property(nonatomic,weak)SRWebSocket *socket;
 
 @property(nonatomic,weak)ZKGameBattleView *battleView;
 
