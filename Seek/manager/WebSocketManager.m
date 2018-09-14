@@ -29,20 +29,21 @@ static WebSocketManager * manager;
     dispatch_once(&onceToken, ^{
         if (!manager) {
             manager = [[WebSocketManager alloc] init];
-            manager.socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:SOCKET_URL]]];
-            manager.socket.delegate = manager;
+            manager.socketQueue = dispatch_queue_create("socketQueue", DISPATCH_QUEUE_SERIAL);
         }
     });
     return manager;
 }
 
 - (void)startMatching {
-    self.socketQueue = dispatch_queue_create("socketQueue", DISPATCH_QUEUE_SERIAL);
+    self.socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:SOCKET_URL]]];
+    self.socket.delegate = self;
     [self.socket open];
 }
 
 - (void)stop {
     [self.socket close];
+    self.socket = nil;
 }
 
 #pragma mark - SRWebSocketDelegate

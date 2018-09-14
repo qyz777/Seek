@@ -8,7 +8,6 @@
 
 #import "YZGameInterludeViewController.h"
 #import "YZGameInterludeFindView.h"
-#import "ZKGameBattleViewController.h"
 #import "User.h"
 #import "WebSocketManager.h"
 
@@ -108,6 +107,23 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)matchingStart {
+    [[WebSocketManager manager] startMatching];
+}
+
+// 匹配成功,即将开始
+- (void)gameShouldBegin {
+    [UIView animateWithDuration:1 animations:^{
+        self.battleUserImg.alpha = 1;
+    }completion:^(BOOL finished) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            if (self.block) {
+                self.block();
+            }
+        }];
+    }];
+}
+
 #pragma mark - getter
 - (YZGameInterludeFindView *)findBackView {
     if (!_findBackView) {
@@ -145,23 +161,6 @@
         [_quitBtn setTitle:@"取消匹配" forState:UIControlStateNormal];
     }
     return _quitBtn;
-}
-
-- (void)matchingStart {
-    [[WebSocketManager manager] startMatching];
-}
-
-// 匹配成功,即将开始
-- (void)gameShouldBegin {
-    [UIView animateWithDuration:1 animations:^{
-        self.battleUserImg.alpha = 1;
-    }];
-    
-    //一秒等待时间
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        ZKGameBattleViewController *battleVC = [[ZKGameBattleViewController alloc] init];
-        [self presentViewController:battleVC animated:YES completion:nil];
-    });
 }
 
 

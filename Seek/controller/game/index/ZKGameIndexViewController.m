@@ -45,6 +45,10 @@
                 YZGameInterludeViewController *findVC = [[YZGameInterludeViewController alloc] init];
                 findVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
                 [self presentViewController:findVC animated:YES completion:nil];
+                [findVC setBlock:^{
+                    ZKGameBattleViewController *battleVC = [[ZKGameBattleViewController alloc] init];
+                    [self presentViewController:battleVC animated:YES completion:nil];
+                }];
             }
                 break;
             case 1003:{

@@ -105,11 +105,7 @@
         self.timer = nil;
     }
     [[WebSocketManager manager] stop];
-    UIViewController *lastVC = self.presentingViewController;
-    [lastVC dismissViewControllerAnimated:NO completion:nil];
-    [self dismissViewControllerAnimated:YES completion:^{
-//        [lastVC dismissViewControllerAnimated:NO completion:nil];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - WebSocketManagerDelegate
@@ -212,10 +208,16 @@
 
 - (void)otherDidLogout {
     [SVProgressHUD showErrorWithStatus:@"对方已经退出游戏"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self back];
+    });
 }
 
 - (void)matchingError {
     [SVProgressHUD showErrorWithStatus:@"请检查网络设置"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self back];
+    });
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^matchSuccess)(void);
+
 @interface YZGameInterludeViewController : UIViewController
+
+@property (nonatomic, copy) matchSuccess block;
 
 @end
