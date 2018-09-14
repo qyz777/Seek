@@ -23,6 +23,7 @@ static const CGFloat kInterval = 20;
 @property(nonatomic,weak)UILabel *answerC;
 @property(nonatomic,weak)UILabel *answerD;
 
+
 // 进度条
 //@property(nonatomic,weak)UIProgressView *leftProgressView;
 //@property(nonatomic,weak)UIProgressView *rightProgressView;
@@ -188,8 +189,11 @@ static const CGFloat kInterval = 20;
 - (void)tapAction:(UITapGestureRecognizer *)sender {
     
     UIView *view = (UIView *)sender.view;
-    self.answerHandle(view.tag);
-    NSLog(@"view点击:%zd",view.tag);
+    if (!self.isDisabled) {
+        self.isDisabled = YES;
+        YZLog(@"可以点击");
+        self.answerHandle(view.tag);
+    }
 }
 
 @end

@@ -42,7 +42,7 @@
     
     __weak typeof(self) weakSelf = self;
     [_battleView setAnswerHandle:^(NSInteger index) {
-        if (!weakSelf.disabled) {
+//        if (!weakSelf.disabled) {
             weakSelf.btnIndex = index;
             
             UILabel *btn = (UILabel *)[weakSelf.battleView viewWithTag:index];
@@ -55,8 +55,8 @@
             YZLog(@"回答问题!!!!!");
             NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,weakSelf.questionID,ansCh];
             [[WebSocketManager manager] sendData:data];
-            weakSelf.disabled = YES;
-        }
+//            weakSelf.disabled = YES;
+//        }
     }];
 }
 
@@ -118,6 +118,8 @@
     [self startCountDown];
     self.questionID = data[@"id"];
     
+    self.battleView.isDisabled = NO;
+    
     
     ZKGameBattleView *view = self.battleView;
     //重置选中答案
@@ -160,12 +162,12 @@
 // 答题结果
 - (void)finishWithData:(NSDictionary *)data {
 //    NSMutableDictionary *scoreData = [data[@"data"][@"round_info"][@"titi_rounds_detail"] mutableCopy];
-//    
+//
 //    NSInteger myScore = 0;
 //    NSInteger otherScore = 0;
 //    NSInteger score = 0;
 //    NSInteger userID = [User sharedUser].userId;
-//    
+//
 //    //遍历一层字典
 //    NSLog(@"111");
 //    NSArray *keys1 = [scoreData allKeys];
@@ -173,7 +175,7 @@
 //        //        score = 0;
 //        //二层遍历
 //        NSArray *detailArray = (NSArray *)[scoreData objectForKey:keys1[i]];
-//        
+//
 //        for(int j = 0;j < [detailArray count];j++){
 //            NSDictionary *dict2 = (NSDictionary *)[detailArray objectAtIndex:j];
 //            score += [dict2[@"is_score"] integerValue];

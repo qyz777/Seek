@@ -40,6 +40,8 @@ typedef void (^answerHandle)(NSInteger index);
 @property(nonatomic,weak)ZKGameProgressView *leftProgress;
 @property(nonatomic,weak)ZKGameProgressView *rightProgress;
 
+@property(nonatomic,assign)BOOL isDisabled;
+
 //设置用户信息
 - (void)setLeftUserWithInfo:(NSMutableDictionary *)left andRightInfo:(NSMutableDictionary *)right;
 
