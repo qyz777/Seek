@@ -8,8 +8,10 @@
 
 #import "ZKGameBattleViewController.h"
 #import "WebSocketManager.h"
+#import "ZKGameFinishTipView.h"
+#import "ZKSingleGameModel.h"
 
-@interface ZKGameBattleViewController ()
+@interface ZKGameBattleViewController ()<WebSocketManagerDelegate>
 
 @property(nonatomic,strong)NSTimer *timer;
 
@@ -21,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [WebSocketManager manager].socket_delegate = self;
     self.disabled = false;
     
     ZKGameBattleView *battleView = [[ZKGameBattleView alloc] init];
@@ -102,6 +104,7 @@
         [self.timer invalidate];
         self.timer = nil;
     }
+    [[WebSocketManager manager] stop];
     UIViewController *lastVC = self.presentingViewController;
     [lastVC dismissViewControllerAnimated:NO completion:nil];
     [self dismissViewControllerAnimated:YES completion:^{
@@ -109,20 +112,110 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - WebSocketManagerDelegate
+//开始答题 题目和倒计时的初始化
+- (void)refreshQuestionWithData:(NSDictionary *)data {
+    YZLog(@"换题目");
+    //开始倒计时
+    [self startCountDown];
+    self.questionID = data[@"id"];
+    
+    
+    ZKGameBattleView *view = self.battleView;
+    //重置选中答案
+    NSInteger btnIndex = self.btnIndex;
+    if ( btnIndex != 0) {
+        [(UILabel *)[view viewWithTag:btnIndex] setBackgroundColor:UIColor.whiteColor];
+    }
+    
+    view.question = data[@"title"];
+    view.ansArray = [@[
+                       data[@"A"],
+                       data[@"B"],
+                       data[@"C"],
+                       data[@"D"]
+                       ] mutableCopy];
+    
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// 每个题目的结果
+- (void)questionAnswerWithData:(NSDictionary *)data {
+    if ([data[@"uid"] integerValue] == [User sharedUser].userId) {
+        if ([data[@"is_right"] integerValue] == 1) {
+            [SVProgressHUD showSuccessWithStatus:@"回答正确"];
+            [self.battleView.leftProgress updateProgress];
+        }else if([data[@"is_right"] integerValue] == 0){
+            [SVProgressHUD showErrorWithStatus:@"回答错误"];
+        }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }else{
+        //对方回答
+        if ([data[@"is_right"] integerValue] == 1) {
+            [self.battleView.rightProgress updateProgress];
+        }
+    }
 }
-*/
+
+// 答题结果
+- (void)finishWithData:(NSDictionary *)data {
+    NSMutableDictionary *scoreData = [data[@"data"][@"round_info"][@"titi_rounds_detail"] mutableCopy];
+    
+    NSInteger myScore = 0;
+    NSInteger otherScore = 0;
+    NSInteger score = 0;
+    NSInteger userID = [User sharedUser].userId;
+    
+    //遍历一层字典
+    NSLog(@"111");
+    NSArray *keys1 = [scoreData allKeys];
+    for(int i = 0;i < [keys1 count];i++){
+        //        score = 0;
+        //二层遍历
+        NSArray *detailArray = (NSArray *)[scoreData objectForKey:keys1[i]];
+        
+        for(int j = 0;j < [detailArray count];j++){
+            NSDictionary *dict2 = (NSDictionary *)[detailArray objectAtIndex:j];
+            score += [dict2[@"is_score"] integerValue];
+        }
+        if ([keys1[i] isEqualToString:[NSString stringWithFormat:@"%ld",userID]]) {
+            myScore = score;
+        }else{
+            otherScore = score;
+        }
+    }
+    
+    if (myScore > otherScore) {
+        //        [SVProgressHUD showSuccessWithStatus:@"恭喜您战胜了对方 :)"];
+        [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypeWin];
+        [ZKSingleGameModel finishGame:@"win"];
+        
+    }else if(myScore < otherScore){
+        //        [SVProgressHUD showErrorWithStatus:@"失败了，继续加油！"];
+        [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypeLose];
+        [ZKSingleGameModel finishGame:@"lose"];
+        
+    }else{
+        //        [SVProgressHUD showErrorWithStatus:@"平局，加油吧！"];
+        [ZKGameFinishTipView showWithType:ZKGameFinishTipViewTypePing];
+        [ZKSingleGameModel finishGame:@"ping"];
+        
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //两秒后退出游戏
+        [self back];
+    });
+}
+
+- (void)otherDidLogout {
+    [SVProgressHUD showErrorWithStatus:@"对方已经退出游戏"];
+}
+
+- (void)matchingError {
+    [SVProgressHUD showErrorWithStatus:@"请检查网络设置"];
+}
 
 @end

@@ -11,6 +11,7 @@
 
 @protocol WebSocketManagerDelegate <NSObject>
 
+@optional
 // 匹配成功 即将开始
 - (void)gameShouldBegin;
 // 刷新题目
