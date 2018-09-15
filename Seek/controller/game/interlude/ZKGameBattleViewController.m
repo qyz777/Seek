@@ -124,6 +124,10 @@
     [SVProgressHUD dismiss];
     YZLog(@"换题目");
     YZLog(@"%@",data);
+    
+    if (!data[@"data"][@"question"]) {
+        [self finishWithData:nil];
+    }
     //开始倒计时
     [self startCountDown];
     self.questionID = data[@"id"];
@@ -140,9 +144,7 @@
     
     view.question = data[@"title"];
     
-    if (!data[@"A"]) {
-        [self finishWithData:nil];
-    }
+
     
     view.ansArray = [@[
                        data[@"A"],
