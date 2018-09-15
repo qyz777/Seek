@@ -15,6 +15,8 @@
 
 @property(nonatomic,strong)NSTimer *timer;
 
+@property (nonatomic, assign) NSInteger questionCount;
+
 @property(nonatomic,assign)BOOL disabled;
 
 @end
@@ -53,6 +55,10 @@
         YZLog(@"回答问题!!!!!");
         NSString *data = [NSString stringWithFormat:@"{\"type\":\"answer\",\"uid\":\"%ld\",\"questions_id\":\"%@\",\"answer\":\"%c\"}",[User sharedUser].userId,weakSelf.questionID,ansCh];
         [[WebSocketManager manager] sendData:data];
+        self.questionCount++;
+        if (self.questionCount >= 5) {
+            [self finishWithData:nil];
+        }
     }];
     [SVProgressHUD show];
 }
@@ -116,6 +122,11 @@
 //开始答题 题目和倒计时的初始化
 - (void)refreshQuestionWithData:(NSDictionary *)data {
     [SVProgressHUD dismiss];
+    
+    if (self.questionCount >=5) {
+        return;
+    }
+    
     YZLog(@"换题目");
     YZLog(@"%@",data);
     //开始倒计时
