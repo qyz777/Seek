@@ -125,7 +125,7 @@
     YZLog(@"换题目");
     YZLog(@"%@",data);
     
-    if (!data[@"data"][@"question"]) {
+    if (!data[@"id"]) {
         [self finishWithData:nil];
     }
     //开始倒计时

@@ -99,8 +99,8 @@ static WebSocketManager * manager;
                     break;
                 case 8:
                     //开始答题
-//                    if ([self.socket_delegate respondsToSelector:@selector(refreshQuestionWithData:)]) {
-//                        [self.socket_delegate refreshQuestionWithData:data[@"data"][@"question"]];
+                    if ([self.socket_delegate respondsToSelector:@selector(refreshQuestionWithData:)]) {
+                        [self.socket_delegate refreshQuestionWithData:data[@"data"][@"question"]];
 //                    }
                     break;
                 case 12:
@@ -112,9 +112,9 @@ static WebSocketManager * manager;
                 case 9:
                     //答题结束
                     YZLog(@"答题结束");
-                    if ([self.socket_delegate respondsToSelector:@selector(finishWithData:)]) {
-                        [self.socket_delegate finishWithData:data];
-                    }
+//                    if ([self.socket_delegate respondsToSelector:@selector(finishWithData:)]) {
+//                        [self.socket_delegate finishWithData:data];
+//                    }
                     break;
                     
                 case 10:
