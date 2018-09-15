@@ -122,11 +122,6 @@
 //开始答题 题目和倒计时的初始化
 - (void)refreshQuestionWithData:(NSDictionary *)data {
     [SVProgressHUD dismiss];
-    
-    if (self.questionCount >=5) {
-        return;
-    }
-    
     YZLog(@"换题目");
     YZLog(@"%@",data);
     //开始倒计时
@@ -144,6 +139,11 @@
     }
     
     view.question = data[@"title"];
+    
+    if (!data[@"A"]) {
+        [self finishWithData:nil];
+    }
+    
     view.ansArray = [@[
                        data[@"A"],
                        data[@"B"],
