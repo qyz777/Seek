@@ -62,6 +62,12 @@
         [self stopCountDown];
     }
     _battleView.timerLabel.text = @"20";
+    
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerLabelChanged) userInfo:nil repeats:YES];
     self.disabled = NO;
 }
