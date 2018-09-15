@@ -99,9 +99,9 @@ static WebSocketManager * manager;
                     break;
                 case 8:
                     //开始答题
-                    if ([self.socket_delegate respondsToSelector:@selector(refreshQuestionWithData:)]) {
-                        [self.socket_delegate refreshQuestionWithData:data[@"data"][@"question"]];
-                    }
+//                    if ([self.socket_delegate respondsToSelector:@selector(refreshQuestionWithData:)]) {
+//                        [self.socket_delegate refreshQuestionWithData:data[@"data"][@"question"]];
+//                    }
                     break;
                 case 12:
                     //答题结果
