@@ -17,12 +17,12 @@
 
 Seek是一个学英语的App，具有一个英语App的基本功能，具体介绍在下面。实时在线对战用的是webSocket。OCR后端调的是百度的服务，因为没付费所以特别慢。当时开发考虑到是参加比赛，App里面一些不重要的功能都是用假数据展示的。
 
-<iframe width="560" height="550" src="./demo.pdf" frameborder="0" allowfullscreen></iframe>
+[介绍](https://github.com/qyz777/Seek/blob/master/demo.pdf)
 
 
-## 演示视频
+## 宣传视频
 
-<iframe width="560" height="400" src="./demo.m4v" frameborder="0" allowfullscreen></iframe>
+[视频](https://github.com/qyz777/Seek/blob/master/demo.m4v)
 
 ## 作者
 
